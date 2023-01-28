@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Village.Core.Models
 {
-    public class Inhabitant
+    public class Inhabitant : Entity
     {
         public string Name { get; set; }
         public string Lastname { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Village.Core.Models
 {
-    public class House
+    public class House : Entity
     {
         public int Number { get; set; }
         public string Street { get; set; }
