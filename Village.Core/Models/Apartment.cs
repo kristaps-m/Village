@@ -14,6 +14,5 @@ namespace Village.Core.Models
         public int Population { get; set; }
         public double FullArea { get; set; }
         public double LivingSpace { get; set; }
-        public int HouseNumber { get; set; }
     }
 }

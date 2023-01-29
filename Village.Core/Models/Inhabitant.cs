@@ -15,5 +15,6 @@ namespace Village.Core.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public int ApartmentNumber { get; set; }
+        public bool IsOwner { get; set; }
     }
 }
