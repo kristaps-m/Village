@@ -53,6 +53,7 @@ namespace Village.Data
                     Population = 3,
                     FullArea = 74.5,
                     LivingSpace = 70.5,
+                    IdOfHouse = 1,
                 },
                 new Apartment
                 {
@@ -63,6 +64,7 @@ namespace Village.Data
                     Population = 3,
                     FullArea = 54.5,
                     LivingSpace = 50.5,
+                    IdOfHouse = 1,
                 },
                 new Apartment
                 {
@@ -73,6 +75,7 @@ namespace Village.Data
                     Population = 3,
                     FullArea = 54.5,
                     LivingSpace = 50.5,
+                    IdOfHouse = 1,
                 },
                 new Apartment
                 {
@@ -83,6 +86,7 @@ namespace Village.Data
                     Population = 3,
                     FullArea = 100.5,
                     LivingSpace = 95.5,
+                    IdOfHouse = 2,
                 },
                 new Apartment
                 {
@@ -93,15 +97,23 @@ namespace Village.Data
                     Population = 1,
                     FullArea = 150.5,
                     LivingSpace = 140.5,
+                    IdOfHouse = 2,
                 }
-
             );
 
             builder.Entity<Inhabitant>().HasData(
-                new Inhabitant { Id = 1,
-                Name = "Andris", Lastname = "Berzins",
-                PersonalCode = "220180-111222", DateOfBirth = new DateTime(1980,1,22),
-                Phone = "+371 21234567", Email = "Andris@gmail.com", ApartmentNumber = 21, IsOwner = true},
+                new Inhabitant
+                {
+                    Id = 1,
+                    Name = "Andris",
+                    Lastname = "Berzins",
+                    PersonalCode = "220180-111222",
+                    DateOfBirth = new DateTime(1980, 1, 22),
+                    Phone = "+371 21234567",
+                    Email = "Andris@gmail.com",
+                    IdOfApartment = 1,
+                    IsOwner = true
+                },
                 new Inhabitant
                 {
                     Id = 2,
@@ -111,7 +123,7 @@ namespace Village.Data
                     DateOfBirth = new DateTime(2003, 12, 24),
                     Phone = "+371 22234567",
                     Email = "Anna@gmail.com",
-                    ApartmentNumber = 21,
+                    IdOfApartment = 1,
                     IsOwner = false
                 },
                 new Inhabitant
@@ -123,7 +135,7 @@ namespace Village.Data
                     DateOfBirth = new DateTime(1980, 1, 1),
                     Phone = "+371 23234567",
                     Email = "Madarss@gmail.com",
-                    ApartmentNumber = 40,
+                    IdOfApartment = 2,
                     IsOwner = false
                 },
                 new Inhabitant
@@ -135,7 +147,7 @@ namespace Village.Data
                     DateOfBirth = new DateTime(1980, 2, 22),
                     Phone = "+371 21234567",
                     Email = "Garkakle.Linda@gmail.com",
-                    ApartmentNumber = 111,
+                    IdOfApartment = 3,
                     IsOwner = false
                 }
             );

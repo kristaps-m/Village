@@ -21,6 +21,12 @@ builder.Services.AddDbContext<VillageDbContext>(x => x.UseSqlServer(connectionSt
 builder.Services.AddScoped<IVillageDbContext, VillageDbContext>();
 builder.Services.AddScoped<IDbService, DbService>();
 
+builder.Services.AddScoped<IApartmentService, ApartmentService>();
+builder.Services.AddScoped<IHouseService, HouseService>();
+builder.Services.AddScoped<IInhabitantService, InhabitantService>();
+builder.Services.AddScoped<IApartmentInhabitantService, ApartmentInhabitantService>();
+builder.Services.AddScoped<IHouseApartmentService, HouseApartmentService>();
+builder.Services.AddScoped<IInhabitantApartmentService, InhabitantApartmentService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

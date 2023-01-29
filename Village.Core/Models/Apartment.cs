@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Village.Core.Models
+﻿namespace Village.Core.Models
 {
     public class Apartment : Entity
     {
@@ -14,5 +8,7 @@ namespace Village.Core.Models
         public int Population { get; set; }
         public double FullArea { get; set; }
         public double LivingSpace { get; set; }
+        // IdOfHouse = Connection with the house where a particular apartment is located
+        public int IdOfHouse { get; set; }
     }
 }

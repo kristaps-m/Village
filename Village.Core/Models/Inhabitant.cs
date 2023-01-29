@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Village.Core.Models
+﻿namespace Village.Core.Models
 {
     public class Inhabitant : Entity
     {
@@ -14,7 +8,8 @@ namespace Village.Core.Models
         public DateTime DateOfBirth { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public int ApartmentNumber { get; set; }
+        // IdOfApartment = Connection with the apartment where the resident lives
+        public int IdOfApartment { get; set; }
         public bool IsOwner { get; set; }
     }
 }
