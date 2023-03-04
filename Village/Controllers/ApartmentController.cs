@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
 using Village.Services.Interfaces;
 
@@ -6,11 +7,11 @@ namespace Village.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ApartmentController : ControllerBase
+    public class apartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmenService;
 
-        public ApartmentController(IApartmentService apartmenService)
+        public apartmentController(IApartmentService apartmenService)
         {
             _apartmenService = apartmenService;
         }
@@ -40,7 +41,7 @@ namespace Village.Controllers
             return Created("", apartmentToUpdate); // Ok();
         }
 
-        [Route("{id}")] // remove delete ?
+        [Route("{id}")]
         [HttpDelete]
         public IActionResult DeleteApartment(int id)
         {
