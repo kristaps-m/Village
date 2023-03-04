@@ -3,13 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Village", "Village\Village.csproj", "{6402E6D7-F93D-49D2-998F-6A5EC0DE3197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Village", "Village\Village.csproj", "{6402E6D7-F93D-49D2-998F-6A5EC0DE3197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Village.Core", "Village.Core\Village.Core.csproj", "{C1D50986-99A7-4446-BA76-34647AD4DA8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Village.Core", "Village.Core\Village.Core.csproj", "{C1D50986-99A7-4446-BA76-34647AD4DA8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Village.Services", "Village.Services\Village.Services.csproj", "{4254DF31-E677-493B-ADE7-6C71829315BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Village.Services", "Village.Services\Village.Services.csproj", "{4254DF31-E677-493B-ADE7-6C71829315BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1D50986-99A7-4446-BA76-34647AD4DA8E} = {C1D50986-99A7-4446-BA76-34647AD4DA8E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Village.Data", "Village.Data\Village.Data.csproj", "{9802D369-E815-406E-A41B-6C610E10C2DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Village.Data", "Village.Data\Village.Data.csproj", "{9802D369-E815-406E-A41B-6C610E10C2DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
