@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
 using Village.Services.Interfaces;
@@ -10,10 +10,12 @@ namespace Village.Controllers
     public class houseController : ControllerBase
     {
         private readonly IHouseService _houseService;
+        private readonly IMapper _mapper;
 
-        public houseController(IHouseService houseService)
+        public houseController(IHouseService houseService, IMapper mapper)
         {
             _houseService = houseService;
+            _mapper = mapper;
         }
 
         [Route("add")]
@@ -61,6 +63,22 @@ namespace Village.Controllers
         {
             var home = _houseService.GetAll();
             return Ok(home);
+        }
+
+        [Route("{id}")]
+        [HttpGet]
+        public IActionResult GetOneHouse(int id)
+        {
+            var house = _houseService.GetById(id);            
+
+            if (house == null)
+            {
+                return NotFound();
+            }
+
+            var houseDTO = _mapper.Map<HouseDTO>(house);
+
+            return Ok(houseDTO);
         }
     }
 }

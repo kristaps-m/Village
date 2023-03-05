@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
 using Village.Services.Interfaces;
+using AutoMapper;
 
 namespace Village.Controllers
 {
@@ -9,10 +10,12 @@ namespace Village.Controllers
     public class inhabitantController : ControllerBase
     {
         private readonly IInhabitantService _inhabitantService;
+        private readonly IMapper _mapper;
 
-        public inhabitantController(IInhabitantService inhabitantService)
+        public inhabitantController(IInhabitantService inhabitantService, IMapper mapper)
         {
             _inhabitantService = inhabitantService;
+            _mapper = mapper;
         }
 
         [Route("add")]
@@ -64,6 +67,22 @@ namespace Village.Controllers
         {
             var inhabitants = _inhabitantService.GetAll();
             return Ok(inhabitants);
+        }
+
+        [Route("{id}")]
+        [HttpGet]
+        public IActionResult GetOneInhabitant(int id)
+        {
+            var inhabitant = _inhabitantService.GetById(id);
+
+            if (inhabitant == null)
+            {
+                return NotFound();
+            }
+
+            var inhabitantDTO = _mapper.Map<InhabitantDTO>(inhabitant);
+
+            return Ok(inhabitantDTO);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
 using Village.Services.Interfaces;
@@ -10,10 +10,12 @@ namespace Village.Controllers
     public class apartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmenService;
+        private readonly IMapper _mapper;
 
-        public apartmentController(IApartmentService apartmenService)
+        public apartmentController(IApartmentService apartmenService, IMapper mapper)
         {
             _apartmenService = apartmenService;
+            _mapper = mapper;
         }
 
         [Route("add")]
@@ -62,6 +64,22 @@ namespace Village.Controllers
         {
             var apartment = _apartmenService.GetAll();
             return Ok(apartment);
+        }
+
+        [Route("{id}")]
+        [HttpGet]
+        public IActionResult GetOneApartment(int id)
+        {
+            var apartmen = _apartmenService.GetById(id);
+
+            if (apartmen == null)
+            {
+                return NotFound();
+            }
+
+            var apartmenDTO = _mapper.Map<ApartmentDTO>(apartmen);
+
+            return Ok(apartmenDTO);
         }
     }
 }

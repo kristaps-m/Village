@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Village;
 using Village.Data;
 using Village.Services.Interfaces;
 using Village.Services.Services;
@@ -25,6 +27,8 @@ builder.Services.AddScoped<IInhabitantService, InhabitantService>();
 builder.Services.AddScoped<IApartmentInhabitantService, ApartmentInhabitantService>();
 builder.Services.AddScoped<IHouseApartmentService, HouseApartmentService>();
 builder.Services.AddScoped<IInhabitantApartmentService, InhabitantApartmentService>();
+// Mapper
+builder.Services.AddSingleton<IMapper>(AutoMapperConfig.CreateMapper());
 
 var app = builder.Build();
 
