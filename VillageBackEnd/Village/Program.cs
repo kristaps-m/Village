@@ -13,6 +13,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// FIX CORS ERROR?-----------------------------------------------------------------------
+//builder.Services.AddCors(options =>{options.AddPolicy(name: "VillageOrigins",
+//    policy =>
+//    {
+//        policy.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+//        //policy.WithOrigins("https://localhost:7236",
+//        //    "https://localhost:7236");
+//    });
+//});
+//-----------------------------------------------------------------------
 
 // https://stackoverflow.com/questions/69472240/asp-net-6-identity-sqlite-services-adddbcontext-how
 var connectionString = builder.Configuration.GetConnectionString("village");
@@ -41,9 +51,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//app.UseCors("VillageOrigins");
 app.UseCors(options =>
 {
-    options.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
+    options.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200");
 });
 
 app.UseAuthorization();

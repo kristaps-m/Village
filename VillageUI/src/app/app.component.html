@@ -6,10 +6,18 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <h1>HELLO</h1>
+<!-- <h6>--{{houseDTOs[0].Country}}--</h6> -->
+<h6>Where is data?</h6>
+<!-- <h6>---{{[houseDTOs][0][0].toString()}}---</h6> -->
+<h3>Livestream</h3>
+<div *ngFor="let liveStream of houseDTOs">
+  <h4> {{liveStream.Id}} </h4>
+  <h4> {{liveStream.Street}} </h4>
+</div>
 <table>
   <thead>
+    <th>Id</th>
     <th>Number</th>
     <th>Street</th>
     <th>City</th>
@@ -18,6 +26,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let house of houseDTOs">
+      <td>{{ house.Id }}</td>
       <td>{{ house.Number }}</td>
       <td>{{ house.Street }}</td>
       <td>{{ house.City }}</td>
@@ -35,4 +44,4 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>

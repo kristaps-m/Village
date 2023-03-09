@@ -4,7 +4,7 @@ using Village.Services.Interfaces;
 
 namespace Village.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class apartmentinhabitantController : ControllerBase
     {

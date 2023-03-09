@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HouseDTO } from './models/HouseDTO';
-import {HouseDTOService} from './services/house-dto.service';
+import { HouseDTOService } from './services/house-dto.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,16 @@ import {HouseDTOService} from './services/house-dto.service';
 export class AppComponent {
   title = 'VillageUI';
   houseDTOs: HouseDTO[] = [];
+  test: HouseDTO = new HouseDTO();
+  //test.City = "Liepaja"
 
-  constructor(private HouseDTOService: HouseDTOService){}
+  constructor(private HouseDTOService: HouseDTOService) {}
 
   ngOnInit(): void {
-    this.houseDTOs = this.HouseDTOService.getHouseDTOs();
-    console.log(this.houseDTOs)
+    this.HouseDTOService.getHouseDTOs().subscribe(
+      (result: HouseDTO[]) => (this.houseDTOs = result)
+    );
+    //this.houseDTOs.push(this.test);
+    console.log(this.houseDTOs, "Apple is now available");
   }
 }
