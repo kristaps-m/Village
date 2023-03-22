@@ -1,5 +1,5 @@
 <div *ngIf="house">
-  <h2>{{house.id}}</h2>
+  <!-- <h2>{{house.id}}</h2> -->
   <h2>{{house.number}}</h2>
   <div>
     Number:
@@ -16,6 +16,10 @@
   <div>
     Country:
     <input [(ngModel)]="house.country" placeholder="Country" />
+  </div>
+  <div>
+    Postcode:
+    <input [(ngModel)]="house.postcode" placeholder="Postcode" />
   </div>
   <button (click)="updateHouse(house)" *ngIf="house.id">Save</button>
   <button (click)="deleteHouse(house)" *ngIf="house.id">Delete</button>

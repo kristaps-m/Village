@@ -17,7 +17,7 @@
     <th>Street</th>
     <th>City</th>
     <th>Country</th>
-    <th></th>
+    <th>Postcode</th>
   </thead>
   <tbody *ngIf="houseDTOs.length">
     <tr *ngFor="let house of houseDTOs">
@@ -26,6 +26,7 @@
       <td>{{ house.street }}</td>
       <td>{{ house.city }}</td>
       <td>{{ house.country }}</td>
+      <td>{{ house.postcode}}</td>
       <td><button (click)="editHouse(house)">Edit</button></td>
       <!-- <td></td> -->
     </tr>

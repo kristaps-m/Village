@@ -25,14 +25,15 @@ namespace Village.Controllers
         {
             _houseService.Create(house);
 
-            return Created("", house); // Ok();
+            //return Created("", house); // Ok();
+			return Ok(_houseService.GetAll());
         }
 
         [Route("update")]
         [HttpPut]
-        public IActionResult UpdateHouse(House house, int id)
+        public IActionResult UpdateHouse(House house) // , int id
         {
-            var houseToUpdate = _houseService.GetById(id);
+            var houseToUpdate = _houseService.GetById(house.Id);
             houseToUpdate.Number = house.Number;
             houseToUpdate.Street = house.Street;
             houseToUpdate.City = house.City;
@@ -40,7 +41,8 @@ namespace Village.Controllers
             houseToUpdate.Postcode = house.Postcode;
             _houseService.Update(houseToUpdate);
 
-            return Created("", houseToUpdate); // Ok();
+            //return Created("", houseToUpdate); // Ok();
+			return Ok(_houseService.GetAll());
         }
 
         [Route("{id}")]
@@ -55,7 +57,8 @@ namespace Village.Controllers
             }
             _houseService.Delete(houseToDelete);
 
-            return Ok($"House with id {id} was deleted!");
+            //return Ok($"House with id {id} was deleted!");
+			return Ok(_houseService.GetAll());
         }
 
         //[Route("all")]
@@ -76,7 +79,7 @@ namespace Village.Controllers
             //{
             //    houseDTOs.Add(_mapper.Map<HouseDTO>(h));
             //}
-            return Ok(houseDTOs);
+            return Ok(home);
         }
 
         [Route("{id}")]

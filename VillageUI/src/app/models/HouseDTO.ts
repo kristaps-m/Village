@@ -4,6 +4,7 @@ export interface IHouseDTO{
     street: string;
     city: string;
     country: string;
+    postcode: string;
 }
 
 export class HouseDTO implements IHouseDTO {
@@ -12,4 +13,5 @@ export class HouseDTO implements IHouseDTO {
   street = '';
   city = '';
   country = '';
+  postcode = '';
 }

@@ -31,7 +31,7 @@ export class HouseDTOService {
   public updateHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
     let x = this.http.put<HouseDTO[]>(
       `${this.apiUri}/house/${this.toUpdate}`,
-      house
+      house,
     );
     //console.log(this.test, 'test <-------------');
     return x;
