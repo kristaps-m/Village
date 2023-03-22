@@ -7,35 +7,31 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <h1>HELLO</h1>
-<!-- <h6>--{{houseDTOs[0].Country}}--</h6> -->
-<h6>Where is data?</h6>
-<!-- <h6>---{{[houseDTOs][0][0].toString()}}---</h6> -->
-<h3>Livestream</h3>
-<div *ngFor="let liveStream of houseDTOs">
-  <h4> {{liveStream.Id}} </h4>
-  <h4> {{liveStream.Street}} </h4>
-</div>
+<div>{{houseDTOs.length}} <-- len</div>
+<!-- <div>{{X.length}} <-- len of X</div> -->
+<button (click)="initNewHouse()">Create new House</button>
 <table>
   <thead>
-    <th>Id</th>
+    <!-- <th>Id</th> -->
     <th>Number</th>
     <th>Street</th>
     <th>City</th>
     <th>Country</th>
     <th></th>
   </thead>
-  <tbody>
+  <tbody *ngIf="houseDTOs.length">
     <tr *ngFor="let house of houseDTOs">
-      <td>{{ house.Id }}</td>
-      <td>{{ house.Number }}</td>
-      <td>{{ house.Street }}</td>
-      <td>{{ house.City }}</td>
-      <td>{{ house.Country }}</td>
-      <!-- <td><button (click)="editHero(house)">Edit</button></td> -->
+      <!-- <td>{{ house.id }}</td> -->
+      <td>{{ house.number }}</td>
+      <td>{{ house.street }}</td>
+      <td>{{ house.city }}</td>
+      <td>{{ house.country }}</td>
+      <td><button (click)="editHouse(house)">Edit</button></td>
+      <!-- <td></td> -->
     </tr>
   </tbody>
 </table>
-
+<app-edit-house [house]="houseToEdit" (homeUpdated)="updateHouseList($event)"></app-edit-house>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->

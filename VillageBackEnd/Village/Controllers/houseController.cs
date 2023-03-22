@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
 using Village.Services.Interfaces;
@@ -57,12 +58,25 @@ namespace Village.Controllers
             return Ok($"House with id {id} was deleted!");
         }
 
-        [Route("all")]
+        //[Route("all")]
+        //[HttpGet]
+        //public async Task<ActionResult> GetAllHome()
+        //{
+        //    //var home = _houseService.GetAll();
+        //    return Ok(await _houseService.GetAll());//SuperHeroes.ToListAsync());
+        //}
+
+        [Route("all-houses")]
         [HttpGet]
         public IActionResult GetAllHome()
         {
             var home = _houseService.GetAll();
-            return Ok(home);
+            var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));//new List<HouseDTO>();
+            //foreach (var h in home)
+            //{
+            //    houseDTOs.Add(_mapper.Map<HouseDTO>(h));
+            //}
+            return Ok(houseDTOs);
         }
 
         [Route("{id}")]

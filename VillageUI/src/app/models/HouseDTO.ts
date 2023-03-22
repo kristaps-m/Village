@@ -1,15 +1,15 @@
-export class HouseDTO{
-    Id?: number;
-    Number!: number;
-    Street!: string;
-    City!: string;
-    Country!: string;
+export interface IHouseDTO{
+    id?: number;
+    number: number;
+    street: string;
+    city: string;
+    country: string;
 }
 
-// export class HouseDTO {
-//   Id?: number;
-//   Number!: number;
-//   Street = "";
-//   City = "";
-//   Country = "";
-// }
+export class HouseDTO implements IHouseDTO {
+  id?: number;
+  number!: number;
+  street = '';
+  city = '';
+  country = '';
+}

@@ -1,4 +1,5 @@
-﻿using Village.Core.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Village.Core.Models;
 using Village.Data;
 using Village.Services.Interfaces;
 
@@ -30,6 +31,11 @@ namespace Village.Services.Services
             _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
         }
+
+        //public async Task<List<T>> GetAll<T>() where T : Entity
+        //{
+        //    return await _context.Set<T>().ToListAsync();
+        //}
 
         public List<T> GetAll<T>() where T : Entity
         {
