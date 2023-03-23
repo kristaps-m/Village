@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditHouseComponent } from './components/edit-house/edit-house.component';
 import { FormsModule } from '@angular/forms';
+import { HouseComponent } from './components/house/house.component';
 
 @NgModule({
-  declarations: [AppComponent, EditHouseComponent],
+  declarations: [AppComponent, EditHouseComponent, HouseComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

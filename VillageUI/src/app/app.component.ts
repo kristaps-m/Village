@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HouseDTO, IHouseDTO } from './models/HouseDTO';
 import { HouseDTOService } from './services/house-dto.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,10 @@ export class AppComponent {
   //test.City = "Liepaja"
   // 46:16 Created API controller get all.
 
-  constructor(private HouseDTOService: HouseDTOService) {
+  constructor(
+    private HouseDTOService: HouseDTOService,
+    private router: Router
+  ) {
     // this.HouseDTOService.getData().subscribe((data: any) => {
     //   this.houseDTOs = data;
     // });
@@ -27,7 +31,7 @@ export class AppComponent {
     // });
   }
 
-  updateHouseList(home: IHouseDTO[]){
+  updateHouseList(home: IHouseDTO[]) {
     this.houseDTOs = home;
   }
 
@@ -43,12 +47,14 @@ export class AppComponent {
     this.HouseDTOService.getHouseDTOs().subscribe(
       (result: IHouseDTO[]) => (this.houseDTOs = result)
     );
-
     // this.HouseDTOService.getLiveStream(1).subscribe(
     //   (result:HouseDTO) =>(this.test = result)
     //   );
     //this.houseDTOs.push(this.test);
     //console.log(this.houseDTOs, "Apple is now available");
   }
-  // console.warn(data)
+
+  goToHome(homeID?:number) {
+    this.router.navigate([`${homeID}`]);
+  }
 }
