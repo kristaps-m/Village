@@ -6,41 +6,6 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<h1>HELLO</h1>
-<div>{{houseDTOs.length}} <-- len</div>
-<!-- <div>{{X.length}} <-- len of X</div> -->
-<button (click)="initNewHouse()">Create new House</button>
-<table>
-  <thead>
-    <!-- <th>Id</th> -->
-    <th>Number</th>
-    <th>Street</th>
-    <th>City</th>
-    <th>Country</th>
-    <th>Postcode</th>
-    <th>____</th>
-  </thead>
-  <tbody *ngIf="houseDTOs.length">
-    <tr *ngFor="let house of houseDTOs">
-      <!-- <td>{{ house.id }}</td> -->
-      <td>{{ house.number }}</td>
-      <td>{{ house.street }}</td>
-      <td>{{ house.city }}</td>
-      <td>{{ house.country }}</td>
-      <td>{{ house.postcode}}</td>
-      <td><button (click)="editHouse(house)">Edit</button></td>
-      <td><button (click)="goToHome(house.id)">Go to this home page</button></td>
-      <!-- <td></td> -->
-    </tr>
-  </tbody>
-</table>
-<app-edit-house [house]="houseToEdit" (homeUpdated)="updateHouseList($event)"></app-edit-house>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
 
 <router-outlet></router-outlet>

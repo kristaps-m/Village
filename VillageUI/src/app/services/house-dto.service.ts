@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-// import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
+// import { Observable } from 'rxjs/internal/Observable';
 import { HouseDTO, IHouseDTO } from '../models/HouseDTO';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class HouseDTOService {
   // }
 
   public getHouseDTOs(): Observable<HouseDTO[]> {
-    let x = this.http.get<HouseDTO[]>(`${this.apiUri}/house/${this.urlGetAll}`);
+    let x = this.http.get<HouseDTO[]>(`${environment.apiUri}/house/${this.urlGetAll}`);
     //console.log(this.test, 'test <-------------');
     return x;
   }

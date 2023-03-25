@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { EditHouseComponent } from './components/edit-house/edit-house.component';
 import { FormsModule } from '@angular/forms';
 import { HouseComponent } from './components/house/house.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AllHousesComponent } from './components/all-houses/all-houses.component';
 
 @NgModule({
-  declarations: [AppComponent, EditHouseComponent, HouseComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
