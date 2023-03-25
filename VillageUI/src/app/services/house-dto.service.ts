@@ -11,7 +11,7 @@ import { HouseDTO, IHouseDTO } from '../models/HouseDTO';
 export class HouseDTOService {
   private urlGetAll = 'all-houses'; // Get allHouseDTO
   private toUpdate = 'update';
-  private apiUri = `https://localhost:7224`;
+  //private apiUri = `https://localhost:7224`;
   //console.log(test);
   constructor(private http: HttpClient) {}
 
@@ -22,29 +22,50 @@ export class HouseDTOService {
   //   return this.http.get(url);
   // }
 
-  public getHouseDTOs(): Observable<HouseDTO[]> {
-    let x = this.http.get<HouseDTO[]>(`${environment.apiUri}/house/${this.urlGetAll}`);
+  /*
+        GET >> 1 << HOUSE. BELOW ! ---------------------------------------------------
+  */
+
+  public getOneHouse(id: number): Observable<IHouseDTO> {
+    let x = this.http.get<IHouseDTO>(`${environment.apiUri}/house/${id}`);
+    console.log(x, '<----- ONE HOUSE TEST');
+    return x;
+  }
+
+  /*
+        GET ALL HOUSES. BELOW ! ---------------------------------------------------
+  */
+
+  public getHouseDTOs(): Observable<IHouseDTO[]> {
+    let x = this.http.get<IHouseDTO[]>(
+      `${environment.apiUri}/house/${this.urlGetAll}`
+    );
     //console.log(this.test, 'test <-------------');
     return x;
   }
 
   public updateHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
-    let x = this.http.put<HouseDTO[]>(
-      `${this.apiUri}/house/${this.toUpdate}`,
-      house,
+    let x = this.http.put<IHouseDTO[]>(
+      `${environment.apiUri}/house/${this.toUpdate}`,
+      house
     );
     //console.log(this.test, 'test <-------------');
     return x;
   }
 
   public createHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
-    let x = this.http.put<HouseDTO[]>(`${this.apiUri}/house/add`, house);
+    let x = this.http.put<IHouseDTO[]>(
+      `${environment.apiUri}/house/add`,
+      house
+    );
     //console.log(this.test, 'test <-------------');
     return x;
   }
 
   public deleteHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
-    let x = this.http.delete<HouseDTO[]>(`${this.apiUri}/house/${house.id}`);
+    let x = this.http.delete<IHouseDTO[]>(
+      `${environment.apiUri}/house/${house.id}`
+    );
     //console.log(this.test, 'test <-------------');
     return x;
   }
