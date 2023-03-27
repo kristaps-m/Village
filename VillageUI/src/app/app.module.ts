@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { HouseComponent } from './components/house/house.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllHousesComponent } from './components/all-houses/all-houses.component';
+import { AllApartmentsComponent } from './components/all-apartments/all-apartments.component';
 
 @NgModule({
-  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent],
+  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent, AllApartmentsComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

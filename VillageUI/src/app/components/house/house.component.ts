@@ -11,6 +11,7 @@ import { HouseDTOService } from 'src/app/services/house-dto.service';
 })
 export class HouseComponent implements OnInit {
   oneHouse: Observable<HouseDTO> | undefined;
+  houseToEdit?: IHouseDTO;
   //oneHouse: IHouseDTO = new HouseDTO();
 
   constructor(
@@ -32,6 +33,13 @@ export class HouseComponent implements OnInit {
     });
   }
 
+  editHouse(house: IHouseDTO) {
+    this.houseToEdit = house;
+  }
+
+  updateOneHouse(h: IHouseDTO) {
+    this.houseToEdit = h;
+  }
   // ngOnInit(): void {
   //   this.HouseDTOService.getOneHouse().subscribe(
   //     (result: IHouseDTO) => (this.oneHouse = result)

@@ -11,9 +11,7 @@ export class EditHouseComponent {
   @Input() house?: IHouseDTO;
   @Output() homeUpdated = new EventEmitter<IHouseDTO[]>();
 
-  constructor(private houseDTOService:HouseDTOService) {   
-    
-  }
+  constructor(private houseDTOService: HouseDTOService) {}
 
   updateHouse(house: IHouseDTO) {
     this.houseDTOService
@@ -22,14 +20,14 @@ export class EditHouseComponent {
   }
 
   deleteHouse(house: IHouseDTO) {
-     this.houseDTOService
-       .deleteHouseDTOs(house)
-       .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+    this.houseDTOService
+      .deleteHouseDTOs(house)
+      .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
   }
 
   createHouse(house: IHouseDTO) {
-     this.houseDTOService
-       .createHouseDTOs(house)
-       .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+    this.houseDTOService
+      .createHouseDTOs(house)
+      .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
   }
 }

@@ -1,14 +1,42 @@
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"> <--- number</h5>
-    <p class="card-text"> Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div  *ngIf="oneHouse | async as X">
-    <h1>{{X.number}}</h1>
-    <h1>{{X.city}}</h1>
-    why there is no data?
+<!-- Picture to left, text right, I LIKE -->
+
+
+<div class="card mb-3" style="max-width: 540px;" *ngIf="oneHouse | async as house">
+  <style>
+    hr.rounded {
+      border-top: 8px solid #918a8a;
+      border-radius: 5px;
+    }
+  </style>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://fastly.picsum.photos/id/78/1584/2376.jpg?hmac=80UVSwpa9Nfcq7sQ5kxb9Z5sD2oLsbd5zkFO5ybMC4E"
+        class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-text">ID:</p>
+        <h5 class="card-title">{{house.id}}</h5>  
+        <hr class="rounded">
+        <p class="card-text">Number:</p>
+        <h5 class="card-title">{{house.number}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Street:</p>
+        <h5 class="card-title">{{house.street}}</h5>
+        <hr class="dotted">
+        <p class="card-text">City:</p>
+        <h5 class="card-title">{{house.city}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Country:</p>
+        <h5 class="card-title">{{house.country}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Postcode:</p>
+        <h5 class="card-title">{{house.postcode}}</h5>
+        <hr class="rounded">
+        <p class="card-text">List of apartments!</p>
+        <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
   </div>
 </div>
+<!--  {"id",  "number",  "street",  "city",  "country", "postcode"}  -->

@@ -53,7 +53,7 @@
   <tbody>
     <tr *ngFor="let house of houseDTOs; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td>{{ house.number | number }}</td>
+      <td [routerLink]="['/house',house.id]" class="button">{{ house.number | number }}</td>
       <td>{{ house.street }}</td>
       <td>{{ house.city }}</td>
       <td>{{ house.country }}</td>

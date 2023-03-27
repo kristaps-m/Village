@@ -93,9 +93,9 @@ namespace Village.Controllers
                 return NotFound();
             }
 
-            var houseDTO = _mapper.Map<HouseDTO>(house);
+            //var houseDTO = _mapper.Map<HouseDTO>(house);
 
-            return Ok(houseDTO);
+            return Ok(house);
         }
     }
 }

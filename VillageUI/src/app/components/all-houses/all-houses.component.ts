@@ -13,23 +13,11 @@ export class AllHousesComponent {
   // houseDTOs: HouseDTO[] = [];
   houseDTOs: IHouseDTO[] = [];
   houseToEdit?: IHouseDTO;
-  //X:any[] = [];
-  //test: HouseDTO = new HouseDTO();
-  //test.City = "Liepaja"
-  // 46:16 Created API controller get all.
 
   constructor(
     private HouseDTOService: HouseDTOService,
     private router: Router
-  ) {
-    // this.HouseDTOService.getData().subscribe((data: any) => {
-    //   this.houseDTOs = data;
-    // });
-    // this.houseDTOs.forEach(element => {
-    //   console.log(element);
-    //   this.X.push(element);
-    // });
-  }
+  ) { }
 
   updateHouseList(home: IHouseDTO[]) {
     this.houseDTOs = home;
@@ -47,11 +35,6 @@ export class AllHousesComponent {
     this.HouseDTOService.getHouseDTOs().subscribe(
       (result: IHouseDTO[]) => (this.houseDTOs = result)
     );
-    // this.HouseDTOService.getLiveStream(1).subscribe(
-    //   (result:HouseDTO) =>(this.test = result)
-    //   );
-    //this.houseDTOs.push(this.test);
-    //console.log(this.houseDTOs, "Apple is now available");
   }
 
   goToHome(homeID?: number) {

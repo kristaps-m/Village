@@ -1,0 +1,27 @@
+<p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th> <!--INDEX-->
+      <th scope="col">Number</th>
+      <th scope="col">Floor</th>
+      <th scope="col">Number Of Rooms</th>
+      <th scope="col">Population</th>
+      <th scope="col">Full Area</th>
+      <th scope="col">Living Space</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let house of apartmentDTOs; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ house.number}}</td>
+      <td>{{ house.floor }}</td>
+      <td>{{ house.numberOfRooms }}</td>
+      <td>{{ house.population }}</td>
+      <td>{{ house.fullArea }}</td>
+      <td>{{ house.livingSpace }}</td>
+    </tr>
+  </tbody>
+</table>
+<router-outlet name="secondary"></router-outlet>
