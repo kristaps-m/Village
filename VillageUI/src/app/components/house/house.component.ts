@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { HouseDTO, IHouseDTO } from 'src/app/models/HouseDTO';
 import { HouseDTOService } from 'src/app/services/house-dto.service';
+import { HouseApartmentService } from '../../services/house-apartment.service';
+import { IHouseApartment } from 'src/app/models/HouseApartment';
 
 @Component({
   selector: 'app-house',
@@ -12,10 +14,12 @@ import { HouseDTOService } from 'src/app/services/house-dto.service';
 export class HouseComponent implements OnInit {
   oneHouse: Observable<HouseDTO> | undefined;
   houseToEdit?: IHouseDTO;
+  houseApartments: IHouseApartment[] = [];
   //oneHouse: IHouseDTO = new HouseDTO();
 
   constructor(
     private HouseDTOService: HouseDTOService,
+    private HouseApartmentService: HouseApartmentService,
     private route: ActivatedRoute
   ) {}
 
@@ -28,7 +32,12 @@ export class HouseComponent implements OnInit {
       if (id) {
         const house = this.HouseDTOService.getOneHouse(+id);
         this.oneHouse = house;
+        // this.houseApartments =
+        //   this.HouseApartmentService.getSpecialHouseApartment(+id);
         //this.oneHouse.city = house.city;
+        this.HouseApartmentService.getHouseApartment().subscribe(
+          (result: IHouseApartment[]) => (this.houseApartments = result)
+        );
       }
     });
   }

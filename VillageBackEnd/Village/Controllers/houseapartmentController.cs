@@ -59,5 +59,14 @@ namespace Village.Controllers
             var houseApartments = _houseApartmentService.GetAll();
             return Ok(houseApartments);
         }
+		
+		[Route("all/{id}")]
+        [HttpGet]
+        public IActionResult GetAllHouseApartments(int id)
+        {
+            var houseApartments = _houseApartmentService.GetAll();
+			var specialHouseApartments = houseApartments.Where(x => x.HouseId == id);
+            return Ok(specialHouseApartments);
+        }
     }
 }

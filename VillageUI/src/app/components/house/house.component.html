@@ -39,4 +39,21 @@
     </div>
   </div>
 </div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>House ID</th>
+      <th>Apartment ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let HA of houseApartments">
+      <td>{{HA.id}}</td>
+      <td>{{HA.houseId}}</td>
+      <td>{{HA.apartmentId}}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- <app-all-apartments></app-all-apartments> -->
 <!--  {"id",  "number",  "street",  "city",  "country", "postcode"}  -->

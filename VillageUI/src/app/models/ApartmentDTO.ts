@@ -6,7 +6,7 @@ export interface IApartmentDTO{
   population:number;
   fullArea: number;
   livingSpace: number;
-  idOFHouse: number;
+  idOfHouse: number;
 }
 
 export class ApartmentDTO implements IApartmentDTO {
@@ -17,7 +17,7 @@ export class ApartmentDTO implements IApartmentDTO {
   population!: number;
   fullArea!: number;
   livingSpace!: number;
-  idOFHouse!: number;
+  idOfHouse!: number;
 }
 
 /*

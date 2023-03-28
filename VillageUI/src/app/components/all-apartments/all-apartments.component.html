@@ -10,6 +10,7 @@
       <th scope="col">Population</th>
       <th scope="col">Full Area</th>
       <th scope="col">Living Space</th>
+      <th scope="col">Id Of House</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +22,25 @@
       <td>{{ house.population }}</td>
       <td>{{ house.fullArea }}</td>
       <td>{{ house.livingSpace }}</td>
+      <td>{{ house.idOfHouse }}</td>
     </tr>
   </tbody>
 </table>
-<router-outlet name="secondary"></router-outlet>
+<!--  -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>House ID</th>
+      <th>Apartment ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let HA of houseApartments">
+      <td>{{HA.id}}</td>
+      <td>{{HA.houseId}}</td>
+      <td>{{HA.apartmentId}}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- <router-outlet name="secondary"></router-outlet> -->
