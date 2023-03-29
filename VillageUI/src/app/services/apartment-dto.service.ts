@@ -20,4 +20,12 @@ export class ApartmentDtoService {
     //console.log(this.test, 'test <-------------');
     return x;
   }
+
+  public getApartmentByHouseIdDTOs(id:number): Observable<IApartmentDTO[]> {
+    let x = this.http.get<IApartmentDTO[]>(
+      `${environment.apiUri}/apartment/house/${id}`
+    );
+    //console.log(this.test, 'test <-------------');
+    return x;
+  }
 }

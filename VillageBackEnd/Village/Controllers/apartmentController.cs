@@ -10,11 +10,14 @@ namespace Village.Controllers
     public class apartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmenService;
+		private readonly IHouseApartmentService _houseApartmentService;
         private readonly IMapper _mapper;
 
-        public apartmentController(IApartmentService apartmenService, IMapper mapper)
+        public apartmentController(IApartmentService apartmenService,
+		IMapper mapper, IHouseApartmentService houseApartmentService)
         {
             _apartmenService = apartmenService;
+			_houseApartmentService = houseApartmentService;
             _mapper = mapper;
         }
 
@@ -63,6 +66,25 @@ namespace Village.Controllers
         public IActionResult GetAllApartments()
         {
             var apartment = _apartmenService.GetAll();
+            return Ok(apartment);
+        }
+		
+		[Route("house/{id}")]
+        [HttpGet]
+        public IActionResult GetAllSpecialApartments(int id)
+        {
+            var houseApartmentsIds = new List<int>() { };
+
+            foreach (var houseApartment in _houseApartmentService.GetAll())
+            {
+                if (houseApartment.HouseId == id)
+                {
+                    houseApartmentsIds.Add(houseApartment.ApartmentId);
+                }
+            }
+
+            var apartment = _apartmenService.GetAll().Where(x => houseApartmentsIds.Contains(x.Id));
+
             return Ok(apartment);
         }
 

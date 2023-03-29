@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th scope="col">#</th> <!--INDEX-->
+      <th scope="col">Backend ID</th>
       <th scope="col">Number</th>
       <th scope="col">Floor</th>
       <th scope="col">Number Of Rooms</th>
@@ -16,6 +17,7 @@
   <tbody>
     <tr *ngFor="let house of apartmentDTOs; index as i">
       <th scope="row">{{ i + 1 }}</th>
+      <td>{{ house.id}}</td>
       <td>{{ house.number}}</td>
       <td>{{ house.floor }}</td>
       <td>{{ house.numberOfRooms }}</td>

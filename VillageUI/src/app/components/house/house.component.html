@@ -56,4 +56,32 @@
   </tbody>
 </table>
 <!-- <app-all-apartments></app-all-apartments> -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th> <!--INDEX-->
+      <th scope="col">Backend ID</th>
+      <th scope="col">Number</th>
+      <th scope="col">Floor</th>
+      <th scope="col">Number Of Rooms</th>
+      <th scope="col">Population</th>
+      <th scope="col">Full Area</th>
+      <th scope="col">Living Space</th>
+      <th scope="col">Id Of House</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let house of apartmentDTOsByHouseId; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ house.id}}</td>
+      <td>{{ house.number}}</td>
+      <td>{{ house.floor }}</td>
+      <td>{{ house.numberOfRooms }}</td>
+      <td>{{ house.population }}</td>
+      <td>{{ house.fullArea }}</td>
+      <td>{{ house.livingSpace }}</td>
+      <td>{{ house.idOfHouse }}</td>
+    </tr>
+  </tbody>
+</table>
 <!--  {"id",  "number",  "street",  "city",  "country", "postcode"}  -->

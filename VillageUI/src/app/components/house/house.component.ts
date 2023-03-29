@@ -5,6 +5,8 @@ import { HouseDTO, IHouseDTO } from 'src/app/models/HouseDTO';
 import { HouseDTOService } from 'src/app/services/house-dto.service';
 import { HouseApartmentService } from '../../services/house-apartment.service';
 import { IHouseApartment } from 'src/app/models/HouseApartment';
+import { IApartmentDTO } from 'src/app/models/ApartmentDTO';
+import { ApartmentDtoService } from '../../services/apartment-dto.service';
 
 @Component({
   selector: 'app-house',
@@ -15,12 +17,15 @@ export class HouseComponent implements OnInit {
   oneHouse: Observable<HouseDTO> | undefined;
   houseToEdit?: IHouseDTO;
   houseApartments: IHouseApartment[] = [];
+  apartmentDTOsByHouseId: IApartmentDTO[] = [];
+  apartmentDTOs: IApartmentDTO[] = [];
   //oneHouse: IHouseDTO = new HouseDTO();
 
   constructor(
     private HouseDTOService: HouseDTOService,
     private HouseApartmentService: HouseApartmentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ApartmentDtoService: ApartmentDtoService
   ) {}
 
   ngOnInit() {
@@ -35,9 +40,25 @@ export class HouseComponent implements OnInit {
         // this.houseApartments =
         //   this.HouseApartmentService.getSpecialHouseApartment(+id);
         //this.oneHouse.city = house.city;
-        this.HouseApartmentService.getHouseApartment().subscribe(
+        this.HouseApartmentService.getSpecialHouseApartment(+id).subscribe(
           (result: IHouseApartment[]) => (this.houseApartments = result)
         );
+
+        this.ApartmentDtoService.getApartmentDTOs().subscribe(
+          (result: IApartmentDTO[]) => (this.apartmentDTOs = result)
+        );
+
+        this.ApartmentDtoService.getApartmentByHouseIdDTOs(+id).subscribe(
+          (result: IApartmentDTO[]) => (this.apartmentDTOsByHouseId = result)
+        );
+        // for (let i = 0; i < this.houseApartments.length; i++) {
+        //   console.log(this.houseApartments[i].houseId, "<-- one HA");
+        // }
+        // console.log(
+        //   this.houseApartments,
+        //   '<--- this.houseApartments',
+        //   this.houseApartments.length
+        // );
       }
     });
   }
@@ -49,14 +70,4 @@ export class HouseComponent implements OnInit {
   updateOneHouse(h: IHouseDTO) {
     this.houseToEdit = h;
   }
-  // ngOnInit(): void {
-  //   this.HouseDTOService.getOneHouse().subscribe(
-  //     (result: IHouseDTO) => (this.oneHouse = result)
-  //   );
-  //   this.HouseDTOService.getLiveStream(1).subscribe(
-  //     (result:HouseDTO) =>(this.test = result)
-  //     );
-  //   this.houseDTOs.push(this.test);
-  //   console.log(this.houseDTOs, "Apple is now available");
-  // }
 }
