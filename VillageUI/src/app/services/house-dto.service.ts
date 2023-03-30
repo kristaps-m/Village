@@ -44,7 +44,7 @@ export class HouseDTOService {
     return x;
   }
 
-  public updateHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
+  public updateHouseDTOs(house: IHouseDTO): Observable<IHouseDTO[]> {
     let x = this.http.put<IHouseDTO[]>(
       `${environment.apiUri}/house/${this.toUpdate}`,
       house
@@ -53,8 +53,8 @@ export class HouseDTOService {
     return x;
   }
 
-  public createHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
-    let x = this.http.put<IHouseDTO[]>(
+  public createHouseDTOs(house: IHouseDTO): Observable<IHouseDTO[]> {
+    let x = this.http.post<IHouseDTO[]>(
       `${environment.apiUri}/house/add`,
       house
     );
@@ -62,7 +62,7 @@ export class HouseDTOService {
     return x;
   }
 
-  public deleteHouseDTOs(house: IHouseDTO): Observable<HouseDTO[]> {
+  public deleteHouseDTOs(house: IHouseDTO): Observable<IHouseDTO[]> {
     let x = this.http.delete<IHouseDTO[]>(
       `${environment.apiUri}/house/${house.id}`
     );

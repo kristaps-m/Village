@@ -20,7 +20,7 @@ namespace Village.Controllers
         }
 
         [Route("add")]
-        [HttpPut]
+        [HttpPost]
         public IActionResult AddHouse(House house)
         {
             _houseService.Create(house);

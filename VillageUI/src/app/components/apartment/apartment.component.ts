@@ -3,6 +3,8 @@ import { ApartmentDtoService } from '../../services/apartment-dto.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApartmentDTO } from 'src/app/models/ApartmentDTO';
 import { Observable } from 'rxjs';
+import { IInhabitantDTO } from 'src/app/models/InhabitantDTO';
+import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 
 @Component({
   selector: 'app-apartment',
@@ -11,9 +13,12 @@ import { Observable } from 'rxjs';
 })
 export class ApartmentComponent {
   oneApartment: Observable<IApartmentDTO> | undefined;
+  inhabitantDTOsByApartmentId: IInhabitantDTO[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private ApartmentDtoService: ApartmentDtoService,
+    private InhabitantDtoService: InhabitantDtoService
   ) {}
 
   ngOnInit() {
@@ -25,6 +30,11 @@ export class ApartmentComponent {
       if (id) {
         const apartment = this.ApartmentDtoService.getOneApartment(+id);
         this.oneApartment = apartment;
+
+        this.InhabitantDtoService.getInhabitantByApartmentIdDTOs(+id).subscribe(
+          (result: IInhabitantDTO[]) =>
+            (this.inhabitantDTOsByApartmentId = result)
+        );
         // this.houseApartments =
         //   this.HouseApartmentService.getSpecialHouseApartment(+id);
         //this.oneHouse.city = house.city;

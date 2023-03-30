@@ -16,7 +16,7 @@ namespace Village.Controllers
         }
 
         [Route("add")]
-        [HttpPut]
+        [HttpPost]
         public IActionResult AddInhabitantApartment(InhabitantApartment inhabitantApartment)
         {
             _inhabitantApartmentService.Create(inhabitantApartment);

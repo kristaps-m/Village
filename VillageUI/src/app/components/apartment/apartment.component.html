@@ -36,3 +36,36 @@
     </div>
   </div>
 </div>
+<!-- Inhabitants -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th> <!--INDEX-->
+      <th scope="col">Backend ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Personal Code</th>
+      <th scope="col">Date Of Birth</th>
+      <th scope="col">Phone Nr</th>
+      <th scope="col">Email</th>
+      <th scope="col">Id Of Apartment</th>
+      <th scope="col">Is Owner</th>
+      <th scope="col">Modular Window button !</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let inhabitant of inhabitantDTOsByApartmentId; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ inhabitant.id}}</td>
+      <td>{{ inhabitant.name}}</td>
+      <td>{{ inhabitant.lastname }}</td>
+      <td>{{ inhabitant.personalCode }}</td>
+      <td>{{ inhabitant.dateOfBirth }}</td>
+      <td>{{ inhabitant.phone }}</td>
+      <td>{{ inhabitant.email }}</td>
+      <td>{{ inhabitant.idOfApartment }}</td>
+      <td>{{ inhabitant.isOwner }}</td>
+      <!-- <td><button [routerLink]="['/apartment',inhabitant.id]">Go to inhabitant {{inhabitant.id}} page</button></td> -->
+    </tr>
+  </tbody>
+</table>

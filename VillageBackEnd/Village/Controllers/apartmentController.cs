@@ -22,7 +22,7 @@ namespace Village.Controllers
         }
 
         [Route("add")]
-        [HttpPut]
+        [HttpPost]
         public IActionResult AddApartment(Apartment apartment)
         {
             _apartmenService.Create(apartment);
@@ -83,9 +83,9 @@ namespace Village.Controllers
                 }
             }
 
-            var apartment = _apartmenService.GetAll().Where(x => houseApartmentsIds.Contains(x.Id));
+            var apartments = _apartmenService.GetAll().Where(x => houseApartmentsIds.Contains(x.Id));
 
-            return Ok(apartment);
+            return Ok(apartments);
         }
 
         [Route("{id}")]
