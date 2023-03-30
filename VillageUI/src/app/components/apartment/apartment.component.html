@@ -1,0 +1,38 @@
+<div class="card mb-3" style="max-width: 540px;" *ngIf="oneApartment | async as apartment">
+  <style>
+    hr.rounded {
+      border-top: 8px solid #918a8a;
+      border-radius: 5px;
+    }
+  </style>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://fastly.picsum.photos/id/42/300/200.jpg?hmac=y6dQJIPB8Wbe_CL1ELgBFAfR193MTSY5pujsizf1-ow"
+        class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-text">ID:</p>
+        <h5 class="card-title">{{apartment.id}}</h5>
+        <hr class="rounded">
+        <p class="card-text">Number:</p>
+        <h5 class="card-title">{{apartment.number}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Floor:</p>
+        <h5 class="card-title">{{apartment.floor}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Number Of Rooms:</p>
+        <h5 class="card-title">{{apartment.numberOfRooms}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Population:</p>
+        <h5 class="card-title">{{apartment.population}}</h5>
+        <hr class="dotted">
+        <p class="card-text">Living Space:</p>
+        <h5 class="card-title">{{apartment.livingSpace}}</h5>
+        <hr class="rounded">
+        <p class="card-text">List of inhabitants!</p>
+        <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+      </div>
+    </div>
+  </div>
+</div>

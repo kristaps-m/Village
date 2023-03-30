@@ -9,9 +9,10 @@ import { HouseComponent } from './components/house/house.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllHousesComponent } from './components/all-houses/all-houses.component';
 import { AllApartmentsComponent } from './components/all-apartments/all-apartments.component';
+import { ApartmentComponent } from './components/apartment/apartment.component';
 
 @NgModule({
-  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent, AllApartmentsComponent],
+  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent, AllApartmentsComponent, ApartmentComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

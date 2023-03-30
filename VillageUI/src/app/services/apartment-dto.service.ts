@@ -17,15 +17,23 @@ export class ApartmentDtoService {
     let x = this.http.get<IApartmentDTO[]>(
       `${environment.apiUri}/apartment/${this.urlGetAll}`
     );
-    //console.log(this.test, 'test <-------------');
+    
     return x;
   }
 
-  public getApartmentByHouseIdDTOs(id:number): Observable<IApartmentDTO[]> {
+  public getApartmentByHouseIdDTOs(id: number): Observable<IApartmentDTO[]> {
     let x = this.http.get<IApartmentDTO[]>(
       `${environment.apiUri}/apartment/house/${id}`
     );
-    //console.log(this.test, 'test <-------------');
+    
+    return x;
+  }
+
+  public getOneApartment(id:number): Observable<IApartmentDTO> {
+    let x = this.http.get<IApartmentDTO>(
+      `${environment.apiUri}/apartment/${id}`
+    );
+    
     return x;
   }
 }
