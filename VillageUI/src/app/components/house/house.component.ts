@@ -70,4 +70,8 @@ export class HouseComponent implements OnInit {
   updateOneHouse(h: IHouseDTO) {
     this.houseToEdit = h;
   }
+
+  // updateHouseList(home: IHouseDTO) {
+  //   this.houseToEdit = home;
+  // }
 }

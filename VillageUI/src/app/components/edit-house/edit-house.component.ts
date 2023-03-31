@@ -9,25 +9,43 @@ import { HouseDTOService } from 'src/app/services/house-dto.service';
 })
 export class EditHouseComponent {
   @Input() house?: IHouseDTO;
-  @Output() homeUpdated = new EventEmitter<IHouseDTO[]>();
+  @Output() homeUpdated = new EventEmitter<IHouseDTO>();
 
   constructor(private houseDTOService: HouseDTOService) {}
 
   updateHouse(house: IHouseDTO) {
     this.houseDTOService
       .updateHouseDTOs(house)
-      .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+      .subscribe((home: IHouseDTO) => this.homeUpdated.emit(home));
   }
 
   deleteHouse(house: IHouseDTO) {
     this.houseDTOService
       .deleteHouseDTOs(house)
-      .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+      .subscribe((home: IHouseDTO) => this.homeUpdated.emit(home));
   }
 
   createHouse(house: IHouseDTO) {
     this.houseDTOService
       .createHouseDTOs(house)
-      .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+      .subscribe((home: IHouseDTO) => this.homeUpdated.emit(home));
   }
+
+  // updateHouse(house: IHouseDTO) {
+  //   this.houseDTOService
+  //     .updateHouseDTOs(house)
+  //     .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+  // }
+
+  // deleteHouse(house: IHouseDTO) {
+  //   this.houseDTOService
+  //     .deleteHouseDTOs(house)
+  //     .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+  // }
+
+  // createHouse(house: IHouseDTO) {
+  //   this.houseDTOService
+  //     .createHouseDTOs(house)
+  //     .subscribe((home: IHouseDTO[]) => this.homeUpdated.emit(home));
+  // }
 }

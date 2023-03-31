@@ -1,44 +1,71 @@
 <!-- Picture to left, text right, I LIKE -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">THE HOUSE</th>
+      <th scope="col">EDIT</th>
+      <!-- <th scope="col">Street</th>
+        <th scope="col">City</th>
+        <th scope="col">Country</th>
+        <th scope="col">Postcode</th>
+        <th scope="col">____</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="card mb-3" style="max-width: 540px;" *ngIf="oneHouse | async as house">
+          <style>
+            hr.rounded {
+              border-top: 8px solid #918a8a;
+              border-radius: 5px;
+            }
+          </style>        
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://fastly.picsum.photos/id/78/1584/2376.jpg?hmac=80UVSwpa9Nfcq7sQ5kxb9Z5sD2oLsbd5zkFO5ybMC4E"
+                class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <button (click)="editHouse(house)" type="button" class="btn btn-primary">Edit House</button>
+                <p class="card-text">ID:</p>
+                <h5 class="card-title">{{house.id}}</h5>
+                <hr class="rounded">
+                <p class="card-text">Number:</p>
+                <h5 class="card-title">{{house.number}}</h5>
+                <hr class="dotted">
+                <p class="card-text">Street:</p>
+                <h5 class="card-title">{{house.street}}</h5>
+                <hr class="dotted">
+                <p class="card-text">City:</p>
+                <h5 class="card-title">{{house.city}}</h5>
+                <hr class="dotted">
+                <p class="card-text">Country:</p>
+                <h5 class="card-title">{{house.country}}</h5>
+                <hr class="dotted">
+                <p class="card-text">Postcode:</p>
+                <h5 class="card-title">{{house.postcode}}</h5>
+                <hr class="rounded">
+                <p class="card-text">List of apartments!</p>
+                <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+              </div>
+            </div>
+          </div>
+        </div>
 
 
-<div class="card mb-3" style="max-width: 540px;" *ngIf="oneHouse | async as house">
-  <style>
-    hr.rounded {
-      border-top: 8px solid #918a8a;
-      border-radius: 5px;
-    }
-  </style>
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://fastly.picsum.photos/id/78/1584/2376.jpg?hmac=80UVSwpa9Nfcq7sQ5kxb9Z5sD2oLsbd5zkFO5ybMC4E"
-        class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <p class="card-text">ID:</p>
-        <h5 class="card-title">{{house.id}}</h5>  
-        <hr class="rounded">
-        <p class="card-text">Number:</p>
-        <h5 class="card-title">{{house.number}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Street:</p>
-        <h5 class="card-title">{{house.street}}</h5>
-        <hr class="dotted">
-        <p class="card-text">City:</p>
-        <h5 class="card-title">{{house.city}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Country:</p>
-        <h5 class="card-title">{{house.country}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Postcode:</p>
-        <h5 class="card-title">{{house.postcode}}</h5>
-        <hr class="rounded">
-        <p class="card-text">List of apartments!</p>
-        <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
-      </div>
-    </div>
-  </div>
-</div>
+      </td>
+      <td>Click 'Edit House' to edit House
+        <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)"></app-edit-house>
+      </td>
+      <!-- <td>{{ house.country }}</td>
+        <td>{{ house.postcode }}</td> -->
+    </tr>
+  </tbody>
+</table>
+
+
 <!-- <table>
   <thead>
     <tr>

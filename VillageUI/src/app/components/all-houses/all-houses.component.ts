@@ -17,7 +17,7 @@ export class AllHousesComponent {
   constructor(
     private HouseDTOService: HouseDTOService,
     private router: Router
-  ) { }
+  ) {}
 
   updateHouseList(home: IHouseDTO[]) {
     this.houseDTOs = home;
@@ -35,6 +35,10 @@ export class AllHousesComponent {
     this.HouseDTOService.getHouseDTOs().subscribe(
       (result: IHouseDTO[]) => (this.houseDTOs = result)
     );
+  }
+
+  updateOneHouse(h: IHouseDTO) {
+    this.houseToEdit = h;
   }
 
   goToHome(homeID?: number) {

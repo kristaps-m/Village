@@ -28,17 +28,17 @@
           <td>{{ house.city }}</td>
           <td>{{ house.country }}</td>
           <td>{{ house.postcode}}</td>
-          <td><button (click)="editHouse(house)">Edit</button></td>
+          <!-- <td><button (click)="editHouse(house)">Edit</button></td> -->
           <td><button [routerLink]="['/house',house.id]">Go to this home page</button></td>
           <!-- <td></td> -->
         </tr>
       </tbody>
     </table>
-    <app-edit-house [house]="houseToEdit" (homeUpdated)="updateHouseList($event)"></app-edit-house>
+    <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)"></app-edit-house>
 
     <p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
 
-    <table class="table table-striped">
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
