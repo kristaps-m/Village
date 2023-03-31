@@ -41,8 +41,8 @@ namespace Village.Controllers
             houseToUpdate.Postcode = house.Postcode;
             _houseService.Update(houseToUpdate);
 
-            //return Created("", houseToUpdate); // Ok();
-			return Ok(_houseService.GetAll());
+            return Created("", houseToUpdate); // Ok();
+			//return Ok(_houseService.GetAll());
         }
 
         [Route("{id}")]

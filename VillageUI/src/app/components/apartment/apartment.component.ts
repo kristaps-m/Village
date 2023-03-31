@@ -14,6 +14,7 @@ import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 export class ApartmentComponent {
   oneApartment: Observable<IApartmentDTO> | undefined;
   inhabitantDTOsByApartmentId: IInhabitantDTO[] = [];
+  apartmentToEdit?: IApartmentDTO;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,5 +60,13 @@ export class ApartmentComponent {
         // );
       }
     });
+  }
+
+  editApartment(apartment: IApartmentDTO) {
+    this.apartmentToEdit = apartment;
+  }
+
+  updateOneApartment(a: IApartmentDTO) {
+    this.apartmentToEdit = a;
   }
 }

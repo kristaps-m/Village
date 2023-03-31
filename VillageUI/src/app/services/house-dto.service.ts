@@ -40,7 +40,7 @@ export class HouseDTOService {
     let x = this.http.get<IHouseDTO[]>(
       `${environment.apiUri}/house/${this.urlGetAll}`
     );
-    //console.log(this.test, 'test <-------------');
+    
     return x;
   }
   // update, create, delete ... from IHouseDTO[] to IHouseDTO
@@ -49,13 +49,13 @@ export class HouseDTOService {
       `${environment.apiUri}/house/${this.toUpdate}`,
       house
     );
-    //console.log(this.test, 'test <-------------');
+    
     return x;
   }
 
   public createHouseDTOs(house: IHouseDTO): Observable<IHouseDTO> {
     let x = this.http.post<IHouseDTO>(`${environment.apiUri}/house/add`, house);
-    //console.log(this.test, 'test <-------------');
+    
     return x;
   }
 
@@ -63,7 +63,7 @@ export class HouseDTOService {
     let x = this.http.delete<IHouseDTO>(
       `${environment.apiUri}/house/${house.id}`
     );
-    //console.log(this.test, 'test <-------------');
+    
     return x;
   }
 

@@ -1,0 +1,46 @@
+<div *ngIf="apartment">
+  <!-- <h2>{{house.id}}</h2> -->
+  <h2>{{apartment.number}}</h2>
+  <div>
+    Number:
+    <input [(ngModel)]="apartment.number" placeholder="Number" />
+  </div>
+  <div>
+    Floor:
+    <input [(ngModel)]="apartment.floor" placeholder="Floor" />
+  </div>
+  <div>
+    Number Of Rooms:
+    <input [(ngModel)]="apartment.numberOfRooms" placeholder="Number of room" />
+  </div>
+  <div>
+    Population:
+    <input [(ngModel)]="apartment.population" placeholder="Population" />
+  </div>
+  <div>
+    Living Space:
+    <input [(ngModel)]="apartment.livingSpace" placeholder="Living space" />
+  </div>
+  <!-- <div>
+    Full Area:
+    <input [(ngModel)]="apartment.fullArea" placeholder="Full Area" />
+  </div> -->
+  <button type="button" (click)="updateApartment(apartment)" *ngIf="apartment.id">Save</button>
+  <!-- <button (click)="deleteApartment(house)" *ngIf="apartment.id">Delete</button> -->
+
+
+  <dialog #deleteButton>
+    <div>
+      Are you sure you want to delete apartment {{apartment.id}}
+    </div>
+    <span>
+      <button (click)="deleteButton.close()" class="btn btn-success">
+        CANCEL
+      </button>
+      <button (click)="deleteApartment(apartment)" *ngIf="apartment.id" (click)="deleteButton.close()"
+        class="btn btn-danger">Delete</button>
+    </span>
+
+  </dialog>
+  <button (click)="deleteButton.show()" class="btn btn-warning">Del Apartment</button>
+</div>

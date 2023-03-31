@@ -11,9 +11,10 @@ import { AllHousesComponent } from './components/all-houses/all-houses.component
 import { AllApartmentsComponent } from './components/all-apartments/all-apartments.component';
 import { ApartmentComponent } from './components/apartment/apartment.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
 
 @NgModule({
-  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent, AllApartmentsComponent, ApartmentComponent, ModalComponent],
+  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent, AllApartmentsComponent, ApartmentComponent, ModalComponent, EditApartmentComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

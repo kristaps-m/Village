@@ -39,7 +39,7 @@ namespace Village.Controllers
             apartmentToUpdate.Floor = apartment.Floor;
             apartmentToUpdate.NumberOfRooms = apartment.NumberOfRooms;
             apartmentToUpdate.Population = apartment.Population;
-            apartmentToUpdate.FullArea = apartment.FullArea;
+            //apartmentToUpdate.FullArea = apartment.FullArea;
             apartmentToUpdate.LivingSpace = apartment.LivingSpace;
             _apartmenService.Update(apartmentToUpdate);
 
