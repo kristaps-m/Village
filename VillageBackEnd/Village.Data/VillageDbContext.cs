@@ -151,6 +151,66 @@ namespace Village.Data
                     IsOwner = false
                 }
             );
+
+            builder.Entity<ApartmentInhabitant>().HasData(
+                new ApartmentInhabitant
+                {
+                    Id = 1,
+                    ApartmentId = 1,
+                    InhabitantId = 1
+                },
+                new ApartmentInhabitant
+                {
+                    Id = 2,
+                    ApartmentId = 1,
+                    InhabitantId = 2
+                },
+                new ApartmentInhabitant
+                {
+                    Id = 3,
+                    ApartmentId = 2,
+                    InhabitantId = 3
+                },
+                new ApartmentInhabitant
+                {
+                    Id = 4,
+                    ApartmentId = 3,
+                    InhabitantId = 4
+                }
+            );
+
+            builder.Entity<HouseApartment>().HasData(
+                new HouseApartment
+                {
+                    Id = 1,
+                    HouseId = 1,
+                    ApartmentId = 1
+                },
+                new HouseApartment
+                {
+                    Id = 2,
+                    HouseId = 1,
+                    ApartmentId = 2
+                },
+                new HouseApartment
+                {
+                    Id = 3,
+                    HouseId = 1,
+                    ApartmentId = 3
+                },
+                new HouseApartment
+                {
+                    Id = 4,
+                    HouseId = 2,
+                    ApartmentId = 4
+                },
+                new HouseApartment
+                {
+                    Id = 5,
+                    HouseId = 2,
+                    ApartmentId = 5
+                }
+            );
         }
     }
 }
