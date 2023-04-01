@@ -101,9 +101,9 @@ namespace Village.Controllers
                 return NotFound();
             }
 
-            var inhabitantDTO = _mapper.Map<InhabitantDTO>(inhabitant);
+            //var inhabitantDTO = _mapper.Map<InhabitantDTO>(inhabitant);
 
-            return Ok(inhabitantDTO);
+            return Ok(inhabitant);
         }
     }
 }

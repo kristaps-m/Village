@@ -15,6 +15,7 @@ export class ApartmentComponent {
   oneApartment: Observable<IApartmentDTO> | undefined;
   inhabitantDTOsByApartmentId: IInhabitantDTO[] = [];
   apartmentToEdit?: IApartmentDTO;
+  inhabitantToEdit?: IInhabitantDTO;
 
   constructor(
     private route: ActivatedRoute,
@@ -66,7 +67,19 @@ export class ApartmentComponent {
     this.apartmentToEdit = apartment;
   }
 
+  editInhabitant(i: IInhabitantDTO) {
+    this.inhabitantToEdit = i;
+  }
+
   updateOneApartment(a: IApartmentDTO) {
     this.apartmentToEdit = a;
+  }
+
+  updateOneInhabitant(i: IInhabitantDTO) {
+    this.inhabitantToEdit = i;
+  }
+
+  test(): void {
+    console.log('This is test function');
   }
 }

@@ -1,0 +1,54 @@
+<div *ngIf="inhabitant">
+  <!-- <h2>{{house.id}}</h2> -->
+  <h2>{{inhabitant.name}}</h2>
+  <div>
+    Name:
+    <input [(ngModel)]="inhabitant.name" placeholder="Name" />
+  </div>
+  <div>
+    Last name:
+    <input [(ngModel)]="inhabitant.lastname" placeholder="Last name" />
+  </div>
+  <div>
+    Date Of Birth:
+    <input [(ngModel)]="inhabitant.dateOfBirth" placeholder="Date Of Birth" />
+  </div>
+  <div>
+    Phone Nr:
+    <input [(ngModel)]="inhabitant.phone" placeholder="Phone Nr" />
+  </div>
+  <div>
+    Email:
+    <input [(ngModel)]="inhabitant.email" placeholder="Email" />
+  </div>
+    <div>
+      Id Of Apartment:
+      <input [(ngModel)]="inhabitant.idOfApartment" placeholder="Id Of Apartment" />
+    </div>
+    <div>
+      Is Owner:
+      <input [(ngModel)]="inhabitant.isOwner" placeholder="Is Owner" />
+    </div>
+  <!-- <div>
+    Full Area:
+    <input [(ngModel)]="inhabitant.fullArea" placeholder="Full Area" />
+  </div> -->
+  <button type="button" (click)="updateInhabitant(inhabitant)" *ngIf="inhabitant.id">Save</button>
+  <!-- <button (click)="deleteinhabitant(house)" *ngIf="inhabitant.id">Delete</button> -->
+
+
+  <dialog #deleteButton>
+    <div>
+      Are you sure you want to delete Inhabitant {{inhabitant.id}}
+    </div>
+    <span style="display: flex; justify-content: space-between">
+      <button (click)="deleteButton.close()" class="btn btn-success">
+        CANCEL
+      </button>
+      <button (click)="deleteInhabitant(inhabitant)" *ngIf="inhabitant.id" (click)="deleteButton.close()"
+        class="btn btn-danger">Delete</button>
+    </span>
+
+  </dialog>
+  <button (click)="deleteButton.show()" class="btn btn-warning">Del inhabitant</button>
+</div>

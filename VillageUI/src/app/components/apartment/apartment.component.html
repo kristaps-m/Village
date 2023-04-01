@@ -78,6 +78,7 @@
       <th scope="col">Email</th>
       <th scope="col">Id Of Apartment</th>
       <th scope="col">Is Owner</th>
+      <th>TEST</th>
       <th scope="col">Modular Window button !</th>
     </tr>
   </thead>
@@ -93,6 +94,29 @@
       <td>{{ inhabitant.email }}</td>
       <td>{{ inhabitant.idOfApartment }}</td>
       <td>{{ inhabitant.isOwner }}</td>
+      <td>
+        <button (click)="editInhabitant(inhabitant)" type="button" class="btn btn-primary">Edit Apartment</button>
+        <app-edit-inhabitant [inhabitant]="inhabitantToEdit" (inhabitantUpdated)="updateOneInhabitant($event)"></app-edit-inhabitant>
+      </td>
+      <td>
+        <dialog #deleteButton>
+            <div>
+              Are you sure you want to delete apartment {{inhabitant.id}}
+            </div>
+            <span style="display: flex; justify-content: space-between">
+              <button (click)="deleteButton.close()" class="btn btn-success">
+                CANCEL
+              </button>
+              <!-- CLOSE BUTTON -->
+              <button (click)="test()" *ngIf="inhabitant.id" (click)="deleteButton.close()"
+                class="btn btn-danger">Delete</button>
+            </span>
+          
+          </dialog>
+          <button (click)="deleteButton.show()" class="btn btn-warning">Del Apartment</button>
+        
+      </td>
+      <!-- <td><ngbd-modal></ngbd-modal></td> -->
       <!-- <td><button [routerLink]="['/apartment',inhabitant.id]">Go to inhabitant {{inhabitant.id}} page</button></td> -->
     </tr>
   </tbody>

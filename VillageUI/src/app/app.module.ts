@@ -12,10 +12,26 @@ import { AllApartmentsComponent } from './components/all-apartments/all-apartmen
 import { ApartmentComponent } from './components/apartment/apartment.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
+import { EditInhabitantComponent } from './components/edit-inhabitant/edit-inhabitant.component';
 
 @NgModule({
-  declarations: [AppComponent, EditHouseComponent, HouseComponent, AllHousesComponent, AllApartmentsComponent, ApartmentComponent, ModalComponent, EditApartmentComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
+  declarations: [
+    AppComponent,
+    EditHouseComponent,
+    HouseComponent,
+    AllHousesComponent,
+    AllApartmentsComponent,
+    ApartmentComponent,
+    EditApartmentComponent,
+    EditInhabitantComponent,
+  ], // ModalComponent
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
