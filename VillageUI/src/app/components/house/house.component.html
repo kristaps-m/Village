@@ -1,14 +1,8 @@
-<!-- Picture to left, text right, I LIKE -->
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">THE HOUSE</th>
       <th scope="col">EDIT</th>
-      <!-- <th scope="col">Street</th>
-        <th scope="col">City</th>
-        <th scope="col">Country</th>
-        <th scope="col">Postcode</th>
-        <th scope="col">____</th> -->
     </tr>
   </thead>
   <tbody>
@@ -47,8 +41,6 @@
                 <p class="card-text">Postcode:</p>
                 <h5 class="card-title">{{house.postcode}}</h5>
                 <hr class="rounded">
-                <p class="card-text">List of apartments!</p>
-                <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
               </div>
             </div>
           </div>
@@ -59,31 +51,12 @@
       <td>Click 'Edit House' to edit House
         <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)"></app-edit-house>
       </td>
-      <!-- <td>{{ house.country }}</td>
-        <td>{{ house.postcode }}</td> -->
     </tr>
   </tbody>
 </table>
 
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>House ID</th>
-      <th>Apartment ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let HA of houseApartments">
-      <td>{{HA.id}}</td>
-      <td>{{HA.houseId}}</td>
-      <td>{{HA.apartmentId}}</td>
-    </tr>
-  </tbody>
-</table> -->
-<!-- <app-all-apartments></app-all-apartments> -->
-<table class="table table-striped">
+<h1 class="modal-title fs-5" *ngIf="apartmentDTOsByHouseId.length">List of apartments!</h1>
+<table class="table table-striped" *ngIf="apartmentDTOsByHouseId.length">  
   <thead>
     <tr>
       <th scope="col">#</th> <!--INDEX-->
@@ -113,4 +86,3 @@
     </tr>
   </tbody>
 </table>
-<!--  {"id",  "number",  "street",  "city",  "country", "postcode"}  -->

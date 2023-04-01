@@ -1,5 +1,12 @@
 # VillageUI
 
+### My TODOs
+
+- [ ] remove number and floor for apartment edit?
+- [ ] add cancel button for editing!
+- [ ] add pop up if changes are saved successfully!
+- [ ] create table row as link to next page
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
 
 ## Development server

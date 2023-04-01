@@ -25,7 +25,8 @@
     Full Area:
     <input [(ngModel)]="apartment.fullArea" placeholder="Full Area" />
   </div> -->
-  <button type="button" (click)="updateApartment(apartment)" *ngIf="apartment.id">Save</button>
+  <span style="display: flex; justify-content: space-between">
+  <button type="button" class="btn btn-primary" (click)="updateApartment(apartment)" *ngIf="apartment.id">Save changes</button>
   <!-- <button (click)="deleteApartment(house)" *ngIf="apartment.id">Delete</button> -->
 
 
@@ -43,4 +44,5 @@
 
   </dialog>
   <button (click)="deleteButton.show()" class="btn btn-warning">Del Apartment</button>
+  </span>
 </div>

@@ -1,6 +1,4 @@
-<p>HELLO</p>
 <div *ngIf="inhabitant">
-  <h2>{{inhabitant.name}}</h2>
   <div>
     Name:
     <input [(ngModel)]="inhabitant.name" placeholder="Name" />
@@ -33,13 +31,12 @@
     Full Area:
     <input [(ngModel)]="inhabitant.fullArea" placeholder="Full Area" />
   </div> -->
-  <button type="button" (click)="updateInhabitant(inhabitant)" *ngIf="inhabitant.id">Save</button>
+  <span style="display: flex; justify-content: space-between">
+  <button type="button" class="btn btn-primary" (click)="updateInhabitant(inhabitant)" *ngIf="inhabitant.id">Save changes</button>
   <!-- <button (click)="deleteinhabitant(house)" *ngIf="inhabitant.id">Delete</button> -->
-
-
   <dialog #deleteButton>
     <div>
-      Are you sure you want to delete Inhabitant {{inhabitant.id}}
+      Are you sure you want to delete Inhabitant {{inhabitant.name}}
     </div>
     <span style="display: flex; justify-content: space-between">
       <button (click)="deleteButton.close()" class="btn btn-success">
@@ -51,4 +48,5 @@
 
   </dialog>
   <button (click)="deleteButton.show()" class="btn btn-warning">Del inhabitant</button>
+  </span>
 </div>
