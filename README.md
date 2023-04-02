@@ -1,2 +1,3 @@
 # Village
-F:\CODELEX\GitAndGithub\flight-planner-api = mapper example!
+.NET backend
+Angular and boostrap front end
