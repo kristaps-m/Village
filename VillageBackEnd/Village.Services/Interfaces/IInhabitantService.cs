@@ -4,6 +4,6 @@ namespace Village.Services.Interfaces
 {
     public interface IInhabitantService: IEntityService<Inhabitant>
     {
-
+        public List<Inhabitant> GetAllSpecialInhabitants(int id);
     }
 }

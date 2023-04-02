@@ -1,23 +1,22 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
+using Village.Core.ModelsDTO;
 using Village.Services.Interfaces;
 
 namespace Village.Controllers
 {
-    [Route("[controller]")]
+    [Route("apartment")]
     [ApiController]
-    public class apartmentController : ControllerBase
+    public class ApartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmenService;
-		private readonly IHouseApartmentService _houseApartmentService;
         private readonly IMapper _mapper;
 
-        public apartmentController(IApartmentService apartmenService,
-		IMapper mapper, IHouseApartmentService houseApartmentService)
+        public ApartmentController(IApartmentService apartmenService,
+		IMapper mapper)
         {
             _apartmenService = apartmenService;
-			_houseApartmentService = houseApartmentService;
             _mapper = mapper;
         }
 
@@ -27,7 +26,7 @@ namespace Village.Controllers
         {
             _apartmenService.Create(apartment);
 
-            return Created("", apartment); // Ok();
+            return Created("", apartment);
         }
 
         [Route("update")]
@@ -39,11 +38,11 @@ namespace Village.Controllers
             apartmentToUpdate.Floor = apartment.Floor;
             apartmentToUpdate.NumberOfRooms = apartment.NumberOfRooms;
             apartmentToUpdate.Population = apartment.Population;
-            //apartmentToUpdate.FullArea = apartment.FullArea;
+            apartmentToUpdate.FullArea = apartment.FullArea;
             apartmentToUpdate.LivingSpace = apartment.LivingSpace;
             _apartmenService.Update(apartmentToUpdate);
 
-            return Created("", apartmentToUpdate); // Ok();
+            return Created("", apartmentToUpdate);
         }
 
         [Route("{id}")]
@@ -65,27 +64,20 @@ namespace Village.Controllers
         [HttpGet]
         public IActionResult GetAllApartments()
         {
-            var apartment = _apartmenService.GetAll();
-            return Ok(apartment);
+            var allApartments = _apartmenService.GetAll();
+            var apartmentsDTOs = allApartments.Select(a => _mapper.Map<ApartmentDTO>(a));
+
+            return Ok(apartmentsDTOs);
         }
 		
 		[Route("house/{id}")]
         [HttpGet]
         public IActionResult GetAllSpecialApartments(int id)
         {
-            var houseApartmentsIds = new List<int>() { };
+            var specialApartments = _apartmenService.GetAllSpecialApartments(id);
+            var apartmentsDTOs = specialApartments.Select(sa => _mapper.Map<ApartmentDTO>(sa));
 
-            foreach (var houseApartment in _houseApartmentService.GetAll())
-            {
-                if (houseApartment.HouseId == id)
-                {
-                    houseApartmentsIds.Add(houseApartment.ApartmentId);
-                }
-            }
-
-            var apartments = _apartmenService.GetAll().Where(x => houseApartmentsIds.Contains(x.Id));
-
-            return Ok(apartments);
+            return Ok(apartmentsDTOs);
         }
 
         [Route("{id}")]

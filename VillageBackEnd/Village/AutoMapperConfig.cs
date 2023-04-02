@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Village.Core.Models;
+using Village.Core.ModelsDTO;
 
 namespace Village
 {

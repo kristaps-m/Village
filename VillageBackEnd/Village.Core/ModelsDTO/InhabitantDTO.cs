@@ -1,14 +1,14 @@
-﻿namespace Village.Core.Models
+﻿namespace Village.Core.ModelsDTO
 {
     public class InhabitantDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
-        //public string PersonalCode { get; set; }
+        public string PersonalCode { get; set; }
         public DateTime DateOfBirth { get; set; }
-        //public string Phone { get; set; }
-        //public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
         // IdOfApartment = Connection with the apartment where the resident lives
         public int IdOfApartment { get; set; }
         public bool IsOwner { get; set; }

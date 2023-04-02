@@ -4,13 +4,13 @@ using Village.Services.Interfaces;
 
 namespace Village.Controllers
 {
-    [Route("[controller]")]
+    [Route("inhabitantapartments")]
     [ApiController]
-    public class inhabitantapartmentsController : ControllerBase
+    public class InhabitantapartmentsController : ControllerBase
     {
         private readonly IInhabitantApartmentService _inhabitantApartmentService;
 
-        public inhabitantapartmentsController(IInhabitantApartmentService inhabitantApartmentService)
+        public InhabitantapartmentsController(IInhabitantApartmentService inhabitantApartmentService)
         {
             _inhabitantApartmentService = inhabitantApartmentService;
         }
@@ -21,7 +21,7 @@ namespace Village.Controllers
         {
             _inhabitantApartmentService.Create(inhabitantApartment);
 
-            return Created("", inhabitantApartment); // Ok();
+            return Created("", inhabitantApartment);
         }
 
         [Route("update")]
@@ -34,7 +34,7 @@ namespace Village.Controllers
 
             _inhabitantApartmentService.Update(inhabitantApartmentToUpdate);
 
-            return Created("", inhabitantApartmentToUpdate); // Ok();
+            return Created("", inhabitantApartmentToUpdate);
         }
 
         [Route("{id}")]

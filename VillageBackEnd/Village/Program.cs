@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Village;
+using Village.Core.Models;
 using Village.Data;
 using Village.Services.Interfaces;
 using Village.Services.Services;

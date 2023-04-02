@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Village.Core.Models;
+﻿using Village.Core.Models;
 using Village.Data;
 using Village.Services.Interfaces;
 
@@ -11,7 +6,7 @@ namespace Village.Services.Services
 {
     public class EntityService<T> : DbService, IEntityService<T> where T : Entity
     {
-        public EntityService(VillageDbContext context) : base(context)
+        public EntityService(IVillageDbContext context) : base(context)
         {
 
         }

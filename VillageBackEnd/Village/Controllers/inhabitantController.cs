@@ -2,18 +2,19 @@
 using Village.Core.Models;
 using Village.Services.Interfaces;
 using AutoMapper;
+using Village.Core.ModelsDTO;
 
 namespace Village.Controllers
 {
-    [Route("[controller]")]
+    [Route("inhabitant")]
     [ApiController]
-    public class inhabitantController : ControllerBase
+    public class InhabitantController : ControllerBase
     {
         private readonly IInhabitantService _inhabitantService;
         private readonly IApartmentInhabitantService _apartmentInhabitantService;
         private readonly IMapper _mapper;
 
-        public inhabitantController(IInhabitantService inhabitantService, IMapper mapper, IApartmentInhabitantService apartmentInhabitantService)
+        public InhabitantController(IInhabitantService inhabitantService, IMapper mapper, IApartmentInhabitantService apartmentInhabitantService)
         {
             _inhabitantService = inhabitantService;
             _mapper = mapper;
@@ -26,7 +27,7 @@ namespace Village.Controllers
         {
             _inhabitantService.Create(inhabitant);
 
-            return Created("", inhabitant); // Ok();
+            return Created("", inhabitant);
         }
 
         [Route("update")]
@@ -45,7 +46,7 @@ namespace Village.Controllers
 
             _inhabitantService.Update(inhabitantToUpdate);
 
-            return Created("", inhabitantToUpdate); // Ok();
+            return Created("", inhabitantToUpdate);
         }
 
         [Route("{id}")]
@@ -67,27 +68,31 @@ namespace Village.Controllers
         [HttpGet]
         public IActionResult GetAllInhabitants()
         {
-            var inhabitants = _inhabitantService.GetAll();
-            return Ok(inhabitants);
+            var allInhabitants = _inhabitantService.GetAll();
+            var inhabitantsDTOs = allInhabitants.Select(i => _mapper.Map<InhabitantDTO>(i));
+
+            return Ok(allInhabitants);
         }
 
         [Route("apartment/{id}")]
         [HttpGet]
         public IActionResult GetAllSpecialInhabitants(int id)
         {
-            var apartmentInhabitantIds = new List<int>() { };
+            //var apartmentInhabitantIds = new List<int>() { };
 
-            foreach (var houseApartment in _apartmentInhabitantService.GetAll())
-            {
-                if (houseApartment.ApartmentId == id)
-                {
-                    apartmentInhabitantIds.Add(houseApartment.ApartmentId);
-                }
-            }
+            //foreach (var houseApartment in _apartmentInhabitantService.GetAll())
+            //{
+            //    if (houseApartment.ApartmentId == id)
+            //    {
+            //        apartmentInhabitantIds.Add(houseApartment.ApartmentId);
+            //    }
+            //}
 
-            var inhabitants = _inhabitantService.GetAll().Where(x => apartmentInhabitantIds.Contains(x.Id));
+            //var inhabitants = _inhabitantService.GetAll().Where(x => apartmentInhabitantIds.Contains(x.Id));
+            var inhabitants = _inhabitantService.GetAllSpecialInhabitants(id);
+            var inhabitantDTOs = inhabitants.Select(si => _mapper.Map<InhabitantDTO>(si));
 
-            return Ok(inhabitants);
+            return Ok(inhabitantDTOs);
         }
 
         [Route("{id}")]
@@ -101,9 +106,9 @@ namespace Village.Controllers
                 return NotFound();
             }
 
-            //var inhabitantDTO = _mapper.Map<InhabitantDTO>(inhabitant);
+            var inhabitantDTO = _mapper.Map<InhabitantDTO>(inhabitant);
 
-            return Ok(inhabitant);
+            return Ok(inhabitantDTO);
         }
     }
 }

@@ -1,19 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
+using Village.Core.ModelsDTO;
 using Village.Services.Interfaces;
 
 namespace Village.Controllers
 {
-    [Route("[controller]")]
+    [Route("house")]
     [ApiController]
-    public class houseController : ControllerBase
+    public class HouseController : ControllerBase
     {
         private readonly IHouseService _houseService;
         private readonly IMapper _mapper;
 
-        public houseController(IHouseService houseService, IMapper mapper)
+        public HouseController(IHouseService houseService, IMapper mapper)
         {
             _houseService = houseService;
             _mapper = mapper;
@@ -25,13 +25,13 @@ namespace Village.Controllers
         {
             _houseService.Create(house);
 
-            //return Created("", house); // Ok();
+            //return Created("", house);
 			return Ok(_houseService.GetAll());
         }
 
         [Route("update")]
         [HttpPut]
-        public IActionResult UpdateHouse(House house) // , int id
+        public IActionResult UpdateHouse(House house)
         {
             var houseToUpdate = _houseService.GetById(house.Id);
             houseToUpdate.Number = house.Number;
@@ -41,8 +41,7 @@ namespace Village.Controllers
             houseToUpdate.Postcode = house.Postcode;
             _houseService.Update(houseToUpdate);
 
-            return Created("", houseToUpdate); // Ok();
-			//return Ok(_houseService.GetAll());
+            return Created("", houseToUpdate);
         }
 
         [Route("{id}")]
@@ -57,28 +56,16 @@ namespace Village.Controllers
             }
             _houseService.Delete(houseToDelete);
 
-            //return Ok($"House with id {id} was deleted!");
-			return Ok(_houseService.GetAll());
+            return Ok($"House with id {id} was deleted!");
         }
-
-        //[Route("all")]
-        //[HttpGet]
-        //public async Task<ActionResult> GetAllHome()
-        //{
-        //    //var home = _houseService.GetAll();
-        //    return Ok(await _houseService.GetAll());//SuperHeroes.ToListAsync());
-        //}
 
         [Route("all-houses")]
         [HttpGet]
         public IActionResult GetAllHome()
         {
             var home = _houseService.GetAll();
-            var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));//new List<HouseDTO>();
-            //foreach (var h in home)
-            //{
-            //    houseDTOs.Add(_mapper.Map<HouseDTO>(h));
-            //}
+            var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));
+
             return Ok(home);
         }
 
@@ -93,9 +80,9 @@ namespace Village.Controllers
                 return NotFound();
             }
 
-            //var houseDTO = _mapper.Map<HouseDTO>(house);
+            var houseDTO = _mapper.Map<HouseDTO>(house);
 
-            return Ok(house);
+            return Ok(houseDTO);
         }
     }
 }

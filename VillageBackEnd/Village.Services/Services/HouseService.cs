@@ -6,7 +6,7 @@ namespace Village.Services.Services
 {
     public class HouseService : EntityService<House>, IHouseService
     {
-        public HouseService(VillageDbContext context) : base(context)
+        public HouseService(IVillageDbContext context) : base(context)
         {
         }
     }

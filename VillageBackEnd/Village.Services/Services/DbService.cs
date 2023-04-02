@@ -7,9 +7,9 @@ namespace Village.Services.Services
 {
     public class DbService: IDbService
     {
-        protected VillageDbContext _context;
+        protected IVillageDbContext _context;
 
-        public DbService(VillageDbContext context)
+        public DbService(IVillageDbContext context)
         {
             _context = context;
         }
@@ -28,14 +28,9 @@ namespace Village.Services.Services
 
         public void Update<T>(T entity) where T : Entity
         {
-            _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
-
-        //public async Task<List<T>> GetAll<T>() where T : Entity
-        //{
-        //    return await _context.Set<T>().ToListAsync();
-        //}
 
         public List<T> GetAll<T>() where T : Entity
         {
