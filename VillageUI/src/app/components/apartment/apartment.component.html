@@ -3,11 +3,6 @@
     <tr>
       <th scope="col">THE APARTMENT</th>
       <th scope="col">EDIT</th>
-      <!-- <th scope="col">Street</th>
-        <th scope="col">City</th>
-        <th scope="col">Country</th>
-        <th scope="col">Postcode</th>
-        <th scope="col">____</th> -->
     </tr>
   </thead>
   <tbody>
@@ -27,7 +22,8 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <button (click)="editApartment(apartment)" type="button" class="btn btn-primary">Edit Apartment</button>
+        <button (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button" class="btn btn-primary">Edit Apartment</button>
+        <button (click)="showBoolean()" type="button" class="btn btn-danger">showMeEdit</button>
         <p class="card-text">ID:</p>
         <h5 class="card-title">{{apartment.id}}</h5>
         <hr class="rounded">
@@ -54,8 +50,12 @@
   </div>
 </div>
       </td>
-      <td>Click 'Edit Apartment' to edit House
-        <app-edit-apartment [apartment]="apartmentToEdit" (apartmentUpdated)="updateOneApartment($event)"></app-edit-apartment>
+      <td *ngIf="oneApartment | async as apartment">Click 'Edit Apartment' to edit Apartment: <b>{{apartment.id}}</b>
+        <app-edit-apartment 
+        [apartment]="apartmentToEdit" 
+        [showMeEdit]="showMeEdit"
+        (apartmentUpdated)="updateOneApartment($event)" 
+        *ngIf="showMeEdit"></app-edit-apartment>
       </td>
       <!-- <td>{{ house.country }}</td>
         <td>{{ house.postcode }}</td> -->
@@ -106,7 +106,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <!-- <button (click)="editInhabitant(inhabitant)" type="button" class="btn btn-primary">Edit Inhabitant</button> -->
+
                 <app-edit-inhabitant [inhabitant]="inhabitantToEdit"
                   (inhabitantUpdated)="updateOneInhabitant($event)"></app-edit-inhabitant>
               </div>

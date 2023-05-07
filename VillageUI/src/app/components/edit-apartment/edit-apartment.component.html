@@ -1,4 +1,4 @@
-<div *ngIf="apartment">
+<div *ngIf="apartment && showMeEdit">
   <!-- <h2>{{house.id}}</h2> -->
   <h2>{{apartment.number}}</h2>
   <div>
@@ -28,7 +28,8 @@
   <span style="display: flex; justify-content: space-between">
   <button type="button" class="btn btn-primary" (click)="updateApartment(apartment)" *ngIf="apartment.id">Save changes</button>
   <!-- <button (click)="deleteApartment(house)" *ngIf="apartment.id">Delete</button> -->
-
+  
+    <button type="button" class="btn btn-primary" (click)="toggleShowMeEdit(showMeEdit)">Close</button>
 
   <dialog #deleteButton>
     <div>

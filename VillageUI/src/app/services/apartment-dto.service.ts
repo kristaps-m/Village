@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IApartmentDTO } from '../models/ApartmentDTO';
 
@@ -37,16 +37,20 @@ export class ApartmentDtoService {
     return x;
   }
 
-  public updateApartmentDTOs(apartment: IApartmentDTO): Observable<IApartmentDTO> {    
+  public updateApartmentDTOs(
+    apartment: IApartmentDTO
+  ): Observable<IApartmentDTO> {
     let x = this.http.put<IApartmentDTO>(
       `${environment.apiUri}/apartment/${this.toUpdate}?id=${apartment.id}`,
-      apartment,
+      apartment
     );
 
     return x;
   }
 
-  public createApartmentDTOs(apartment: IApartmentDTO): Observable<IApartmentDTO> {
+  public createApartmentDTOs(
+    apartment: IApartmentDTO
+  ): Observable<IApartmentDTO> {
     let x = this.http.post<IApartmentDTO>(
       `${environment.apiUri}/apartment/add`,
       apartment
@@ -55,11 +59,23 @@ export class ApartmentDtoService {
     return x;
   }
 
-  public deleteApartmentDTOs(apartment: IApartmentDTO): Observable<IApartmentDTO> {
+  public deleteApartmentDTOs(
+    apartment: IApartmentDTO
+  ): Observable<IApartmentDTO> {
     let x = this.http.delete<IApartmentDTO>(
       `${environment.apiUri}/apartment/${apartment.id}`
     );
 
     return x;
+  }
+
+  // public toggleOnOfPlease(booleanValue: boolean): Observable<boolean> {
+  //   //booleanValue = !booleanValue;
+  //   return of(!booleanValue);
+  // }
+
+  public toggleOnOfPlease(booleanValue: boolean): void {
+    booleanValue = !booleanValue;
+    //return !booleanValue;
   }
 }

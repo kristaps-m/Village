@@ -10,12 +10,17 @@ import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
   selector: 'app-apartment',
   templateUrl: './apartment.component.html',
   styleUrls: ['./apartment.component.css'],
+  // template: `<h3>toggle state: {{ boolshow }}</h3>
+  //   <child [state]="boolshow" (toggle)="boolshow = $event"></child> //<<<===
+  //   here we have set parent relation with child component `,
 })
 export class ApartmentComponent {
   oneApartment: Observable<IApartmentDTO> | undefined;
   inhabitantDTOsByApartmentId: IInhabitantDTO[] = [];
   apartmentToEdit?: IApartmentDTO;
   inhabitantToEdit?: IInhabitantDTO;
+  showMeEdit: boolean = false;
+  //showMeEditToEdit?: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,28 +42,6 @@ export class ApartmentComponent {
           (result: IInhabitantDTO[]) =>
             (this.inhabitantDTOsByApartmentId = result)
         );
-        // this.houseApartments =
-        //   this.HouseApartmentService.getSpecialHouseApartment(+id);
-        //this.oneHouse.city = house.city;
-        // this.HouseApartmentService.getSpecialHouseApartment(+id).subscribe(
-        //   (result: IHouseApartment[]) => (this.houseApartments = result)
-        // );
-
-        // this.ApartmentDtoService.getApartmentDTOs().subscribe(
-        //   (result: IApartmentDTO[]) => (this.apartmentDTOs = result)
-        // );
-
-        // this.ApartmentDtoService.getApartmentByHouseIdDTOs(+id).subscribe(
-        //   (result: IApartmentDTO[]) => (this.apartmentDTOsByHouseId = result)
-        // );
-        // for (let i = 0; i < this.houseApartments.length; i++) {
-        //   console.log(this.houseApartments[i].houseId, "<-- one HA");
-        // }
-        // console.log(
-        //   this.houseApartments,
-        //   '<--- this.houseApartments',
-        //   this.houseApartments.length
-        // );
       }
     });
   }
@@ -81,5 +64,14 @@ export class ApartmentComponent {
 
   test(): void {
     console.log('This is test function');
+  }
+
+  toggleShowMeEdit(): void {
+    this.showMeEdit = !this.showMeEdit;
+    console.log(this.showMeEdit, 'I ap pressing show me edit, in >APARTMENT<');
+  }
+
+  showBoolean(): void {
+    console.log(this.showMeEdit, 'current showMeEdit status!');
   }
 }
