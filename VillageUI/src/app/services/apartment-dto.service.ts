@@ -68,14 +68,4 @@ export class ApartmentDtoService {
 
     return x;
   }
-
-  // public toggleOnOfPlease(booleanValue: boolean): Observable<boolean> {
-  //   //booleanValue = !booleanValue;
-  //   return of(!booleanValue);
-  // }
-
-  public toggleOnOfPlease(booleanValue: boolean): void {
-    booleanValue = !booleanValue;
-    //return !booleanValue;
-  }
 }
