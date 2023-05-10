@@ -22,6 +22,7 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
+        <!-- Original 2 buttons for testing -->
         <!-- <button (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button" class="btn btn-primary">Edit Apartment</button>
         <button (click)="showBoolean()" type="button" class="btn btn-danger">showMeEdit</button> -->
         <p class="card-text">ID:</p>
@@ -51,17 +52,13 @@
 </div>
       </td>
       <td>Click 'Edit Apartment' to edit Apartment: <b>{{apartment.id}}</b>
-        
-        <button *ngIf="!showMeEdit" 
-        (click)="editApartment(apartment)"        
-        (click)="toggleShowMeEdit()" type="button"
-        class="btn btn-primary">'Edit Apartment'</button>
-        <button *ngIf="showMeEdit" (click)="toggleShowMeEdit()" type="button"
-        class="btn btn-danger">Cancel 'Edit'</button>
+        <br>
+        <button *ngIf="!showMeEdit" (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button"
+          class="btn btn-primary">'Edit Apartment'</button>
+        <button *ngIf="showMeEdit" (click)="toggleShowMeEdit()" type="button" class="btn btn-success">Cancel 'Edit'</button>
 
         <app-edit-apartment 
-        [apartment]="apartmentToEdit" 
-        [showMeEdit]="showMeEdit"
+        [apartment]="apartmentToEdit"
         (apartmentUpdated)="updateOneApartment($event)" 
         *ngIf="showMeEdit"></app-edit-apartment>
       </td>
@@ -113,7 +110,7 @@
           Edit Inhabitant
         </button>
 
-        <!-- Modal -->
+        <!-- Modal Window -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">

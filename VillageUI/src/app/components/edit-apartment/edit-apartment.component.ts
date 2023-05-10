@@ -39,25 +39,4 @@ export class EditApartmentComponent {
         this.apartmentUpdated.emit(apartment)
       );
   }
-
-  toggleShowMeEdit(showMeEdit: boolean): void {
-    // //showMeEdit = this.newShowMeEdit.emit(showMeEdit);
-    // console.log(showMeEdit, 'I ap pressing show me edit, in EDIT APARTMENT');
-    // showMeEdit = !showMeEdit
-    // console.log(showMeEdit, 'AFTER ...I ap pressing show me edit, in EDIT APARTMENT');
-    // return this.newShowMeEdit.emit(showMeEdit);
-    console.log(showMeEdit, 'I ap pressing show me edit, in EDIT APARTMENT');
-    //this.apartmentDtoService.toggleOnOfPlease(showMeEdit)
-    //.subscribe((showMeEdit: boolean) =>
-    //this.newShowMeEdit.emit(showMeEdit);
-
-    this.showMeEdit = !this.showMeEdit;
-    this.newShowMeEdit.emit(this.showMeEdit);
-    //this.showMeEdit = !this.showMeEdit;
-
-    console.log(
-      showMeEdit,
-      'AFTER ...I ap pressing show me edit, in EDIT APARTMENT'
-    );
-  }
 }

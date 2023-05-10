@@ -81,7 +81,8 @@ If you are new to .NET visit [microsoft.com](https://dotnet.microsoft.com/en-us/
 10. Improvements in future:
 
 - [ ] add OAuth 2.0 for Manager and Resident!
-- [ ] add cancel button for editing!
+- [v] add cancel button for editing!
+- [ ] add Loader for data!
 - [ ] add pop up if changes are saved successfully!
 - [ ] create table row as link to next page.
 - [ ] improve Front End UI and visuals.

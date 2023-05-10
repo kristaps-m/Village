@@ -19,7 +19,7 @@ export class HouseComponent implements OnInit {
   houseApartments: IHouseApartment[] = [];
   apartmentDTOsByHouseId: IApartmentDTO[] = [];
   apartmentDTOs: IApartmentDTO[] = [];
-  //oneHouse: IHouseDTO = new HouseDTO();
+  showMeEdit: boolean = false;
 
   constructor(
     private HouseDTOService: HouseDTOService,
@@ -30,16 +30,11 @@ export class HouseComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      console.log(params);
-      // const id = params['id'];
       const id = params.get('id');
-      //console.log(params['id'], +params['id']);
+
       if (id) {
         const house = this.HouseDTOService.getOneHouse(+id);
         this.oneHouse = house;
-        // this.houseApartments =
-        //   this.HouseApartmentService.getSpecialHouseApartment(+id);
-        //this.oneHouse.city = house.city;
         this.HouseApartmentService.getSpecialHouseApartment(+id).subscribe(
           (result: IHouseApartment[]) => (this.houseApartments = result)
         );
@@ -51,14 +46,6 @@ export class HouseComponent implements OnInit {
         this.ApartmentDtoService.getApartmentByHouseIdDTOs(+id).subscribe(
           (result: IApartmentDTO[]) => (this.apartmentDTOsByHouseId = result)
         );
-        // for (let i = 0; i < this.houseApartments.length; i++) {
-        //   console.log(this.houseApartments[i].houseId, "<-- one HA");
-        // }
-        // console.log(
-        //   this.houseApartments,
-        //   '<--- this.houseApartments',
-        //   this.houseApartments.length
-        // );
       }
     });
   }
@@ -71,7 +58,8 @@ export class HouseComponent implements OnInit {
     this.houseToEdit = h;
   }
 
-  // updateHouseList(home: IHouseDTO) {
-  //   this.houseToEdit = home;
-  // }
+  toggleShowMeEdit(): void {
+    this.showMeEdit = !this.showMeEdit;
+    //console.log(this.showMeEdit, 'I ap pressing show me edit, in >APARTMENT<');
+  }
 }

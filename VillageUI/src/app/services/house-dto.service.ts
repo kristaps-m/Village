@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-// import { Observable } from 'rxjs/internal/Observable';
 import { HouseDTO, IHouseDTO } from '../models/HouseDTO';
 
 @Injectable({
@@ -11,16 +10,7 @@ import { HouseDTO, IHouseDTO } from '../models/HouseDTO';
 export class HouseDTOService {
   private urlGetAll = 'all-houses'; // Get allHouseDTO
   private toUpdate = 'update';
-  //private apiUri = `https://localhost:7224`;
-  //console.log(test);
   constructor(private http: HttpClient) {}
-
-  // getData() {
-  //   let url = 'https://localhost:7224/house/all';
-  //   // let url = 'https://dummyjson.com/products';
-  //   // let url = "https://jsonplaceholder.typicode.com/posts";
-  //   return this.http.get(url);
-  // }
 
   /*
         GET >> 1 << HOUSE. BELOW ! ---------------------------------------------------
@@ -66,9 +56,4 @@ export class HouseDTOService {
     
     return x;
   }
-
-  // getLiveStream(id: number): Observable<HouseDTO> {
-  //   const url = `https://localhost:7224/house/${id}`;
-  //   return this.http.get<HouseDTO>(url);
-  // }
 }

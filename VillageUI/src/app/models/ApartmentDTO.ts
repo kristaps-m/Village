@@ -19,16 +19,3 @@ export class ApartmentDTO implements IApartmentDTO {
   livingSpace!: number;
   idOfHouse!: number;
 }
-
-/*
-{
-    "number": 21,
-    "floor": 3,
-    "numberOfRooms": 3,
-    "population": 3,
-    "fullArea": 74.5,
-    "livingSpace": 70.5,
-    "idOfHouse": 1,
-    "id": 1
-  }
-*/

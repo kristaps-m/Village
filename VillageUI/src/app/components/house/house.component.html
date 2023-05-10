@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped" *ngIf="oneHouse | async as house">
   <thead>
     <tr>
       <th scope="col">THE HOUSE</th>
@@ -8,7 +8,7 @@
   <tbody>
     <tr>
       <td>
-        <div class="card mb-3" style="max-width: 540px;" *ngIf="oneHouse | async as house">
+        <div class="card mb-3" style="max-width: 540px;">
           <style>
             hr.rounded {
               border-top: 8px solid #918a8a;
@@ -22,7 +22,6 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <button (click)="editHouse(house)" type="button" class="btn btn-primary">Edit House</button>
                 <p class="card-text">ID:</p>
                 <h5 class="card-title">{{house.id}}</h5>
                 <hr class="rounded">
@@ -48,8 +47,12 @@
 
 
       </td>
-      <td>Click 'Edit House' to edit House
-        <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)"></app-edit-house>
+      <td>Click 'Edit House' to edit House <b>{{house.id}}</b>
+        <br>
+        <button *ngIf="!showMeEdit" (click)="editHouse(house)" (click)="toggleShowMeEdit()" type="button"
+          class="btn btn-primary">'Edit House'</button>
+        <button *ngIf="showMeEdit" (click)="toggleShowMeEdit()" type="button" class="btn btn-success">Cancel 'Edit'</button>
+        <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)" *ngIf="showMeEdit"></app-edit-house>
       </td>
     </tr>
   </tbody>
