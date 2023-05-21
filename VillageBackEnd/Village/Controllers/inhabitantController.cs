@@ -44,8 +44,8 @@ namespace Village.Controllers
             inhabitantToUpdate.IdOfApartment = inhabitant.IdOfApartment;
             inhabitantToUpdate.IsOwner = inhabitant.IsOwner;
 
-            _inhabitantService.Update(inhabitantToUpdate);
-
+            _inhabitantService.Update(inhabitantToUpdate);			
+			
             return Created("", inhabitantToUpdate);
         }
 

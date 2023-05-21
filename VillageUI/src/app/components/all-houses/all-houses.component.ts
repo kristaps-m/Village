@@ -13,11 +13,18 @@ export class AllHousesComponent {
   // houseDTOs: HouseDTO[] = [];
   houseDTOs: IHouseDTO[] = [];
   houseToEdit?: IHouseDTO;
+  isLoading: boolean = true;
 
   constructor(
     private HouseDTOService: HouseDTOService,
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+    this.HouseDTOService.getHouseDTOs().subscribe(
+    (result: IHouseDTO[]) => {this.houseDTOs = result;this.isLoading = false;}
+    );
+  }
 
   updateHouseList(home: IHouseDTO[]) {
     this.houseDTOs = home;
@@ -29,12 +36,6 @@ export class AllHousesComponent {
 
   editHouse(house: IHouseDTO) {
     this.houseToEdit = house;
-  }
-
-  ngOnInit(): void {
-    this.HouseDTOService.getHouseDTOs().subscribe(
-      (result: IHouseDTO[]) => (this.houseDTOs = result)
-    );
   }
 
   updateOneHouse(h: IHouseDTO) {

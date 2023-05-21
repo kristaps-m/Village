@@ -17,11 +17,17 @@ export class EditApartmentComponent {
   constructor(private apartmentDtoService: ApartmentDtoService) {}
 
   updateApartment(apartment: IApartmentDTO) {
-    this.apartmentDtoService
-      .updateApartmentDTOs(apartment)
-      .subscribe((apartment: IApartmentDTO) =>
-        this.apartmentUpdated.emit(apartment)
-      );
+    this.apartmentDtoService.updateApartmentDTOs(apartment).subscribe(
+      (apartment: IApartmentDTO) => {
+        alert(
+          `Apartment with number '${apartment.number}' updated successfully!`
+        );
+        this.apartmentUpdated.emit(apartment);
+      },
+      (error) => {
+        alert(`Failed to update apartment! Error: ${error.message}`);
+      }
+    );
   }
 
   deleteApartment(apartment: IApartmentDTO) {

@@ -33,7 +33,7 @@
     </div>
   <span style="display: flex; justify-content: space-between">
   <button type="button" class="btn btn-primary" (click)="updateInhabitant(inhabitant)" *ngIf="inhabitant.id">Save changes</button>
-  <!-- <button (click)="deleteinhabitant(house)" *ngIf="inhabitant.id">Delete</button> -->
+  
   <dialog #deleteButton>
     <div>
       Are you sure you want to delete Inhabitant {{inhabitant.name}}

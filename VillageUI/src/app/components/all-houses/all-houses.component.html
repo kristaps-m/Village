@@ -54,6 +54,11 @@
       <td>{{ house.postcode }}</td>
       <td><button [routerLink]="['/house',house.id]">Go to home {{house.id}}</button></td>
     </tr>
+    <tr *ngIf="isLoading"> <!-- Show loading spinner if isLoading is true -->
+      <td colspan="7" class="text-center">
+        <div class="spinner-border text-warning" style="width: 5rem; height: 5rem;" role="status"></div>
+      </td>
+    </tr>
   </tbody>
 </table>
 

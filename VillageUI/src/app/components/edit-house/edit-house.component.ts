@@ -14,9 +14,15 @@ export class EditHouseComponent {
   constructor(private houseDTOService: HouseDTOService) {}
 
   updateHouse(house: IHouseDTO) {
-    this.houseDTOService
-      .updateHouseDTOs(house)
-      .subscribe((home: IHouseDTO) => this.homeUpdated.emit(home));
+    this.houseDTOService.updateHouseDTOs(house).subscribe(
+      (home: IHouseDTO) => {
+        alert(`House with number '${home.number}' updated successfully!`);
+        this.homeUpdated.emit(home);
+      },
+      (error) => {
+        alert(`Failed to update house! Error: ${error.message}`);
+      }
+    );
   }
 
   deleteHouse(house: IHouseDTO) {

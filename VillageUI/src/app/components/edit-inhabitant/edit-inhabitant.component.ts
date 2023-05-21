@@ -10,13 +10,21 @@ import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 export class EditInhabitantComponent {
   @Input() inhabitant?: IInhabitantDTO;
   @Output() inhabitantUpdated = new EventEmitter<IInhabitantDTO>();
+
   constructor(private inhabitantDtoService: InhabitantDtoService) {}
+
   updateInhabitant(inhabitant: IInhabitantDTO) {
-    this.inhabitantDtoService
-      .updateInhabitantDTOs(inhabitant)
-      .subscribe((inhabitant: IInhabitantDTO) =>
-        this.inhabitantUpdated.emit(inhabitant)
-      );
+    this.inhabitantDtoService.updateInhabitantDTOs(inhabitant).subscribe(
+      (updatedInhabitant: IInhabitantDTO) => {
+        alert(
+          `Inhabitant with name '${inhabitant.name}' updated successfully!`
+        );
+        this.inhabitantUpdated.emit(updatedInhabitant);
+      },
+      (error) => {
+        alert(`Failed to update inhabitant! Error: ${error.message}`);
+      }
+    );
   }
 
   deleteInhabitant(inhabitant: IInhabitantDTO) {

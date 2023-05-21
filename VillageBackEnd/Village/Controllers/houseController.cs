@@ -59,15 +59,28 @@ namespace Village.Controllers
             return Ok($"House with id {id} was deleted!");
         }
 
-        [Route("all-houses")]
-        [HttpGet]
-        public IActionResult GetAllHome()
-        {
-            var home = _houseService.GetAll();
-            var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));
+        // [Route("all-houses")]
+        // [HttpGet]
+        // public IActionResult GetAllHome()
+        // {
+            // var home = _houseService.GetAll();
+            // var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));
 
-            return Ok(home);
-        }
+            // return Ok(houseDTOs);
+        // }
+		
+		[Route("all-houses")]
+		[HttpGet]
+		public async Task<IActionResult> GetAllHome()
+		{
+			await Task.Delay(3000); // 3-second delay
+
+			var home = _houseService.GetAll();
+			var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));
+
+			return Ok(houseDTOs);
+		}
+
 
         [Route("{id}")]
         [HttpGet]

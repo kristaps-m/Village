@@ -82,8 +82,8 @@ If you are new to .NET visit [microsoft.com](https://dotnet.microsoft.com/en-us/
 
 - [ ] add OAuth 2.0 for Manager and Resident!
 - [v] add cancel button for editing!
-- [ ] add Loader for data!
-- [ ] add pop up if changes are saved successfully!
+- [v] add Loader for data (http://localhost:4200/all-houses have 3 second loading... spinner (Village\VillageBackEnd\Village\Controllers\HouseController.cs))!
+- [v] add pop up if changes are saved successfully!
 - [ ] create table row as link to next page.
 - [ ] improve Front End UI and visuals.
 - [ ] create Front End using other frameworks.
