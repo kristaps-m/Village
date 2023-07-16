@@ -81,10 +81,10 @@ If you are new to .NET visit [microsoft.com](https://dotnet.microsoft.com/en-us/
 10. Improvements in future:
 
 - [ ] add OAuth 2.0 for Manager and Resident!
-- [v] add cancel button for editing!
-- [v] add Loader for data (http://localhost:4200/all-houses have 3 second loading... spinner (Village\VillageBackEnd\Village\Controllers\HouseController.cs))!
-- [v] add pop up if changes are saved successfully!
+- [x] add cancel button for editing!
+- [x] add Loader for data (http://localhost:4200/all-houses have 3 second loading... spinner (Village\VillageBackEnd\Village\Controllers\HouseController.cs))!
+- [x] add pop up if changes are saved successfully!
 - [ ] create table row as link to next page.
 - [ ] improve Front End UI and visuals.
 - [ ] create Front End using other frameworks.
-	- [v] install Next.Js 
+	- [x] install Next.Js 
