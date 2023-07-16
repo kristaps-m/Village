@@ -87,3 +87,4 @@ If you are new to .NET visit [microsoft.com](https://dotnet.microsoft.com/en-us/
 - [ ] create table row as link to next page.
 - [ ] improve Front End UI and visuals.
 - [ ] create Front End using other frameworks.
+	- [v] install Next.Js 
