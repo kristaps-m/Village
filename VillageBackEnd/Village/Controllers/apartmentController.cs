@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
 using Village.Core.ModelsDTO;
-using Village.Services.Interfaces;
+using Village.Core.Interfaces;
 
 namespace Village.Controllers
 {
@@ -33,14 +33,7 @@ namespace Village.Controllers
         [HttpPut]
         public IActionResult UpdateApartment(Apartment apartment, int id)
         {
-            var apartmentToUpdate = _apartmenService.GetById(id);
-            apartmentToUpdate.Number = apartment.Number;
-            apartmentToUpdate.Floor = apartment.Floor;
-            apartmentToUpdate.NumberOfRooms = apartment.NumberOfRooms;
-            apartmentToUpdate.Population = apartment.Population;
-            apartmentToUpdate.FullArea = apartment.FullArea;
-            apartmentToUpdate.LivingSpace = apartment.LivingSpace;
-            _apartmenService.Update(apartmentToUpdate);
+            var apartmentToUpdate = _apartmenService.UpdateApartment(apartment, id);
 
             return Created("", apartmentToUpdate);
         }
@@ -49,15 +42,9 @@ namespace Village.Controllers
         [HttpDelete]
         public IActionResult DeleteApartment(int id)
         {
-            var apartmentToDelete = _apartmenService.GetById(id);
+            var isApartmentFoundAndDeleted = _apartmenService.DeleteApartment(id);
 
-            if (apartmentToDelete == null)
-            {
-                return NotFound();
-            }
-            _apartmenService.Delete(apartmentToDelete);
-
-            return Ok($"Apartment with id {id} was deleted!");
+            return isApartmentFoundAndDeleted;
         }
 
         [Route("all")]

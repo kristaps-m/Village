@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Village.Core.Interfaces;
 using Village.Core.Models;
 using Village.Core.ModelsDTO;
-using Village.Services.Interfaces;
 
 namespace Village.Controllers
 {
@@ -33,13 +33,7 @@ namespace Village.Controllers
         [HttpPut]
         public IActionResult UpdateHouse(House house)
         {
-            var houseToUpdate = _houseService.GetById(house.Id);
-            houseToUpdate.Number = house.Number;
-            houseToUpdate.Street = house.Street;
-            houseToUpdate.City = house.City;
-            houseToUpdate.Country = house.Country;
-            houseToUpdate.Postcode = house.Postcode;
-            _houseService.Update(houseToUpdate);
+            var houseToUpdate = _houseService.UpdateHouse(house, house.Id);
 
             return Created("", houseToUpdate);
         }
@@ -48,15 +42,9 @@ namespace Village.Controllers
         [HttpDelete]
         public IActionResult DeleteHouse(int id)
         {
-            var houseToDelete = _houseService.GetById(id);
+            var isHouseFoundAndDeleted = _houseService.DeleteHouse(id);
 
-            if (houseToDelete == null)
-            {
-                return NotFound();
-            }
-            _houseService.Delete(houseToDelete);
-
-            return Ok($"House with id {id} was deleted!");
+            return isHouseFoundAndDeleted;
         }
 
         // [Route("all-houses")]
@@ -73,7 +61,7 @@ namespace Village.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetAllHome()
 		{
-			await Task.Delay(3000); // 3-second delay
+			await Task.Delay(2000); // 2-second delay
 
 			var home = _houseService.GetAll();
 			var houseDTOs = home.Select(h => _mapper.Map<HouseDTO>(h));

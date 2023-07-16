@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Village.Core.Models;
-using Village.Services.Interfaces;
+using Village.Core.Interfaces;
 using AutoMapper;
 using Village.Core.ModelsDTO;
 
@@ -34,17 +34,7 @@ namespace Village.Controllers
         [HttpPut]
         public IActionResult UpdateInhabitant(Inhabitant inhabitant, int id)
         {
-            var inhabitantToUpdate = _inhabitantService.GetById(id);
-            inhabitantToUpdate.Name = inhabitant.Name;
-            inhabitantToUpdate.Lastname = inhabitant.Lastname;
-            inhabitantToUpdate.PersonalCode = inhabitant.PersonalCode;
-            inhabitantToUpdate.DateOfBirth = inhabitant.DateOfBirth;
-            inhabitantToUpdate.Phone = inhabitant.Phone;
-            inhabitantToUpdate.Email = inhabitant.Email;
-            inhabitantToUpdate.IdOfApartment = inhabitant.IdOfApartment;
-            inhabitantToUpdate.IsOwner = inhabitant.IsOwner;
-
-            _inhabitantService.Update(inhabitantToUpdate);			
+            var inhabitantToUpdate = _inhabitantService.UpdateInhabitant(inhabitant, id);		
 			
             return Created("", inhabitantToUpdate);
         }
@@ -53,15 +43,9 @@ namespace Village.Controllers
         [HttpDelete]
         public IActionResult DeleteInhabitant(int id)
         {
-            var inhabitantToDelete = _inhabitantService.GetById(id);
+            var isInhabitantFoundAndDeleted = _inhabitantService.DeleteInhabitant(id);
 
-            if (inhabitantToDelete == null)
-            {
-                return NotFound();
-            }
-            _inhabitantService.Delete(inhabitantToDelete);
-
-            return Ok($"Inhabitant with id {id} was deleted!");
+            return isInhabitantFoundAndDeleted;
         }
 
         [Route("all")]
@@ -74,23 +58,12 @@ namespace Village.Controllers
             return Ok(allInhabitants);
         }
 
-        [Route("apartment/{id}")]
+        [Route("apartment/{incomingApartmentId}")]
         [HttpGet]
-        public IActionResult GetAllSpecialInhabitants(int id)
+        public IActionResult GetAllSpecialInhabitants(int incomingApartmentId)
         {
-            //var apartmentInhabitantIds = new List<int>() { };
-
-            //foreach (var houseApartment in _apartmentInhabitantService.GetAll())
-            //{
-            //    if (houseApartment.ApartmentId == id)
-            //    {
-            //        apartmentInhabitantIds.Add(houseApartment.ApartmentId);
-            //    }
-            //}
-
-            //var inhabitants = _inhabitantService.GetAll().Where(x => apartmentInhabitantIds.Contains(x.Id));
-            var inhabitants = _inhabitantService.GetAllSpecialInhabitants(id);
-            var inhabitantDTOs = inhabitants.Select(si => _mapper.Map<InhabitantDTO>(si));
+            var inhabitantsFilteredByApartmentId = _inhabitantService.GetAllSpecialInhabitants(incomingApartmentId);
+            var inhabitantDTOs = inhabitantsFilteredByApartmentId.Select(si => _mapper.Map<InhabitantDTO>(si));
 
             return Ok(inhabitantDTOs);
         }

@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Village.Core.Models;
 using Village.Data;
-using Village.Services.Interfaces;
+using Village.Core.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Village.Services.Services
 {
-    public class DbService: IDbService
+    public class DbService: ControllerBase, IDbService
     {
         protected IVillageDbContext _context;
 

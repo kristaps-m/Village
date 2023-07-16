@@ -1,6 +1,6 @@
 ﻿using Village.Core.Models;
 using Village.Data;
-using Village.Services.Interfaces;
+using Village.Core.Interfaces;
 
 namespace Village.Services.Services
 {

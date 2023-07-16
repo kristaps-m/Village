@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Village.Core.Models;
+﻿using Village.Core.Models;
 
-namespace Village.Services.Interfaces
+namespace Village.Core.Interfaces
 {
     public interface IEntityService<T> where T : Entity
     {

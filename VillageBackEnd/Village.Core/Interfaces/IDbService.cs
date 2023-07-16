@@ -1,6 +1,6 @@
 ﻿using Village.Core.Models;
 
-namespace Village.Services.Interfaces
+namespace Village.Core.Interfaces
 {
     public interface IDbService
     {

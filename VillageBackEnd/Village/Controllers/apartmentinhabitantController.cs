@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Village.Core.Interfaces;
 using Village.Core.Models;
-using Village.Services.Interfaces;
 
 namespace Village.Controllers
 {
@@ -56,6 +56,7 @@ namespace Village.Controllers
         public IActionResult GetAllApartmentInhabitants()
         {
             var apartmentInhabitants = _apartmentInhabitantService.GetAll();
+
             return Ok(apartmentInhabitants);
         }
     }

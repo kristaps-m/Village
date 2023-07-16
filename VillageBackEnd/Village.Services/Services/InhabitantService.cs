@@ -1,6 +1,7 @@
-﻿using Village.Core.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Village.Core.Interfaces;
+using Village.Core.Models;
 using Village.Data;
-using Village.Services.Interfaces;
 
 namespace Village.Services.Services
 {
@@ -12,21 +13,57 @@ namespace Village.Services.Services
             _apartmentInhabitantService = apartmentInhabitantService;
         }
 
-        public List<Inhabitant> GetAllSpecialInhabitants(int id)
+        public Inhabitant UpdateInhabitant(Inhabitant inhabitant, int id)
+        {
+            var inhabitantToUpdate = _context.Inhabitants.SingleOrDefault(i => i.Id == id);
+
+            if (inhabitantToUpdate != null)
+            {
+                inhabitantToUpdate.Name = inhabitant.Name;
+                inhabitantToUpdate.Lastname = inhabitant.Lastname;
+                inhabitantToUpdate.PersonalCode = inhabitant.PersonalCode;
+                inhabitantToUpdate.DateOfBirth = inhabitant.DateOfBirth;
+                inhabitantToUpdate.Phone = inhabitant.Phone;
+                inhabitantToUpdate.Email = inhabitant.Email;
+                inhabitantToUpdate.IdOfApartment = inhabitant.IdOfApartment;
+                inhabitantToUpdate.IsOwner = inhabitant.IsOwner;
+                _context.Entry(inhabitantToUpdate).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
+            }
+
+            return inhabitantToUpdate;
+        }
+
+        public IActionResult DeleteInhabitant(int id)
+        {
+            var inhabitantsToDelete = _context.Inhabitants.SingleOrDefault(a => a.Id == id);
+
+            if (inhabitantsToDelete != null)
+            {
+                _context.Inhabitants.Remove(inhabitantsToDelete);
+                _context.SaveChanges();
+
+                return Ok($"Inhabitant with id {id} was deleted!");
+            }
+
+            return NotFound();
+        }
+
+        public List<Inhabitant> GetAllSpecialInhabitants(int incomingApartmentId)
         {
             var apartmentInhabitantIds = new List<int>() { };
 
             foreach (var houseApartment in _apartmentInhabitantService.GetAll())
             {
-                if (houseApartment.ApartmentId == id)
+                if (houseApartment.ApartmentId == incomingApartmentId)
                 {
                     apartmentInhabitantIds.Add(houseApartment.InhabitantId);
                 }
             }
 
-            var inhabitants = _context.Inhabitants.Where(x => apartmentInhabitantIds.Contains(x.Id));
+            var inhabitantsFoundByApartmentId = _context.Inhabitants.Where(x => apartmentInhabitantIds.Contains(x.Id));
 
-            return inhabitants.ToList();
+            return inhabitantsFoundByApartmentId.ToList();
         }
     }
 }
