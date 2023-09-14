@@ -81,14 +81,14 @@
   <thead>
     <tr>
       <th scope="col">#</th> <!--INDEX-->      
-      <th scope="col">Backend ID</th>
+      <th scope="col" style="font-size: 9px;">Backend ID</th>
       <th scope="col">Name</th>
       <th scope="col">Lastname</th>
       <th scope="col">Personal Code</th>
-      <th scope="col">Date Of Birth</th>
+      <th scope="col">Date Of Birth<p style="font-size: 9px;">dd/mm/yyyy</p></th>
       <th scope="col">Phone Nr</th>
       <th scope="col">Email</th>
-      <th scope="col">Id Of Apartment</th>
+      <!-- <th scope="col">Id Of Apartment</th> -->
       <th scope="col">Is Owner</th>
       <th scope="col">.</th>
     </tr>
@@ -100,10 +100,10 @@
       <td>{{ inhabitant.name}}</td>
       <td>{{ inhabitant.lastname }}</td>
       <td>{{ inhabitant.personalCode }}</td>
-      <td>{{ inhabitant.dateOfBirth }}</td>
+      <td>{{ inhabitant.dateOfBirth | date:'dd/MM/yyyy'}}</td>
       <td>{{ inhabitant.phone }}</td>
       <td>{{ inhabitant.email }}</td>
-      <td>{{ inhabitant.idOfApartment }}</td>
+      <!-- <td>{{ inhabitant.idOfApartment }}</td> -->
       <td>{{ inhabitant.isOwner }}</td>
       <td>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editInhabitant(inhabitant)">

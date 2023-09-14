@@ -29,6 +29,15 @@ namespace Village.Controllers
             return Created("", apartment);
         }
 
+        [Route("add/house")]
+        [HttpPost]
+        public IActionResult AddApartmentInsideHouse(Apartment apartment, int existingHouseId)
+        {
+            var created = _apartmenService.AddApartmentInsideHouse(apartment, existingHouseId);
+
+            return created;
+        }
+
         [Route("update")]
         [HttpPut]
         public IActionResult UpdateApartment(Apartment apartment, int id)

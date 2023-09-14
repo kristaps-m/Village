@@ -13,6 +13,19 @@ namespace Village.Services.Services
             _apartmentInhabitantService = apartmentInhabitantService;
         }
 
+        public IActionResult AddInhabitantInsideApartment(Inhabitant inhabitant, int existingApartmentId)
+        {
+            _context.Inhabitants.Add(inhabitant);
+            _context.SaveChanges();
+
+            var apartmentInhabitant = new ApartmentInhabitant();
+            apartmentInhabitant.ApartmentId = existingApartmentId;
+            apartmentInhabitant.InhabitantId = inhabitant.Id;
+            _apartmentInhabitantService.Create(apartmentInhabitant);
+
+            return Created($"Apartment-Inhabitant with id={apartmentInhabitant.Id},ApartmentId={existingApartmentId}, InhabitantId={inhabitant.Id} was created!", inhabitant);
+        }
+
         public Inhabitant UpdateInhabitant(Inhabitant inhabitant, int id)
         {
             var inhabitantToUpdate = _context.Inhabitants.SingleOrDefault(i => i.Id == id);

@@ -3,6 +3,7 @@ using Village.Core.Models;
 using Village.Core.Interfaces;
 using AutoMapper;
 using Village.Core.ModelsDTO;
+using Village.Services.Services;
 
 namespace Village.Controllers
 {
@@ -28,6 +29,15 @@ namespace Village.Controllers
             _inhabitantService.Create(inhabitant);
 
             return Created("", inhabitant);
+        }
+
+        [Route("add/apartment")]
+        [HttpPost]
+        public IActionResult AddInhabitantInsideApartment(Inhabitant inhabitant, int existingApartmentId)
+        {
+            var created = _inhabitantService.AddInhabitantInsideApartment(inhabitant, existingApartmentId);
+
+            return created;
         }
 
         [Route("update")]
