@@ -59,6 +59,19 @@ export class ApartmentDtoService {
     return x;
   }
 
+  // Creates 1 Apartment, 1 HouseApartment (with House ID and Apartment ID)
+  public createApartmentInsideHouse(
+    apartment: IApartmentDTO,
+    theHouseId: number
+  ): Observable<IApartmentDTO> {
+    let x = this.http.post<IApartmentDTO>(
+      `${environment.apiUri}/apartment/add/house/${theHouseId}`,
+      apartment
+    );
+
+    return x;
+  }
+
   public deleteApartmentDTOs(
     apartment: IApartmentDTO
   ): Observable<IApartmentDTO> {

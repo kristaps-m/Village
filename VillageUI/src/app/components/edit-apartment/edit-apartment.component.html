@@ -18,6 +18,10 @@
     <input [(ngModel)]="apartment.population" placeholder="Population" />
   </div>
   <div>
+    Full Area:
+    <input [(ngModel)]="apartment.fullArea" placeholder="Full Area" />
+  </div>
+  <div>
     Living Space:
     <input [(ngModel)]="apartment.livingSpace" placeholder="Living space" />
   </div>
@@ -27,6 +31,7 @@
   </div> -->
   <span style="display: flex; justify-content: space-between">
   <button type="button" class="btn btn-primary" (click)="updateApartment(apartment)" *ngIf="apartment.id">Save changes</button>
+  <button type="button" class="btn btn-outline-success" (click)="createApartmentAndHouseApartment(apartment, 20)" *ngIf="!apartment.id">Create</button>
   <dialog #deleteButton>
     <div>
       Are you sure you want to delete apartment {{apartment.id}}

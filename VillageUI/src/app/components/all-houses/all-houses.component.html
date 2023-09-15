@@ -9,16 +9,16 @@
 <h1>Welcome to Village!</h1>
 <h3>We have {{houseDTOs.length}} houses.</h3>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="initNewHouse()">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createHouse" (click)="initNewHouse()">
   Create new House
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- CreateHouse Modal Window-->
+<div class="modal fade" id="createHouse" tabindex="-1" aria-labelledby="createHouseLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New House Creation Window</h1>
+        <h1 class="modal-title fs-5" id="createHouseLabel">New House Creation Window</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

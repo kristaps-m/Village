@@ -29,7 +29,7 @@ namespace Village.Controllers
             return Created("", apartment);
         }
 
-        [Route("add/house")]
+        [Route("add/house/{existingHouseId}")]
         [HttpPost]
         public IActionResult AddApartmentInsideHouse(Apartment apartment, int existingHouseId)
         {

@@ -45,4 +45,15 @@ export class EditApartmentComponent {
         this.apartmentUpdated.emit(apartment)
       );
   }
+
+  createApartmentAndHouseApartment(
+    apartment: IApartmentDTO,
+    theHouseId: number
+  ) {
+    this.apartmentDtoService
+      .createApartmentInsideHouse(apartment, theHouseId)
+      .subscribe((apartment: IApartmentDTO) =>
+        this.apartmentUpdated.emit(apartment)
+      );
+  }
 }
