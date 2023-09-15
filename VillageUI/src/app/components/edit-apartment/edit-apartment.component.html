@@ -31,7 +31,7 @@
   </div> -->
   <span style="display: flex; justify-content: space-between">
   <button type="button" class="btn btn-primary" (click)="updateApartment(apartment)" *ngIf="apartment.id">Save changes</button>
-  <button type="button" class="btn btn-outline-success" (click)="createApartmentAndHouseApartment(apartment, 20)" *ngIf="!apartment.id">Create</button>
+  <button *ngIf="theHouseId && !apartment.id" type="button" class="btn btn-outline-success" (click)="createApartmentAndHouseApartment(apartment, theHouseId)">Create</button>
   <dialog #deleteButton>
     <div>
       Are you sure you want to delete apartment {{apartment.id}}

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IApartmentDTO } from 'src/app/models/ApartmentDTO';
 import { ApartmentDtoService } from 'src/app/services/apartment-dto.service';
 
@@ -13,8 +14,21 @@ export class EditApartmentComponent {
 
   @Input() showMeEdit?: boolean;
   @Output() newShowMeEdit = new EventEmitter<boolean>();
+  theHouseId?: number = 0;
 
-  constructor(private apartmentDtoService: ApartmentDtoService) {}
+  constructor(
+    private apartmentDtoService: ApartmentDtoService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.theHouseId = +id;
+      }
+    });
+  }
 
   updateApartment(apartment: IApartmentDTO) {
     this.apartmentDtoService.updateApartmentDTOs(apartment).subscribe(
