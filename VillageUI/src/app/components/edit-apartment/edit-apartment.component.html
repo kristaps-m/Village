@@ -40,8 +40,10 @@
       <button (click)="deleteButton.close()" class="btn btn-success">
         CANCEL
       </button>
-      <button (click)="deleteApartment(apartment)" *ngIf="apartment.id" (click)="deleteButton.close()"
-        class="btn btn-danger">Delete</button>
+      <!-- <button (click)="deleteApartment(apartment)" *ngIf="apartment.id" (click)="deleteButton.close()"
+        class="btn btn-danger">Delete</button> -->
+      <button (click)="deleteApartmentAndHouseApartment(apartment)" *ngIf="apartment.id"
+        (click)="deleteButton.close()" class="btn btn-danger">Delete</button>
     </span>
 
   </dialog>

@@ -56,6 +56,16 @@ namespace Village.Controllers
             return isApartmentFoundAndDeleted;
         }
 
+        [Route("del-apartment-houseapartment/{apartmentId}")]
+        [HttpDelete]
+        public IActionResult DeleteApartmentAndHouseApartment(int apartmentId)
+        {
+            var isApartmentFoundAndDeleted = _apartmenService
+                .DeleteApartmentAndHouseApartment(apartmentId);
+
+            return isApartmentFoundAndDeleted;
+        }
+
         [Route("all")]
         [HttpGet]
         public IActionResult GetAllApartments()

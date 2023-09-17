@@ -81,4 +81,14 @@ export class ApartmentDtoService {
 
     return x;
   }
+
+  public deleteApartmentAndHouseApartmentDTOs(
+    apartment: IApartmentDTO
+  ): Observable<IApartmentDTO> {
+    let x = this.http.delete<IApartmentDTO>(
+      `${environment.apiUri}/apartment/del-apartment-houseapartment/${apartment.id}`
+    );
+
+    return x;
+  }
 }
