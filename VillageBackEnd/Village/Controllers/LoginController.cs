@@ -56,9 +56,9 @@ namespace Village.Controllers
 
             //Validate the User Credentials
             //Demo Purpose, I have Passed HardCoded User Information
-            if (login.Username == "Jignesh")
+            if (login.Username == "Kristaps" && login.EmailAddress == "kristaps.test@gmail.com")
             {
-                user = new UserModel { Username = "Jignesh Trivedi", EmailAddress = "test.btest@gmail.com" };
+                user = new UserModel { Username = "Kristaps Test", EmailAddress = "kristaps.test@gmail.com" };
             }
             return user;
         }
