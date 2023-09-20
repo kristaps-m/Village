@@ -5,7 +5,7 @@ import { HouseDTO, IHouseDTO } from 'src/app/models/HouseDTO';
 import { HouseDTOService } from 'src/app/services/house-dto.service';
 import { HouseApartmentService } from '../../services/house-apartment.service';
 import { IHouseApartment } from 'src/app/models/HouseApartment';
-import { IApartmentDTO } from 'src/app/models/ApartmentDTO';
+import { ApartmentDTO, IApartmentDTO } from 'src/app/models/ApartmentDTO';
 import { ApartmentDtoService } from '../../services/apartment-dto.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class HouseComponent implements OnInit {
   apartmentDTOsByHouseId: IApartmentDTO[] = [];
   apartmentDTOs: IApartmentDTO[] = [];
   showMeEdit: boolean = false;
+  apartmentToEdit?: IApartmentDTO;
 
   constructor(
     private HouseDTOService: HouseDTOService,
@@ -50,12 +51,20 @@ export class HouseComponent implements OnInit {
     });
   }
 
+  initNewApartment() {
+    this.apartmentToEdit = new ApartmentDTO();
+  }
+
   editHouse(house: IHouseDTO) {
     this.houseToEdit = house;
   }
 
   updateOneHouse(h: IHouseDTO) {
     this.houseToEdit = h;
+  }
+
+  updateOneApartment(a: IApartmentDTO) {
+    this.apartmentToEdit = a;
   }
 
   toggleShowMeEdit(): void {

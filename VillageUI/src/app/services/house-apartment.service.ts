@@ -20,11 +20,21 @@ export class HouseApartmentService {
     return x;
   }
 
-  public getSpecialHouseApartment(id:number): Observable<IHouseApartment[]> {
+  public getSpecialHouseApartment(id: number): Observable<IHouseApartment[]> {
     let x = this.http.get<IHouseApartment[]>(
       `${environment.apiUri}/houseapartment/${this.urlGetAll}/${id}`
     );
     //console.log(this.test, 'test <-------------');
+    return x;
+  }
+
+  public deleteHouseApartmentDTOs(
+    houseApartment: IHouseApartment
+  ): Observable<IHouseApartment> {
+    let x = this.http.delete<IHouseApartment>(
+      `${environment.apiUri}/houseapartment/${houseApartment.id}`
+    );
+
     return x;
   }
 }

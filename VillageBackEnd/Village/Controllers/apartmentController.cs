@@ -29,6 +29,15 @@ namespace Village.Controllers
             return Created("", apartment);
         }
 
+        [Route("add/house/{existingHouseId}")]
+        [HttpPost]
+        public IActionResult AddApartmentInsideHouse(Apartment apartment, int existingHouseId)
+        {
+            var created = _apartmenService.AddApartmentInsideHouse(apartment, existingHouseId);
+
+            return created;
+        }
+
         [Route("update")]
         [HttpPut]
         public IActionResult UpdateApartment(Apartment apartment, int id)
@@ -43,6 +52,16 @@ namespace Village.Controllers
         public IActionResult DeleteApartment(int id)
         {
             var isApartmentFoundAndDeleted = _apartmenService.DeleteApartment(id);
+
+            return isApartmentFoundAndDeleted;
+        }
+
+        [Route("del-apartment-houseapartment/{apartmentId}")]
+        [HttpDelete]
+        public IActionResult DeleteApartmentAndHouseApartment(int apartmentId)
+        {
+            var isApartmentFoundAndDeleted = _apartmenService
+                .DeleteApartmentAndHouseApartment(apartmentId);
 
             return isApartmentFoundAndDeleted;
         }
