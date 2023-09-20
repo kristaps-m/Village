@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Village.Core.Models;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Village.Core.Interfaces;
-using AutoMapper;
+using Village.Core.Models;
 using Village.Core.ModelsDTO;
-using Village.Services.Services;
 
 namespace Village.Controllers
 {
@@ -12,14 +11,12 @@ namespace Village.Controllers
     public class InhabitantController : ControllerBase
     {
         private readonly IInhabitantService _inhabitantService;
-        private readonly IApartmentInhabitantService _apartmentInhabitantService;
         private readonly IMapper _mapper;
 
-        public InhabitantController(IInhabitantService inhabitantService, IMapper mapper, IApartmentInhabitantService apartmentInhabitantService)
+        public InhabitantController(IInhabitantService inhabitantService, IMapper mapper)
         {
             _inhabitantService = inhabitantService;
             _mapper = mapper;
-            _apartmentInhabitantService = apartmentInhabitantService;
         }
 
         [Route("add")]
