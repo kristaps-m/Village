@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Village.Core.Interfaces;
 using Village.Core.Models;
@@ -59,7 +60,8 @@ namespace Village.Controllers
 		
 		[Route("all-houses")]
 		[HttpGet]
-		public async Task<IActionResult> GetAllHome()
+        [Authorize]
+        public async Task<IActionResult> GetAllHome()
 		{
 			await Task.Delay(2000); // 2-second delay
 
