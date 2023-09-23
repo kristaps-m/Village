@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 using Village.Core.Interfaces;
 using Village.Core.Models;
 using Village.Core.ModelsDTO;
@@ -21,6 +23,7 @@ namespace Village.Controllers
 
         [Route("add")]
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddHouse(House house)
         {
             _houseService.Create(house);
@@ -59,7 +62,8 @@ namespace Village.Controllers
 		
 		[Route("all-houses")]
 		[HttpGet]
-		public async Task<IActionResult> GetAllHome()
+        [Authorize(Roles = "Resident,Manager")]
+        public async Task<IActionResult> GetAllHome()
 		{
 			await Task.Delay(2000); // 2-second delay
 
