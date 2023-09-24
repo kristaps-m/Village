@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Village.Core.Interfaces;
 using Village.Core.Models;
 using Village.Core.ModelsDTO;
@@ -8,6 +9,7 @@ namespace Village.Controllers
 {
     [Route("inhabitant")]
     [ApiController]
+    [Authorize(Roles = "Resident,Manager")]
     public class InhabitantController : ControllerBase
     {
         private readonly IInhabitantService _inhabitantService;
@@ -21,6 +23,7 @@ namespace Village.Controllers
 
         [Route("add")]
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddInhabitant(Inhabitant inhabitant)
         {
             _inhabitantService.Create(inhabitant);
@@ -30,6 +33,7 @@ namespace Village.Controllers
 
         [Route("add/apartment")]
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddInhabitantInsideApartment(Inhabitant inhabitant, int existingApartmentId)
         {
             var created = _inhabitantService.AddInhabitantInsideApartment(inhabitant, existingApartmentId);
@@ -39,6 +43,7 @@ namespace Village.Controllers
 
         [Route("update")]
         [HttpPut]
+        [Authorize(Roles = "Manager")]
         public IActionResult UpdateInhabitant(Inhabitant inhabitant, int id)
         {
             var inhabitantToUpdate = _inhabitantService.UpdateInhabitant(inhabitant, id);		
@@ -48,6 +53,7 @@ namespace Village.Controllers
 
         [Route("{id}")]
         [HttpDelete]
+        [Authorize(Roles = "Manager")]
         public IActionResult DeleteInhabitant(int id)
         {
             var isInhabitantFoundAndDeleted = _inhabitantService.DeleteInhabitant(id);

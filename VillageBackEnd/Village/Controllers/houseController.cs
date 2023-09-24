@@ -10,6 +10,7 @@ namespace Village.Controllers
 {
     [Route("house")]
     [ApiController]
+    [Authorize(Roles = "Resident,Manager")]
     public class HouseController : ControllerBase
     {
         private readonly IHouseService _houseService;
@@ -34,6 +35,7 @@ namespace Village.Controllers
 
         [Route("update")]
         [HttpPut]
+        [Authorize(Roles = "Manager")]
         public IActionResult UpdateHouse(House house)
         {
             var houseToUpdate = _houseService.UpdateHouse(house, house.Id);
@@ -43,6 +45,7 @@ namespace Village.Controllers
 
         [Route("{id}")]
         [HttpDelete]
+        [Authorize(Roles = "Manager")]
         public IActionResult DeleteHouse(int id)
         {
             var isHouseFoundAndDeleted = _houseService.DeleteHouse(id);
@@ -62,7 +65,6 @@ namespace Village.Controllers
 		
 		[Route("all-houses")]
 		[HttpGet]
-        [Authorize(Roles = "Resident,Manager")]
         public async Task<IActionResult> GetAllHome()
 		{
 			await Task.Delay(2000); // 2-second delay

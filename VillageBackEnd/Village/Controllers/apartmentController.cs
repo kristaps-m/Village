@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Village.Core.Models;
 using Village.Core.ModelsDTO;
 using Village.Core.Interfaces;
+using System.Data;
 
 namespace Village.Controllers
 {
     [Route("apartment")]
     [ApiController]
+    [Authorize(Roles = "Resident,Manager")]
     public class ApartmentController : ControllerBase
     {
         private readonly IApartmentService _apartmenService;
@@ -22,6 +25,7 @@ namespace Village.Controllers
 
         [Route("add")]
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddApartment(Apartment apartment)
         {
             _apartmenService.Create(apartment);
@@ -30,6 +34,7 @@ namespace Village.Controllers
         }
 
         [Route("add/house/{existingHouseId}")]
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         public IActionResult AddApartmentInsideHouse(Apartment apartment, int existingHouseId)
         {
@@ -39,6 +44,7 @@ namespace Village.Controllers
         }
 
         [Route("update")]
+        [Authorize(Roles = "Manager")]
         [HttpPut]
         public IActionResult UpdateApartment(Apartment apartment, int id)
         {
@@ -48,6 +54,7 @@ namespace Village.Controllers
         }
 
         [Route("{id}")]
+        [Authorize(Roles = "Manager")]
         [HttpDelete]
         public IActionResult DeleteApartment(int id)
         {
@@ -58,6 +65,7 @@ namespace Village.Controllers
 
         [Route("del-apartment-houseapartment/{apartmentId}")]
         [HttpDelete]
+        [Authorize(Roles = "Manager")]
         public IActionResult DeleteApartmentAndHouseApartment(int apartmentId)
         {
             var isApartmentFoundAndDeleted = _apartmenService
