@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditHouseComponent } from './components/edit-house/edit-house.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HouseComponent } from './components/house/house.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllHousesComponent } from './components/all-houses/all-houses.component';
@@ -13,6 +13,11 @@ import { ApartmentComponent } from './components/apartment/apartment.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { EditApartmentComponent } from './components/edit-apartment/edit-apartment.component';
 import { EditInhabitantComponent } from './components/edit-inhabitant/edit-inhabitant.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material.module';
+import { ToastrModule } from 'ngx-toastr';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,8 @@ import { EditInhabitantComponent } from './components/edit-inhabitant/edit-inhab
     ApartmentComponent,
     EditApartmentComponent,
     EditInhabitantComponent,
+    RegisterComponent,
+    LoginComponent,
   ], // ModalComponent
   imports: [
     BrowserModule,
@@ -31,6 +38,10 @@ import { EditInhabitantComponent } from './components/edit-inhabitant/edit-inhab
     HttpClientModule,
     FormsModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
