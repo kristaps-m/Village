@@ -18,37 +18,27 @@ export class RegisterComponent {
   ) {}
 
   registerform = this.builder.group({
-    id: this.builder.control(
-      '',
-      Validators.compose([Validators.required, Validators.minLength(5)])
-    ),
-    name: this.builder.control('', Validators.required),
+    username: this.builder.control('', Validators.required),
     password: this.builder.control(
       '',
       Validators.compose([
         Validators.required,
-        Validators.pattern(
-          '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-        ),
+        // Validators.pattern(
+        //   '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+        // ),
       ])
     ),
-    email: this.builder.control(
-      '',
-      Validators.compose([Validators.required, Validators.email])
-    ),
-    gender: this.builder.control('male'),
-    role: this.builder.control(''),
-    isactive: this.builder.control(false),
+    isManager: this.builder.control(false),
   });
   proceedregister() {
+    console.log(this.registerform);
+    console.log(this.registerform.value);
     if (this.registerform.valid) {
+      console.log(this.registerform);
       this.service
         .RegisterUser(this.registerform.value)
         .subscribe((result: any) => {
-          this.toastr.success(
-            'Please contact admin for enable access.',
-            'Registered successfully'
-          );
+          this.toastr.success('Registered successfully');
           this.router.navigate(['login']);
         });
     } else {
