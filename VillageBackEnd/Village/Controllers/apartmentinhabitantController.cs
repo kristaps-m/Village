@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Village.Core.Interfaces;
 using Village.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Village.Controllers
 {
     [Route("apartmentinhabitant")]
     [ApiController]
+    [Authorize(Roles = "Manager")]
     public class ApartmentinhabitantController : ControllerBase
     {
         private readonly IApartmentInhabitantService _apartmentInhabitantService;
