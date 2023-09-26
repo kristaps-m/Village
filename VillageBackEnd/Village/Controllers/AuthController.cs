@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -61,8 +60,10 @@ namespace Village.Controllers
 
             var refreshToken = GenerateRefreshToken();
             SetRefreshToken(refreshToken);
+            var tokenObject = new TokenObject();
+            tokenObject.Token = token;
 
-            return Ok(token);
+            return Ok(tokenObject);
         }
 
         [HttpPost("refresh-token")]
@@ -116,7 +117,7 @@ namespace Village.Controllers
         {
             List<Claim> claims;
 
-            if (user.IsManager) // Username == "Kristaps_M@gmail.com"
+            if (user.IsManager)
             {
                 claims = new List<Claim>
                 {

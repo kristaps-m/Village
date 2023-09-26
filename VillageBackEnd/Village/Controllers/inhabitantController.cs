@@ -43,7 +43,6 @@ namespace Village.Controllers
 
         [Route("update")]
         [HttpPut]
-        [Authorize(Roles = "Manager")]
         public IActionResult UpdateInhabitant(Inhabitant inhabitant, int id)
         {
             var inhabitantToUpdate = _inhabitantService.UpdateInhabitant(inhabitant, id);		
