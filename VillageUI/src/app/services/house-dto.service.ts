@@ -26,31 +26,12 @@ export class HouseDTOService {
         GET ALL HOUSES. BELOW ! ---------------------------------------------------
   */
 
-  // public getHouseDTOs(): Observable<IHouseDTO[]> {
-  //   let x = this.http.get<IHouseDTO[]>(
-  //     `${environment.apiUri}/house/${this.urlGetAll}`
-  //   );
-
-  //   return x;
-  // }
   public getHouseDTOs(): Observable<IHouseDTO[]> {
-    // Get the JWT token from your authentication service or storage
-    const token = 'YOUR_JWT_TOKEN';
-    // Replace with your actual token retrieval logic
-
-    // Add the authorization header with the bearer token
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
-
     return this.http.get<IHouseDTO[]>(
-      `${environment.apiUri}/house/${this.urlGetAll}`,
-      {
-        headers: headers,
-      }
+      `${environment.apiUri}/house/${this.urlGetAll}`
     );
   }
+
   // update, create, delete ... from IHouseDTO[] to IHouseDTO
   public updateHouseDTOs(house: IHouseDTO): Observable<IHouseDTO> {
     let x = this.http.put<IHouseDTO>(
