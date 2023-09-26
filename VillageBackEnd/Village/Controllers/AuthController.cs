@@ -61,8 +61,10 @@ namespace Village.Controllers
 
             var refreshToken = GenerateRefreshToken();
             SetRefreshToken(refreshToken);
+            var tokenObject = new TokenObject();
+            tokenObject.Token = token;
 
-            return Ok(token);
+            return Ok(tokenObject);
         }
 
         [HttpPost("refresh-token")]

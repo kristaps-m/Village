@@ -6,6 +6,12 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet></router-outlet>
+<!-- class="content" style="width: 100%; display: block;" role="main" -->
+<div >
+  <span style="width: 100%; display: flexbox;"><a routerLink="all-houses">Home</a>
+  <a routerLink="login">Login</a>
+  <a routerLink="register">Register</a>
+  <a routerLink="login" style="float: right;" class="menulink">Logout</a>
+</span>
+  <router-outlet></router-outlet>
+</div>
