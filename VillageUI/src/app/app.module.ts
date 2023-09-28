@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     EditInhabitantComponent,
     RegisterComponent,
     LoginComponent,
+    AboutComponent,
   ], // ModalComponent
   imports: [
     BrowserModule,

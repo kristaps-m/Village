@@ -1,0 +1,50 @@
+<div>
+  <h2>About Our Application</h2>
+  <p>Welcome to our awesome full-stack application built by Kristaps M.</p>
+
+  <h3>Feature 1: REST API</h3>
+  <p>REST API using ASP.NET Core with three data types: House, Apartment, and Resident. And they have support CRUD operations.</p>
+
+  <h3>Feature 2: Real-Life Scenario</h3>
+  <ul>
+    <li>Data processing logic is moved from controllers to services.</li>
+    <li>SQL database is connected.</li>
+    <li>Created default database entries, including houses, apartments, and residents.</li>
+    <li>Configured database relationships between models (e.g., one resident can have multiple apartments).</li>
+    <li>Added an "IsOwner" boolean field to the Resident model.</li>
+    <li>Created DTO models.</li>
+    <li>Integrated AutoMapper.</li>
+  </ul>
+
+  <h3>Feature 3: Client-Side Application</h3>
+  <p>Created a client-side application using Angular and Bootstrap 5 with the following views:</p>
+  <ul>
+    <li><a routerLink="/all-houses">All Houses</a>: Display a table of all houses, and allow users to click on a house
+      to view its details.</li>
+    <li><a routerLink="/house/1">House Details (id=1)</a>: Show details of a house, including its apartments. Users can edit
+      the house details and view a list of residents. Clicking on a resident opens a modal for editing.</li>
+    <li><a routerLink="/apartment/1">Apartment Details (id=1)</a>: Display apartment details, including residents. Users can
+      edit the apartment details. Clicking on a resident opens a modal for editing.</li>
+  </ul>
+
+  <h3>Feature 4: Authentication</h3>
+  <p>Implemented OAuth 2.0 authentication to allow users to log in with different roles: Manager and Resident. Different
+    information will be visible based on the role.</p>
+
+  <h3>Contact Information</h3>
+  <p>Connect with us on social media:</p>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/kristaps-mitins" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+    <li><a href="https://github.com/kristaps-m" target="_blank"><i class="fa fa-github"></i> GitHub</a></li>
+    <li><a href="https://github.com/kristaps-m/Village" target="_blank"><i class="fa fa-code"></i> Source Code</a></li>
+    <!-- Add more social media links if needed -->
+  </ul>
+
+  <h3>Other Projects</h3>
+  <p>Check out our other projects:</p>
+  <ul>
+    <li><a href="https://github.com/kristaps-m/quizzes-web-application" target="_blank">quizzes-web-application</a></li>
+    <li><a href="https://github.com/kristaps-m/cv_generator_clone" target="_blank">cv_generator_clone</a></li>
+    <!-- Add more project links if needed -->
+  </ul>
+</div>

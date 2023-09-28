@@ -8,10 +8,12 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- class="content" style="width: 100%; display: block;" role="main" -->
 <div >
-  <span style="width: 100%; display: flexbox;"><a routerLink="all-houses">Home</a>
-  <a routerLink="login">Login</a>
-  <a routerLink="register">Register</a>
-  <a routerLink="login" style="float: right;" class="menulink">Logout</a>
+  <span style="width: 100%; display: flexbox;">
+  <a mat-button color="primary" routerLink="all-houses">Home</a>
+  <a mat-button routerLink="login">Login</a>
+  <a mat-button routerLink="register">Register</a>
+  <a mat-button routerLink="about">About</a>
+  <a mat-raised-button color="warn" routerLink="login" style="float: right;">Logout</a>
   <p>[Name: {{loggedInUserName}}] [Role: {{userRole}}]</p>
 </span>
   <router-outlet></router-outlet>

@@ -35,7 +35,7 @@ namespace Village.Controllers
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.Username = request.Username;
+            user.Username = request.Username.ToLower();
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
             user.IsManager = request.IsManager;
@@ -46,7 +46,7 @@ namespace Village.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)
         {
-            if (user.Username != request.Username)
+            if (user.Username != request.Username.ToLower())
             {
                 return BadRequest("User not found.");
             }

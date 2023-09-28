@@ -7,6 +7,7 @@ import { HouseComponent } from './components/house/house.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './shared/auth.guard';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path: ``, redirectTo: 'all-houses', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: `test`, component: AllApartmentsComponent, canActivate: [AuthGuard] },
   { path: `register`, component: RegisterComponent },
   { path: `login`, component: LoginComponent },
+  { path: `about`, component: AboutComponent },
 ];
 
 @NgModule({

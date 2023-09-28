@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private route: Router,
+    private router: Router,
     private toastr: ToastrService
   ) {
     localStorage.clear();
@@ -33,15 +33,31 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {}
+
   ProceedLogin() {
     if (this.Login.valid) {
-      this.authService.ProceedLogin(this.Login.value).subscribe((result) => {
-        if (result != null) {
-          this.responsedata = result;
-          localStorage.setItem('token', this.responsedata.token);
-          this.route.navigate(['all-houses']);
+      this.authService.ProceedLogin(this.Login.value).subscribe(
+        (result: any) => {
+          if (result != null) {
+            localStorage.setItem('token', result.token);
+            this.toastr.success('Login successful!', 'Success');
+            this.router.navigate(['all-houses']);
+          } else {
+            this.toastr.error(
+              'Login failed. Please check your credentials.',
+              'Error'
+            );
+          }
+        },
+        (error) => {
+          this.toastr.error(
+            'An error occurred while trying to log in.',
+            'Error'
+          );
         }
-      });
+      );
+    } else {
+      this.toastr.warning('Please enter valid data.');
     }
   }
 }
