@@ -9,5 +9,6 @@ namespace Village.Core.Interfaces
         Inhabitant UpdateInhabitant(Inhabitant inhabitant, int id);
         IActionResult DeleteInhabitant(int id);
         IActionResult AddInhabitantInsideApartment(Inhabitant inhabitant, int existingApartmentId);
+        IActionResult DeleteInhabitanttAndApartmentInhabitant(int apartmentId);
     }
 }

@@ -26,6 +26,24 @@ namespace Village.Services.Services
             return Created($"Apartment-Inhabitant with id={apartmentInhabitant.Id},ApartmentId={existingApartmentId}, InhabitantId={inhabitant.Id} was created!", inhabitant);
         }
 
+        public IActionResult DeleteInhabitanttAndApartmentInhabitant(int inhabitantId)
+        {
+            var inhabitantToDelete = _context.Inhabitants.SingleOrDefault(h => h.Id == inhabitantId);
+            var houseApartmentToDelete = _apartmentInhabitantService.GetAll().SingleOrDefault(ha => ha.InhabitantId == inhabitantId);
+
+            if (inhabitantToDelete != null && houseApartmentToDelete != null)
+            {
+                _context.Inhabitants.Remove(inhabitantToDelete);
+                _context.SaveChanges();
+
+                _apartmentInhabitantService.Delete(houseApartmentToDelete);
+
+                return Ok($"Inhabitant with id {inhabitantId} and ApartmentInhabitant with id {houseApartmentToDelete.Id} was deleted!");
+            }
+
+            return NotFound();
+        }
+
         public Inhabitant UpdateInhabitant(Inhabitant inhabitant, int id)
         {
             var inhabitantToUpdate = _context.Inhabitants.SingleOrDefault(i => i.Id == id);

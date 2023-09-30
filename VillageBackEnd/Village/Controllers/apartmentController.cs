@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Village.Controllers
 {
-    [Route("apartment")]
+    [Route("api/apartment")]
     [ApiController]
     [Authorize(Roles = "Resident,Manager")]
     public class ApartmentController : ControllerBase

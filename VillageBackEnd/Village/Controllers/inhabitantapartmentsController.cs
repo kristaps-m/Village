@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Village.Controllers
 {
-    [Route("inhabitantapartments")]
+    [Route("api/inhabitantapartments")]
     [ApiController]
     [Authorize(Roles = "Manager")]
     public class InhabitantapartmentsController : ControllerBase

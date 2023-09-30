@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Village.Core.Interfaces;
 using Village.Core.Models;
 using Village.Core.ModelsDTO;
+using Village.Services.Services;
 
 namespace Village.Controllers
 {
-    [Route("inhabitant")]
+    [Route("api/inhabitant")]
     [ApiController]
     [Authorize(Roles = "Resident,Manager")]
     public class InhabitantController : ControllerBase
@@ -58,6 +59,17 @@ namespace Village.Controllers
             var isInhabitantFoundAndDeleted = _inhabitantService.DeleteInhabitant(id);
 
             return isInhabitantFoundAndDeleted;
+        }
+
+        [Route("del-inhabitant-apartmentinhabitant/{apartmentId}")]
+        [HttpDelete]
+        [Authorize(Roles = "Manager")]
+        public IActionResult DeleteInhabitantAndApartmentInhabitant(int apartmentId)
+        {
+            var isInhabitanFoundAndDeleted = _inhabitantService
+                .DeleteInhabitanttAndApartmentInhabitant(apartmentId);
+
+            return isInhabitanFoundAndDeleted;
         }
 
         [Route("all")]

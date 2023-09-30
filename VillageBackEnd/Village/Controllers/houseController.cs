@@ -8,7 +8,7 @@ using Village.Core.ModelsDTO;
 
 namespace Village.Controllers
 {
-    [Route("house")]
+    [Route("api/house")]
     [ApiController]
     [Authorize(Roles = "Resident,Manager")]
     public class HouseController : ControllerBase
