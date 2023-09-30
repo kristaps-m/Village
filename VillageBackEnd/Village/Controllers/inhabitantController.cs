@@ -61,13 +61,13 @@ namespace Village.Controllers
             return isInhabitantFoundAndDeleted;
         }
 
-        [Route("del-inhabitant-apartmentinhabitant/{apartmentId}")]
+        [Route("del-inhabitant-apartmentinhabitant/{inhabitantId}")]
         [HttpDelete]
         [Authorize(Roles = "Manager")]
-        public IActionResult DeleteInhabitantAndApartmentInhabitant(int apartmentId)
+        public IActionResult DeleteInhabitantAndApartmentInhabitant(int inhabitantId)
         {
             var isInhabitanFoundAndDeleted = _inhabitantService
-                .DeleteInhabitanttAndApartmentInhabitant(apartmentId);
+                .DeleteInhabitanttAndApartmentInhabitant(inhabitantId);
 
             return isInhabitanFoundAndDeleted;
         }

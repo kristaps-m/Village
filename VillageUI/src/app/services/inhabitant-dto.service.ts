@@ -65,4 +65,14 @@ export class InhabitantDtoService {
 
     return x;
   }
+
+  public deleteInhabitantAndApartmentInhabitantDTOs(
+    inhabitant: IInhabitantDTO
+  ): Observable<IInhabitantDTO> {
+    let x = this.http.delete<IInhabitantDTO>(
+      `${environment.apiUri}/inhabitant/del-inhabitant-apartmentinhabitant/${inhabitant.id}`
+    );
+
+    return x;
+  }
 }

@@ -42,6 +42,25 @@ export class EditInhabitantComponent {
     );
   }
 
+  // ALERT DOES NOT WORK FOR NOW
+  deleteInhabitantAndApartmentInhabitant(inhabitant: IInhabitantDTO) {
+    this.inhabitantDtoService
+      .deleteInhabitantAndApartmentInhabitantDTOs(inhabitant)
+      .subscribe(
+        (apartment: IInhabitantDTO) => {
+          alert(
+            `ALERT DOES NOT WORK FOR NOW Inhabitant with name '${inhabitant.name}' DELETED successfully!`
+          );
+          this.inhabitantUpdated.emit(apartment);
+        },
+        (error) => {
+          alert(
+            `ALERT DOES NOT WORK FOR NOW Failed to DELETE apartment! Error: ${error.message}`
+          );
+        }
+      );
+  }
+
   deleteInhabitant(inhabitant: IInhabitantDTO) {
     this.inhabitantDtoService
       .deleteInhabitantDTOs(inhabitant)
