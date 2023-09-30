@@ -52,4 +52,17 @@ export class InhabitantDtoService {
 
     return x;
   }
+
+  // Creates 1 Inhabitant, 1 ApartmentInhabitant (with Apartment ID and Inhabitant ID)
+  public createInhabitantInsideApartment(
+    inhabitant: IInhabitantDTO,
+    theApartmentId: number
+  ): Observable<IInhabitantDTO> {
+    let x = this.http.post<IInhabitantDTO>(
+      `${environment.apiUri}/inhabitant/add/apartment?existingApartmentId=${theApartmentId}`,
+      inhabitant
+    );
+
+    return x;
+  }
 }

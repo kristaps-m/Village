@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IInhabitantDTO } from 'src/app/models/InhabitantDTO';
 import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 
@@ -10,8 +11,22 @@ import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 export class EditInhabitantComponent {
   @Input() inhabitant?: IInhabitantDTO;
   @Output() inhabitantUpdated = new EventEmitter<IInhabitantDTO>();
+  theApartmentId: number = 0;
+  isOwner: boolean = false;
 
-  constructor(private inhabitantDtoService: InhabitantDtoService) {}
+  constructor(
+    private inhabitantDtoService: InhabitantDtoService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.theApartmentId = +id;
+      }
+    });
+  }
 
   updateInhabitant(inhabitant: IInhabitantDTO) {
     this.inhabitantDtoService.updateInhabitantDTOs(inhabitant).subscribe(
@@ -41,5 +56,20 @@ export class EditInhabitantComponent {
       .subscribe((inhabitant: IInhabitantDTO) =>
         this.inhabitantUpdated.emit(inhabitant)
       );
+  }
+
+  createInhabitantAndApartmentInhabitant(
+    inhabitant: IInhabitantDTO,
+    theApartmentId: number
+  ) {
+    this.inhabitantDtoService
+      .createInhabitantInsideApartment(inhabitant, theApartmentId)
+      .subscribe((inhabitant: IInhabitantDTO) =>
+        this.inhabitantUpdated.emit(inhabitant)
+      );
+  }
+
+  toggleIsOwner() {
+    this.isOwner = !this.isOwner;
   }
 }

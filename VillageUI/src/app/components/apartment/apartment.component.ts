@@ -3,7 +3,7 @@ import { ApartmentDtoService } from '../../services/apartment-dto.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApartmentDTO } from 'src/app/models/ApartmentDTO';
 import { Observable } from 'rxjs';
-import { IInhabitantDTO } from 'src/app/models/InhabitantDTO';
+import { IInhabitantDTO, InhabitantDTO } from 'src/app/models/InhabitantDTO';
 import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class ApartmentComponent {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
-      
+
       if (id) {
         const apartment = this.ApartmentDtoService.getOneApartment(+id);
         this.oneApartment = apartment;
@@ -38,6 +38,10 @@ export class ApartmentComponent {
         );
       }
     });
+  }
+
+  initNewInhabitant() {
+    this.inhabitantToEdit = new InhabitantDTO();
   }
 
   editApartment(apartment: IApartmentDTO) {
