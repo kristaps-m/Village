@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,13 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   loggedInUserName: string = '';
   userRole: string = '';
+  isUserLogedIn: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.isUserLogedIn = this.authService.IsLoggedIn();
+
     // Retrieve the JWT token from localStorage
     const token = localStorage.getItem('token');
 
@@ -31,10 +34,6 @@ export class AppComponent implements OnInit {
           ];
       }
     }
-    // if (localStorage.getItem('token') == null) {
-    //   this.loggedInUserName = '';
-    //   this.userRole = '';
-    // }
   }
 
   // Function to parse a JWT token

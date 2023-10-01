@@ -7,11 +7,11 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class AuthService {
-  apiurl = `${environment.apiUri}/api/Auth/login`;
+  apiurl = `${environment.apiUri}/Auth/login`;
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   ProceedLogin(UserCred: any) {
-    let x = this.http.post(`${environment.apiUri}/api/Auth/login`, UserCred);
+    let x = this.http.post(`${environment.apiUri}/Auth/login`, UserCred);
     return x;
   }
   IsLoggedIn() {
@@ -22,10 +22,10 @@ export class AuthService {
   }
 
   RegisterUser(inputdata: any) {
-    return this.http.post(`${environment.apiUri}/api/Auth/register`, inputdata);
+    return this.http.post(`${environment.apiUri}/Auth/register`, inputdata);
   }
 
   GetLogedInUserName() {
-    return this.http.get(`${environment.apiUri}/api/Auth`);
+    return this.http.get(`${environment.apiUri}/Auth`);
   }
 }
