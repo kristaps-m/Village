@@ -2,9 +2,10 @@
 
 An ASP.NET Core Web API .NET 6 application which creates local Village API. And uses Angular for front-end.
 
-## :exclamation: To see it live go: https://villageclient.azurewebsites.net/
+## :exclamation: Since 15.12.2023 live version of this application is not available.
+### Live: https://villageclient.azurewebsites.net/
 
-- Created 05.10.2023. Last updated 05.10.2023.
+- Live version was created 05.10.2023. Last updated 05.10.2023. Offline since 15.12.2023
 
 ---
 
