@@ -3,19 +3,18 @@ import Image from "next/image";
 import axios, { isCancel, AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [allHouses, setAllHouses] = useState([]);
+interface IHouse {
+  id: number;
+  number: number;
+  street: string;
+  city: string;
+  country: string;
+  postcode: string;
+}
 
-  // async function getUser() {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://localhost:8080/api/house/all-houses"
-  //     );
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+export default function Home() {
+  const [allHouses, setAllHouses] = useState<IHouse[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,10 +57,54 @@ export default function Home() {
   //     console.error(error);
   //   }
   // });
+  function tableRow(oneHouse: IHouse) {
+    return (
+      <>
+        <td style={{ textAlign: "center" }}>{oneHouse.id}</td>
+        <td style={{ textAlign: "center" }}>{oneHouse.number}</td>
+        <td style={{ textAlign: "center" }}>{oneHouse.street}</td>
+        <td style={{ textAlign: "center" }}>{oneHouse.city}</td>
+        <td style={{ textAlign: "center" }}>{oneHouse.country}</td>
+        <td style={{ textAlign: "center" }}>{oneHouse.postcode}</td>
+      </>
+    );
+  }
 
   return (
     <main>
       <h1>This is next.js frontend for Village application</h1>
+      <table style={{ width: "100%" }}>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Number</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Postcode</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allHouses.map((oneHouse) => {
+            return (
+              // <tr key={oneHouse.id}>
+              //   <td>{oneHouse.id}</td>
+              //   <td>{oneHouse.number}</td>
+              //   <td>{oneHouse.street}</td>
+              //   <td>{oneHouse.city}</td>
+              //   <td>{oneHouse.country}</td>
+              //   <td>{oneHouse.postcode}</td>
+              // </tr>
+              <tr
+                key={oneHouse.id}
+                style={{ border: "solid black 4px", margin: 10 }}
+              >
+                {tableRow(oneHouse)}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </main>
   );
 }
