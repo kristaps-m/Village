@@ -2,6 +2,7 @@
 import Image from "next/image";
 import axios, { isCancel, AxiosError } from "axios";
 import { useEffect, useState } from "react";
+import Apartament from "./apartament";
 
 interface IHouse {
   id: number;
@@ -66,6 +67,13 @@ export default function Home() {
         <td style={{ textAlign: "center" }}>{oneHouse.city}</td>
         <td style={{ textAlign: "center" }}>{oneHouse.country}</td>
         <td style={{ textAlign: "center" }}>{oneHouse.postcode}</td>
+        <td style={{ textAlign: "center" }}>
+          <a href={`/house/${oneHouse.id}`}>
+            <button className="mt-1 px-1 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-full">
+              View
+            </button>
+          </a>
+        </td>
       </>
     );
   }
@@ -82,6 +90,7 @@ export default function Home() {
             <th>City</th>
             <th>Country</th>
             <th>Postcode</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>
@@ -105,6 +114,8 @@ export default function Home() {
           })}
         </tbody>
       </table>
+      <br />
+      {/* <Apartament id={100} /> */}
     </main>
   );
 }
