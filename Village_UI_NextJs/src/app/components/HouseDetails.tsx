@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import AllApartments from "./allSpecialApartments";
 
 interface IHouse {
   id: number;
@@ -20,7 +21,7 @@ const OneHouseDetails = () => {
     const fetchData = async () => {
       try {
         const token =
-          "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoia3Jpc3RhcHMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJNYW5hZ2VyIiwiZXhwIjoxNzA5MjI2Mzk4fQ.uesjJgko9ETBdLmX4NgSlGQyO-NuXrRvEmHhlZQ3Z5lKdCvgsVZT0yOFkk-ghvKBB-qouAoR8qkV3mtNYW-Hpg";
+          "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoic3RyaW5nIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTWFuYWdlciIsImV4cCI6MTcwOTMxOTU0M30.Yripqo8VhGs8K159TqBmS7BwyLFrEN46Np0GuFbYtRVFu1WomEsR19--iickizd0tkC7ditE_pQ1JW14xrSmAA";
         const response = await axios.get(
           `https://localhost:8080/api/house/${houseId}`,
           {
@@ -68,6 +69,9 @@ const OneHouseDetails = () => {
       <h1>{oneHouse?.id}</h1>
       <h1>{oneHouse?.country}</h1>
       <h1>{oneHouse?.postcode}</h1>
+      <br />
+
+      <AllApartments id={oneHouse?.id} />
     </>
   );
 };
