@@ -22,12 +22,13 @@ const OneApartmentDetails = () => {
     const fetchData = async () => {
       try {
         const token =
-          "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoic3RyaW5nIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTWFuYWdlciIsImV4cCI6MTcwOTMxOTU0M30.Yripqo8VhGs8K159TqBmS7BwyLFrEN46Np0GuFbYtRVFu1WomEsR19--iickizd0tkC7ditE_pQ1JW14xrSmAA";
+          "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoic3RyaW5nIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTWFuYWdlciIsImV4cCI6MTcyMDAyNzI0NH0.E5bZGgTDDr57kg5Rjmv6GPcK3-KEj1T85unohz_WGshzpiNELL1nv9xaPGhxhhuwBOmunripcBR0Exx1_hckWw";
+        const locStorToken = localStorage.getItem('amazingToken');
         const response = await axios.get(
           `https://localhost:8080/api/apartment/${apartmentId}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${locStorToken}`,
             },
           }
         );
