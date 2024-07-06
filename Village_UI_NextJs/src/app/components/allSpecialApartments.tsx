@@ -12,23 +12,17 @@ interface IApartment {
   idOfHouse: number;
 }
 
-interface IHouse {
-  id: number;
-  number: number;
-  street: string;
-  city: string;
-  country: string;
-  postcode: string;
-}
-
-export default function AllApartments({ id }: { id: number | undefined }) {
+export default function AllApartmentsFilteredByHouseId({
+  id,
+}: {
+  id: number | undefined;
+}) {
   const [specialApartments, setSpecialApartments] = useState<IApartment[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token =
-          "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoic3RyaW5nIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiTWFuYWdlciIsImV4cCI6MTcyMDAyNzI0NH0.E5bZGgTDDr57kg5Rjmv6GPcK3-KEj1T85unohz_WGshzpiNELL1nv9xaPGhxhhuwBOmunripcBR0Exx1_hckWw";
-        const locStorToken = localStorage.getItem('amazingToken');
+        const token = "";
+        const locStorToken = localStorage.getItem("amazingToken");
         const response = await axios.get(
           `https://localhost:8080/api/apartment/house/${id}`,
           {
@@ -55,10 +49,6 @@ export default function AllApartments({ id }: { id: number | undefined }) {
   return (
     <>
       <h1>Hello these are special Apartaments with House id!!! - {id}</h1>
-      {/* <h1>{specialApartments.id}</h1>
-      <h1>{specialApartments.number}</h1>
-      <h1>{specialApartments.street}</h1>
-      <h1>{specialApartments.city}</h1> */}
       <table style={{ width: "100%" }}>
         <thead>
           <tr>
