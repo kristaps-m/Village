@@ -1,7 +1,14 @@
 "use client";
-import Image from "next/image";
 import axios, { isCancel, AxiosError } from "axios";
 import { useEffect, useState } from "react";
+// ---- Material UI
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 interface IHouse {
   id: number;
@@ -67,11 +74,6 @@ export default function Home() {
     const response = await axios.post(
       "https://localhost:8080/api/Auth/register",
       regData
-      // {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // }
     );
 
     console.log(response);
@@ -87,16 +89,10 @@ export default function Home() {
       password: loginPassword,
       isManager: true,
     } as IRegData;
-    // setRegData(rD);
     console.log(regData);
     const response = await axios.post(
       "https://localhost:8080/api/Auth/login",
       rD
-      // {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // }
     );
 
     console.log(response);
@@ -123,31 +119,24 @@ export default function Home() {
       <br />
       <br />
       <br />
-      <table style={{ width: "100%" }}>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Number</th>
-            <th>Street</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Postcode</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allHouses.map((oneHouse) => {
-            return (
-              <tr
-                key={oneHouse.id}
-                style={{ border: "solid black 4px", margin: 10 }}
-              >
-                {tableRow(oneHouse)}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Id</TableCell>
+              <TableCell align="right">Number</TableCell>
+              <TableCell align="right">Street</TableCell>
+              <TableCell align="right">City</TableCell>
+              <TableCell align="right">Country</TableCell>
+              <TableCell align="right">Post Code</TableCell>
+              <TableCell align="right">Link</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {allHouses.map((oneHouse) => tableRow(oneHouse))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <br />
     </main>
   );
@@ -156,19 +145,27 @@ export default function Home() {
 function tableRow(oneHouse: IHouse) {
   return (
     <>
-      <td style={{ textAlign: "center" }}>{oneHouse?.id}</td>
-      <td style={{ textAlign: "center" }}>{oneHouse?.number}</td>
-      <td style={{ textAlign: "center" }}>{oneHouse?.street}</td>
-      <td style={{ textAlign: "center" }}>{oneHouse?.city}</td>
-      <td style={{ textAlign: "center" }}>{oneHouse?.country}</td>
-      <td style={{ textAlign: "center" }}>{oneHouse?.postcode}</td>
-      <td style={{ textAlign: "center" }}>
-        <a href={`/house/${oneHouse.id}`}>
-          <button className="mt-1 px-1 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-full">
-            View
-          </button>
-        </a>
-      </td>
+      <TableRow
+        key={oneHouse?.id}
+        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+      >
+        <TableCell component="th" scope="row">
+          {oneHouse.id}
+        </TableCell>
+        <TableCell align="right">{oneHouse?.number}</TableCell>
+        <TableCell align="right">{oneHouse?.street}</TableCell>
+        <TableCell align="right">{oneHouse?.city}</TableCell>
+        <TableCell align="right">{oneHouse?.country}</TableCell>
+        <TableCell align="right">{oneHouse?.postcode}</TableCell>
+        <TableCell align="right">
+          {" "}
+          <a href={`/house/${oneHouse.id}`}>
+            <button className="mt-1 px-1 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-full">
+              View
+            </button>
+          </a>
+        </TableCell>
+      </TableRow>
     </>
   );
 }
