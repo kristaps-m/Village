@@ -76,10 +76,11 @@ export default function InhabitantsFilteredByApartmentId({
                 <td>{oneInhabitant.phone}</td>
                 <td>{oneInhabitant.email}</td>
                 <td style={{ textAlign: "center" }}>
-                  <a href={`/inhabitant/${oneInhabitant.id}`}>
-                    <button className="mt-1 px-1 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-full">
-                      View
-                    </button>
+                  <a
+                    href={`/inhabitant/${oneInhabitant.id}`}
+                    className="mt-1 px-1 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded-full"
+                  >
+                    View
                   </a>
                 </td>
               </tr>
