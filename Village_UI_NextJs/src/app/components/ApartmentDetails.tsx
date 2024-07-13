@@ -1,3 +1,4 @@
+import "./../styles/globals.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

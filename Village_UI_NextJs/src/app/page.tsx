@@ -29,6 +29,7 @@ interface IRegData {
 export default function Home() {
   const [allHouses, setAllHouses] = useState<IHouse[]>([]);
   const [loadingForAllHouses, setLFAH] = useState<boolean>(false);
+  const [isManager, setIsManager] = useState<boolean>(false);
   const [isLogedIn, setIsLogedIn] = useState();
 
   useEffect(() => {
@@ -65,12 +66,14 @@ export default function Home() {
       const registerUserName =
         document.getElementById("registerUserName")?.value;
       const regPassword = document.getElementById("regPassword")?.value;
+      // const regIsManager = document.getElementById("registerIsManager")?.value;
       console.log(":)", registerUserName);
       console.log(":)", regPassword);
+      console.log(":)", isManager);
       const rD = {
         username: registerUserName,
         password: regPassword,
-        isManager: true,
+        isManager: isManager,
       } as IRegData;
       const response = await axios.post(
         "https://localhost:8080/api/Auth/register",
@@ -111,18 +114,55 @@ export default function Home() {
   return (
     <main>
       <h1>This is next.js frontend for Village application</h1>
-      <div>
+      <div className="border-2 border-black">
         <h3>Register</h3>
         <h4>UserName</h4> <input type="text" id="registerUserName" />
         <h4>Password</h4> <input type="text" id="regPassword" />
-        <button onClick={registerUser}>register</button>
+        <div className="display flex mt-2">
+          <h4>Are you Manager?</h4>
+          <input
+            type="radio"
+            name="areYouManager"
+            className="ml-3 h-6 w-6"
+            value={`${isManager}`}
+            onChange={() => {
+              setIsManager(true);
+            }}
+          />
+          <label htmlFor="areYouManager" className="ml-2">
+            true
+          </label>
+          <br />
+          <input
+            type="radio"
+            name="areYouManager"
+            className="ml-3 h-6 w-6"
+            value={`${isManager}`}
+            onChange={() => {
+              setIsManager(false);
+            }}
+          />
+          <label htmlFor="areYouManager" className="ml-2">
+            false
+          </label>
+          <br />
+        </div>
+        <button
+          onClick={registerUser}
+          className="bg-blue-200 hover:bg-blue-400"
+        >
+          Press To Register
+        </button>
       </div>
       <br />
       <div>
         <h3>Login</h3>
         <h4>UserName</h4> <input type="text" id="loginUserName" />
         <h4>Password</h4> <input type="text" id="loginPassword" />
-        <button onClick={loginUser}>login</button>
+        <br />
+        <button onClick={loginUser} className="bg-green-200 hover:bg-green-400">
+          login
+        </button>
         <br />
       </div>
       <button onClick={() => console.log(localStorage)}>
@@ -180,7 +220,6 @@ function tableRow(oneHouse: IHouse) {
       <TableCell align="right">{oneHouse?.country}</TableCell>
       <TableCell align="right">{oneHouse?.postcode}</TableCell>
       <TableCell align="right">
-        {" "}
         <a
           href={`/house/${oneHouse.id}`}
           className="mt-1 px-1 py-1 bg-blue-400 hover:bg-blue-700 text-white rounded-full"
