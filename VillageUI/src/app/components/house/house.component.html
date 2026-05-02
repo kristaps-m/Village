@@ -1,117 +1,126 @@
-<table class="table table-striped" *ngIf="oneHouse | async as house">
-  <thead>
-    <tr>
-      <th scope="col">THE HOUSE</th>
-      <th scope="col">EDIT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApartmentInsideHouse"
-          (click)="initNewApartment()">
-          Add apartment to this house
-        </button>
-        
-        <!-- createApartmentInsideHouse Modal Window-->
-        <div class="modal fade" id="createApartmentInsideHouse" tabindex="-1" aria-labelledby="createApartmentInsideHouseLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="createApartmentInsideHouseLabel">New Apartment Creation Window</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <app-edit-apartment [apartment]="apartmentToEdit" (apartmentUpdated)="updateOneApartment($event)"></app-edit-apartment>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+@if (oneHouse | async; as house) {
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">THE HOUSE</th>
+        <th scope="col">EDIT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createApartmentInsideHouse"
+            (click)="initNewApartment()">
+            Add apartment to this house
+          </button>
+          <!-- createApartmentInsideHouse Modal Window-->
+          <div class="modal fade" id="createApartmentInsideHouse" tabindex="-1" aria-labelledby="createApartmentInsideHouseLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="createApartmentInsideHouseLabel">New Apartment Creation Window</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <app-edit-apartment [apartment]="apartmentToEdit" (apartmentUpdated)="updateOneApartment($event)"></app-edit-apartment>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="card mb-3" style="max-width: 540px;">
-          <style>
-            hr.rounded {
+          <div class="card mb-3" style="max-width: 540px;">
+            <style>
+              hr.rounded {
               border-top: 8px solid #918a8a;
               border-radius: 5px;
             }
-          </style>        
+          </style>
           <div class="row g-0">
             <div class="col-md-4">
               <img src="https://fastly.picsum.photos/id/78/1584/2376.jpg?hmac=80UVSwpa9Nfcq7sQ5kxb9Z5sD2oLsbd5zkFO5ybMC4E"
                 class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">ID:</p>
-                <h5 class="card-title">{{house.id}}</h5>
-                <hr class="rounded">
-                <p class="card-text">Number:</p>
-                <h5 class="card-title">{{house.number}}</h5>
-                <hr class="dotted">
-                <p class="card-text">Street:</p>
-                <h5 class="card-title">{{house.street}}</h5>
-                <hr class="dotted">
-                <p class="card-text">City:</p>
-                <h5 class="card-title">{{house.city}}</h5>
-                <hr class="dotted">
-                <p class="card-text">Country:</p>
-                <h5 class="card-title">{{house.country}}</h5>
-                <hr class="dotted">
-                <p class="card-text">Postcode:</p>
-                <h5 class="card-title">{{house.postcode}}</h5>
-                <hr class="rounded">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <p class="card-text">ID:</p>
+                  <h5 class="card-title">{{house.id}}</h5>
+                  <hr class="rounded">
+                  <p class="card-text">Number:</p>
+                  <h5 class="card-title">{{house.number}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Street:</p>
+                  <h5 class="card-title">{{house.street}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">City:</p>
+                  <h5 class="card-title">{{house.city}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Country:</p>
+                  <h5 class="card-title">{{house.country}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Postcode:</p>
+                  <h5 class="card-title">{{house.postcode}}</h5>
+                  <hr class="rounded">
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-
-      </td>
-      <td>Click 'Edit House' to edit House <b>{{house.id}}</b>
+        </td>
+        <td>Click 'Edit House' to edit House <b>{{house.id}}</b>
         <br>
-        <button *ngIf="!showMeEdit" (click)="editHouse(house)" (click)="toggleShowMeEdit()" type="button"
-          class="btn btn-primary">'Edit House'</button>
-        <button *ngIf="showMeEdit" (click)="toggleShowMeEdit()" type="button" class="btn btn-success">Cancel 'Edit'</button>
-        <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)" *ngIf="showMeEdit"></app-edit-house>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          @if (!showMeEdit) {
+            <button (click)="editHouse(house)" (click)="toggleShowMeEdit()" type="button"
+            class="btn btn-primary">'Edit House'</button>
+          }
+          @if (showMeEdit) {
+            <button (click)="toggleShowMeEdit()" type="button" class="btn btn-success">Cancel 'Edit'</button>
+          }
+          @if (showMeEdit) {
+            <app-edit-house [house]="houseToEdit" (homeUpdated)="updateOneHouse($event)"></app-edit-house>
+          }
+        </td>
+      </tr>
+    </tbody>
+  </table>
+}
 
-<h1 class="modal-title fs-5" *ngIf="apartmentDTOsByHouseId.length">List of apartments!</h1>
-<table class="table table-striped" *ngIf="apartmentDTOsByHouseId.length">  
-  <thead>
-    <tr>
-      <th scope="col">#</th> <!--INDEX-->
-      <th scope="col">Backend ID</th>
-      <th scope="col">Number</th>
-      <th scope="col">Floor</th>
-      <th scope="col">Number Of Rooms</th>
-      <th scope="col">Population</th>
-      <th scope="col">Full Area</th>
-      <th scope="col">Living Space</th>
-      <th scope="col">Id Of House</th>
-      <th scope="col">Navigation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let apartment of apartmentDTOsByHouseId; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ apartment.id}}</td>
-      <td>{{ apartment.number}}</td>
-      <td>{{ apartment.floor }}</td>
-      <td>{{ apartment.numberOfRooms }}</td>
-      <td>{{ apartment.population }}</td>
-      <td>{{ apartment.fullArea }}</td>
-      <td>{{ apartment.livingSpace }}</td>
-      <td>{{ apartment.idOfHouse }}</td>
-      <td><button [routerLink]="['/apartment',apartment.id]">Go to apartment {{apartment.id}} page</button></td>
-    </tr>
-  </tbody>
-</table>
+@if (apartmentDTOsByHouseId.length) {
+  <h1 class="modal-title fs-5">List of apartments!</h1>
+}
+@if (apartmentDTOsByHouseId.length) {
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th> <!--INDEX-->
+        <th scope="col">Backend ID</th>
+        <th scope="col">Number</th>
+        <th scope="col">Floor</th>
+        <th scope="col">Number Of Rooms</th>
+        <th scope="col">Population</th>
+        <th scope="col">Full Area</th>
+        <th scope="col">Living Space</th>
+        <th scope="col">Id Of House</th>
+        <th scope="col">Navigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (apartment of apartmentDTOsByHouseId; track apartment; let i = $index) {
+        <tr>
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ apartment.id}}</td>
+          <td>{{ apartment.number}}</td>
+          <td>{{ apartment.floor }}</td>
+          <td>{{ apartment.numberOfRooms }}</td>
+          <td>{{ apartment.population }}</td>
+          <td>{{ apartment.fullArea }}</td>
+          <td>{{ apartment.livingSpace }}</td>
+          <td>{{ apartment.idOfHouse }}</td>
+          <td><button [routerLink]="['/apartment',apartment.id]">Go to apartment {{apartment.id}} page</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

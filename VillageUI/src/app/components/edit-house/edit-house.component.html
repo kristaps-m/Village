@@ -1,43 +1,51 @@
-<div *ngIf="house">
-  <!-- <h2>{{house.id}}</h2> -->
-  <h2>{{house.number}}</h2>
+@if (house) {
   <div>
-    Number:
-      <input [(ngModel)]="house.number" placeholder="Number"/>
-  </div>
-  <div>
-    Street:
-    <input [(ngModel)]="house.street" placeholder="Street" />
-  </div>
-  <div>
-    City:
-    <input [(ngModel)]="house.city" placeholder="City" />
-  </div>
-  <div>
-    Country:
-    <input [(ngModel)]="house.country" placeholder="Country" />
-  </div>
-  <div>
-    Postcode:
-    <input [(ngModel)]="house.postcode" placeholder="Postcode" />
-  </div>
-  <span style="display: flex; justify-content: space-between">
-  <button type="button" class="btn btn-primary" (click)="updateHouse(house)" *ngIf="house.id">Save changes</button>
-  <button type="button" class="btn btn-outline-success" (click)="createHouse(house)" *ngIf="!house.id">Create</button>
-  <dialog #deleteButton>
+    <!-- <h2>{{house.id}}</h2> -->
+    <h2>{{house.number}}</h2>
     <div>
-      Are you sure you want to delete house {{house.id}}
+      Number:
+      <input [(ngModel)]="house.number" placeholder="Number"/>
+    </div>
+    <div>
+      Street:
+      <input [(ngModel)]="house.street" placeholder="Street" />
+    </div>
+    <div>
+      City:
+      <input [(ngModel)]="house.city" placeholder="City" />
+    </div>
+    <div>
+      Country:
+      <input [(ngModel)]="house.country" placeholder="Country" />
+    </div>
+    <div>
+      Postcode:
+      <input [(ngModel)]="house.postcode" placeholder="Postcode" />
     </div>
     <span style="display: flex; justify-content: space-between">
-      <button (click)="deleteButton.close()" class="btn btn-success">
-        CANCEL
-      </button>
-      <button (click)="deleteHouse(house)" *ngIf="house.id" (click)="deleteButton.close()"
-        class="btn btn-danger">Delete</button>
+      @if (house.id) {
+        <button type="button" class="btn btn-primary" (click)="updateHouse(house)">Save changes</button>
+      }
+      @if (!house.id) {
+        <button type="button" class="btn btn-outline-success" (click)="createHouse(house)">Create</button>
+      }
+      <dialog #deleteButton>
+        <div>
+          Are you sure you want to delete house {{house.id}}
+        </div>
+        <span style="display: flex; justify-content: space-between">
+          <button (click)="deleteButton.close()" class="btn btn-success">
+            CANCEL
+          </button>
+          @if (house.id) {
+            <button (click)="deleteHouse(house)" (click)="deleteButton.close()"
+            class="btn btn-danger">Delete</button>
+          }
+        </span>
+      </dialog>
+      @if (house.id) {
+        <button (click)="deleteButton.show()" class="btn btn-warning">Del House</button>
+      }
     </span>
-  
-  </dialog>
-  <button (click)="deleteButton.show()" class="btn btn-warning" *ngIf="house.id">Del House</button>
-  </span>
-  
-</div>
+  </div>
+}
