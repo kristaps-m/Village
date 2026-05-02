@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "VillageUI:build:production"
+              "buildTarget": "VillageUI:build:production"
             },
             "development": {
-              "browserTarget": "VillageUI:build:development"
+              "buildTarget": "VillageUI:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "VillageUI:build"
+            "buildTarget": "VillageUI:build"
           }
         },
         "test": {
