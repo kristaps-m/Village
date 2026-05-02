@@ -4,9 +4,10 @@ import { HouseDTOService } from '../../services/house-dto.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-all-houses',
-  templateUrl: './all-houses.component.html',
-  styleUrls: ['./all-houses.component.css'],
+    selector: 'app-all-houses',
+    templateUrl: './all-houses.component.html',
+    styleUrls: ['./all-houses.component.css'],
+    standalone: false
 })
 export class AllHousesComponent {
   title = 'VillageUI';

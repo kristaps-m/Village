@@ -4,9 +4,10 @@ import { IInhabitantDTO } from 'src/app/models/InhabitantDTO';
 import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 
 @Component({
-  selector: 'app-edit-inhabitant',
-  templateUrl: './edit-inhabitant.component.html',
-  styleUrls: ['./edit-inhabitant.component.css'],
+    selector: 'app-edit-inhabitant',
+    templateUrl: './edit-inhabitant.component.html',
+    styleUrls: ['./edit-inhabitant.component.css'],
+    standalone: false
 })
 export class EditInhabitantComponent {
   @Input() inhabitant?: IInhabitantDTO;
