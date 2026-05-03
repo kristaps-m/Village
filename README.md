@@ -8,6 +8,9 @@ An ASP.NET Core Web API .NET 6 application which creates local Village API. And 
 - Live version was created 05.10.2023. Last updated 05.10.2023. Offline since 15.12.2023
 
 ---
+```
+In May of 2026 application updated from Angular 15 to 21 and dot NET 6 to dot NET 8.
+```
 
 To run it locally follow steps below.
 
@@ -79,7 +82,7 @@ https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 Node Js Latest LTS Version<br>
 https://nodejs.org/en/download/
 
-.NET 6.0 <br>
+.NET 8.0 <br>
 https://dotnet.microsoft.com/en-us/download
 
 Angular <br>
