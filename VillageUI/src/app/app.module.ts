@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditHouseComponent } from './components/edit-house/edit-house.component';
@@ -21,38 +21,32 @@ import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AboutComponent } from './components/about/about.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    EditHouseComponent,
-    HouseComponent,
-    AllHousesComponent,
-    AllApartmentsComponent,
-    ApartmentComponent,
-    EditApartmentComponent,
-    EditInhabitantComponent,
-    RegisterComponent,
-    LoginComponent,
-    AboutComponent,
-  ], // ModalComponent
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot(),
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        EditHouseComponent,
+        HouseComponent,
+        AllHousesComponent,
+        AllApartmentsComponent,
+        ApartmentComponent,
+        EditApartmentComponent,
+        EditInhabitantComponent,
+        RegisterComponent,
+        LoginComponent,
+        AboutComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        NgbModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        ToastrModule.forRoot()], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptorService,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}

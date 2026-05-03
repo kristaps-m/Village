@@ -9,9 +9,10 @@ import { ApartmentDTO, IApartmentDTO } from 'src/app/models/ApartmentDTO';
 import { ApartmentDtoService } from '../../services/apartment-dto.service';
 
 @Component({
-  selector: 'app-house',
-  templateUrl: './house.component.html',
-  styleUrls: ['./house.component.css'],
+    selector: 'app-house',
+    templateUrl: './house.component.html',
+    styleUrls: ['./house.component.css'],
+    standalone: false
 })
 export class HouseComponent implements OnInit {
   oneHouse: Observable<HouseDTO> | undefined;

@@ -8,6 +8,9 @@ An ASP.NET Core Web API .NET 6 application which creates local Village API. And 
 - Live version was created 05.10.2023. Last updated 05.10.2023. Offline since 15.12.2023
 
 ---
+```
+In May of 2026 application updated from Angular 15 to 21 and dot NET 6 to dot NET 8.
+```
 
 To run it locally follow steps below.
 
@@ -39,7 +42,6 @@ To run it locally follow steps below.
   - Or you can use Postman [https://www.postman.com/product/what-is-postman/](https://www.postman.com/product/what-is-postman/) for CRUD operations.
 
 4. To use front end. Go to repository "Village\VillageUI" open terminal window or powershell and type 'ng serve'
-
 - Now go to http://localhost:4200 and it will redirect you to http://localhost:4200/all-houses
 
 5. You need to enter username and pasword if you registred using swagger or postman. Or you can do that in front end. Now you should be able to see two default houses. You can create a new house or navigate further to one of houses.
@@ -80,13 +82,15 @@ https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 Node Js Latest LTS Version<br>
 https://nodejs.org/en/download/
 
-.NET 6.0 <br>
+.NET 8.0 <br>
 https://dotnet.microsoft.com/en-us/download
 
 Angular <br>
 https://angular.io/guide/setup-local <br>
 
 [blog.angular-university.io](https://blog.angular-university.io/getting-started-with-angular-setup-a-development-environment-with-yarn-the-angular-cli-setup-an-ide/)
+
+- npm install -g @angular/cli
 
 ### To run your program:
 

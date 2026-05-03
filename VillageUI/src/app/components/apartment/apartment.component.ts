@@ -7,9 +7,10 @@ import { IInhabitantDTO, InhabitantDTO } from 'src/app/models/InhabitantDTO';
 import { InhabitantDtoService } from 'src/app/services/inhabitant-dto.service';
 
 @Component({
-  selector: 'app-apartment',
-  templateUrl: './apartment.component.html',
-  styleUrls: ['./apartment.component.css'],
+    selector: 'app-apartment',
+    templateUrl: './apartment.component.html',
+    styleUrls: ['./apartment.component.css'],
+    standalone: false
 })
 export class ApartmentComponent {
   oneApartment: Observable<IApartmentDTO> | undefined;

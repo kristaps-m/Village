@@ -44,7 +44,7 @@ namespace Village.Services.Services
             return NotFound();
         }
 
-        public Inhabitant UpdateInhabitant(Inhabitant inhabitant, int id)
+        public Inhabitant? UpdateInhabitant(Inhabitant inhabitant, int id)
         {
             var inhabitantToUpdate = _context.Inhabitants.SingleOrDefault(i => i.Id == id);
 

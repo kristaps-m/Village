@@ -6,9 +6,10 @@ import { ApartmentDtoService } from 'src/app/services/apartment-dto.service';
 import { HouseApartmentService } from 'src/app/services/house-apartment.service';
 
 @Component({
-  selector: 'app-edit-apartment',
-  templateUrl: './edit-apartment.component.html',
-  styleUrls: ['./edit-apartment.component.css'],
+    selector: 'app-edit-apartment',
+    templateUrl: './edit-apartment.component.html',
+    styleUrls: ['./edit-apartment.component.css'],
+    standalone: false
 })
 export class EditApartmentComponent {
   @Input() apartment?: IApartmentDTO;

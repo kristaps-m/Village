@@ -1,58 +1,65 @@
-<div *ngIf="inhabitant">
+@if (inhabitant) {
   <div>
-    Name:
-    <input [(ngModel)]="inhabitant.name" placeholder="Name" />
-  </div>
-  <div>
-    Last name:
-    <input [(ngModel)]="inhabitant.lastname" placeholder="Last name" />
-  </div>
-  <div>
-    Personal Code:
-    <input [(ngModel)]="inhabitant.personalCode" placeholder="Personal Code" />
-  </div>
-  <div>
-    Date Of Birth: <p style="font-size: 9px;">( yyyy-mm-dd )</p>
-    <input [(ngModel)]="inhabitant.dateOfBirth" placeholder="Date Of Birth" />
-  </div>
-  <div>
-    Phone Nr:
-    <input [(ngModel)]="inhabitant.phone" placeholder="Phone Nr" />
-  </div>
-  <div>
-    Email:
-    <input [(ngModel)]="inhabitant.email" placeholder="Email" />
-  </div>
+    <div>
+      Name:
+      <input [(ngModel)]="inhabitant.name" placeholder="Name" />
+    </div>
+    <div>
+      Last name:
+      <input [(ngModel)]="inhabitant.lastname" placeholder="Last name" />
+    </div>
+    <div>
+      Personal Code:
+      <input [(ngModel)]="inhabitant.personalCode" placeholder="Personal Code" />
+    </div>
+    <div>
+      Date Of Birth: <p style="font-size: 9px;">( yyyy-mm-dd )</p>
+      <input [(ngModel)]="inhabitant.dateOfBirth" placeholder="Date Of Birth" />
+    </div>
+    <div>
+      Phone Nr:
+      <input [(ngModel)]="inhabitant.phone" placeholder="Phone Nr" />
+    </div>
+    <div>
+      Email:
+      <input [(ngModel)]="inhabitant.email" placeholder="Email" />
+    </div>
     <div>
       Id Of Apartment:
       <input [(ngModel)]="inhabitant.idOfApartment" placeholder="Id Of Apartment" />
     </div>
     <!-- <div>
-      Is Owner:
-      <input [(ngModel)]="inhabitant.isOwner" placeholder="Is Owner" />
-    </div> -->
-    <div>
-      Is Owner: 
-      <input type="checkbox" [(ngModel)]="inhabitant.isOwner" (change)="toggleIsOwner()" />
-      {{isOwner}}
-    </div>
+    Is Owner:
+    <input [(ngModel)]="inhabitant.isOwner" placeholder="Is Owner" />
+  </div> -->
+  <div>
+    Is Owner:
+    <input type="checkbox" [(ngModel)]="inhabitant.isOwner" (change)="toggleIsOwner()" />
+    {{isOwner}}
+  </div>
   <span style="display: flex; justify-content: space-between">
-  <button type="button" class="btn btn-primary" (click)="updateInhabitant(inhabitant)" *ngIf="inhabitant.id">Save changes</button>
-  <button *ngIf="theApartmentId && !inhabitant.id" type="button" class="btn btn-outline-success"
-    (click)="createInhabitantAndApartmentInhabitant(inhabitant, theApartmentId)">Create</button>
-  <dialog #deleteButton>
-    <div>
-      Are you sure you want to delete Inhabitant {{inhabitant.name}}
-    </div>
-    <span style="display: flex; justify-content: space-between">
-      <button (click)="deleteButton.close()" class="btn btn-success">
-        CANCEL
-      </button>
-      <button (click)="deleteInhabitantAndApartmentInhabitant(inhabitant)" *ngIf="inhabitant.id" (click)="deleteButton.close()"
-        class="btn btn-danger">Delete</button>
-    </span>
-
-  </dialog>
-  <button (click)="deleteButton.show()" class="btn btn-warning">Del inhabitant</button>
+    @if (inhabitant.id) {
+      <button type="button" class="btn btn-primary" (click)="updateInhabitant(inhabitant)">Save changes</button>
+    }
+    @if (theApartmentId && !inhabitant.id) {
+      <button type="button" class="btn btn-outline-success"
+      (click)="createInhabitantAndApartmentInhabitant(inhabitant, theApartmentId)">Create</button>
+    }
+    <dialog #deleteButton>
+      <div>
+        Are you sure you want to delete Inhabitant {{inhabitant.name}}
+      </div>
+      <span style="display: flex; justify-content: space-between">
+        <button (click)="deleteButton.close()" class="btn btn-success">
+          CANCEL
+        </button>
+        @if (inhabitant.id) {
+          <button (click)="deleteInhabitantAndApartmentInhabitant(inhabitant)" (click)="deleteButton.close()"
+          class="btn btn-danger">Delete</button>
+        }
+      </span>
+    </dialog>
+    <button (click)="deleteButton.show()" class="btn btn-warning">Del inhabitant</button>
   </span>
 </div>
+}

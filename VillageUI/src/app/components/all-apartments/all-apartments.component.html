@@ -15,17 +15,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let house of apartmentDTOs; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ house.id}}</td>
-      <td>{{ house.number}}</td>
-      <td>{{ house.floor }}</td>
-      <td>{{ house.numberOfRooms }}</td>
-      <td>{{ house.population }}</td>
-      <td>{{ house.fullArea }}</td>
-      <td>{{ house.livingSpace }}</td>
-      <td>{{ house.idOfHouse }}</td>      
-    </tr>
+    @for (house of apartmentDTOs; track house; let i = $index) {
+      <tr>
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ house.id}}</td>
+        <td>{{ house.number}}</td>
+        <td>{{ house.floor }}</td>
+        <td>{{ house.numberOfRooms }}</td>
+        <td>{{ house.population }}</td>
+        <td>{{ house.fullArea }}</td>
+        <td>{{ house.livingSpace }}</td>
+        <td>{{ house.idOfHouse }}</td>
+      </tr>
+    }
   </tbody>
 </table>
 <!--  -->
@@ -38,11 +40,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let HA of houseApartments">
-      <td>{{HA.id}}</td>
-      <td>{{HA.houseId}}</td>
-      <td>{{HA.apartmentId}}</td>
-    </tr>
+    @for (HA of houseApartments; track HA) {
+      <tr>
+        <td>{{HA.id}}</td>
+        <td>{{HA.houseId}}</td>
+        <td>{{HA.apartmentId}}</td>
+      </tr>
+    }
   </tbody>
 </table>
 <!-- <router-outlet name="secondary"></router-outlet> -->

@@ -12,7 +12,7 @@ namespace Village.Core.Interfaces
 
         List<T> GetAll();
 
-        T GetById(int id);
+        T? GetById(int id);
 
         IQueryable<T> Query();
     }

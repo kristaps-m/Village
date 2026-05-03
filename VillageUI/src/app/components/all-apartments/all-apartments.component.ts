@@ -6,9 +6,10 @@ import { HouseApartmentService } from '../../services/house-apartment.service';
 import { IHouseApartment } from 'src/app/models/HouseApartment';
 
 @Component({
-  selector: 'app-all-apartments',
-  templateUrl: './all-apartments.component.html',
-  styleUrls: ['./all-apartments.component.css'],
+    selector: 'app-all-apartments',
+    templateUrl: './all-apartments.component.html',
+    styleUrls: ['./all-apartments.component.css'],
+    standalone: false
 })
 export class AllApartmentsComponent {
   apartmentDTOs: IApartmentDTO[] = [];

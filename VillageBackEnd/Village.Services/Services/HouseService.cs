@@ -11,7 +11,7 @@ namespace Village.Services.Services
         {
         }
 
-        public House UpdateHouse(House house, int id)
+        public House? UpdateHouse(House house, int id)
         {
             var houseToUpdate = _context.Houses.SingleOrDefault(h => h.Id == id);
 

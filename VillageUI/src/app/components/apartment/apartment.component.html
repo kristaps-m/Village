@@ -1,163 +1,170 @@
-<table class="table table-striped" *ngIf="oneApartment | async as apartment">
-  <thead>
-    <tr>
-      <th scope="col">THE APARTMENT</th>
-      <th scope="col">EDIT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createInhabitanttInsideApartmen"
-  (click)="initNewInhabitant()">
-  Add inhabitant to this apartment
-</button>
-
-<!-- createInhabitanttInsideApartmen Modal Window-->
-<div class="modal fade" id="createInhabitanttInsideApartmen" tabindex="-1" aria-labelledby="createInhabitanttInsideApartmenLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="createInhabitanttInsideApartmenLabel">New Inhabitant Creation Window</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <app-edit-inhabitant [inhabitant]="inhabitantToEdit"
-          (inhabitantUpdated)="updateOneInhabitant($event)"></app-edit-inhabitant>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="card mb-3" style="max-width: 540px;">
-  <style>
-    hr.rounded {
-      border-top: 8px solid #918a8a;
-      border-radius: 5px;
-    }
-  </style>
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://fastly.picsum.photos/id/42/300/200.jpg?hmac=y6dQJIPB8Wbe_CL1ELgBFAfR193MTSY5pujsizf1-ow"
-        class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <!-- Original 2 buttons for testing -->
-        <!-- <button (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button" class="btn btn-primary">Edit Apartment</button>
-        <button (click)="showBoolean()" type="button" class="btn btn-danger">showMeEdit</button> -->
-        <p class="card-text">ID:</p>
-        <h5 class="card-title">{{apartment.id}}</h5>
-        <hr class="rounded">
-        <p class="card-text">Number:</p>
-        <h5 class="card-title">{{apartment.number}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Floor:</p>
-        <h5 class="card-title">{{apartment.floor}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Number Of Rooms:</p>
-        <h5 class="card-title">{{apartment.numberOfRooms}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Population:</p>
-        <h5 class="card-title">{{apartment.population}}</h5>
-        <hr class="dotted">
-        <p class="card-text">Living Space:</p>
-        <h5 class="card-title">{{apartment.livingSpace}}</h5>
-        <hr class="rounded">
-        <!-- <p class="card-text">Full Area:</p>
-        <h5 class="card-title">{{apartment.fullArea}}</h5>
-        <hr class="rounded"> -->
-      </div>
-    </div>
-  </div>
-</div>
-      </td>
-      <td>Click 'Edit Apartment' to edit Apartment: <b>{{apartment.id}}</b>
-        <br>
-        <button *ngIf="!showMeEdit" (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button"
-          class="btn btn-primary">'Edit Apartment'</button>
-        <button *ngIf="showMeEdit" (click)="toggleShowMeEdit()" type="button" class="btn btn-success">Cancel 'Edit'</button>
-
-        <app-edit-apartment 
-        [apartment]="apartmentToEdit"
-        (apartmentUpdated)="updateOneApartment($event)" 
-        *ngIf="showMeEdit"></app-edit-apartment>
-      </td>
-      <br>
-      <!-- <td *ngIf="oneApartment | async as apartment">TEST
-        
-        <button (click)="editApartment(apartment)"
-        *ngIf="oneApartment | async as apartment"
-         (click)="toggleShowMeEdit()" type="button"
-          class="btn btn-primary"> {{ showMeEdit === false ? 'Edit Apartment' : 'Cancel' }}</button>
-      </td> -->
-      <!-- <td>{{ house.country }}</td>
-        <td>{{ house.postcode }}</td> -->
-    </tr>
-  </tbody>
-</table>
-<!-- Inhabitants -->
-<h1 class="modal-title fs-5" *ngIf="inhabitantDTOsByApartmentId.length">List of inhabitants!</h1>
-<table class="table table-striped" *ngIf="inhabitantDTOsByApartmentId.length">
-  <thead>
-    <tr>
-      <th scope="col">#</th> <!--INDEX-->      
-      <th scope="col" style="font-size: 9px;">Backend ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Lastname</th>
-      <th scope="col">Personal Code</th>
-      <th scope="col">Date Of Birth<p style="font-size: 9px;">dd/mm/yyyy</p></th>
-      <th scope="col">Phone Nr</th>
-      <th scope="col">Email</th>
-      <!-- <th scope="col">Id Of Apartment</th> -->
-      <th scope="col">Is Owner</th>
-      <th scope="col">.</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let inhabitant of inhabitantDTOsByApartmentId; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ inhabitant.id}}</td>
-      <td>{{ inhabitant.name}}</td>
-      <td>{{ inhabitant.lastname }}</td>
-      <td>{{ inhabitant.personalCode }}</td>
-      <td>{{ inhabitant.dateOfBirth | date:'dd/MM/yyyy'}}</td>
-      <td>{{ inhabitant.phone }}</td>
-      <td>{{ inhabitant.email }}</td>
-      <!-- <td>{{ inhabitant.idOfApartment }}</td> -->
-      <td>{{ inhabitant.isOwner }}</td>
-      <td>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editInhabitant(inhabitant)">
-          Edit Inhabitant
-        </button>
-
-        <!-- Modal Window -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit page!</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-
-                <app-edit-inhabitant [inhabitant]="inhabitantToEdit"
+@if (oneApartment | async; as apartment) {
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">THE APARTMENT</th>
+        <th scope="col">EDIT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createInhabitanttInsideApartmen"
+            (click)="initNewInhabitant()">
+            Add inhabitant to this apartment
+          </button>
+          <!-- createInhabitanttInsideApartmen Modal Window-->
+          <div class="modal fade" id="createInhabitanttInsideApartmen" tabindex="-1" aria-labelledby="createInhabitanttInsideApartmenLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="createInhabitanttInsideApartmenLabel">New Inhabitant Creation Window</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <app-edit-inhabitant [inhabitant]="inhabitantToEdit"
                   (inhabitantUpdated)="updateOneInhabitant($event)"></app-edit-inhabitant>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close edit page</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
               </div>
             </div>
           </div>
-        </div>        
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <div class="card mb-3" style="max-width: 540px;">
+            <style>
+              hr.rounded {
+              border-top: 8px solid #918a8a;
+              border-radius: 5px;
+            }
+          </style>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://fastly.picsum.photos/id/42/300/200.jpg?hmac=y6dQJIPB8Wbe_CL1ELgBFAfR193MTSY5pujsizf1-ow"
+                class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <!-- Original 2 buttons for testing -->
+                  <!-- <button (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button" class="btn btn-primary">Edit Apartment</button>
+                  <button (click)="showBoolean()" type="button" class="btn btn-danger">showMeEdit</button> -->
+                  <p class="card-text">ID:</p>
+                  <h5 class="card-title">{{apartment.id}}</h5>
+                  <hr class="rounded">
+                  <p class="card-text">Number:</p>
+                  <h5 class="card-title">{{apartment.number}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Floor:</p>
+                  <h5 class="card-title">{{apartment.floor}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Number Of Rooms:</p>
+                  <h5 class="card-title">{{apartment.numberOfRooms}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Population:</p>
+                  <h5 class="card-title">{{apartment.population}}</h5>
+                  <hr class="dotted">
+                  <p class="card-text">Living Space:</p>
+                  <h5 class="card-title">{{apartment.livingSpace}}</h5>
+                  <hr class="rounded">
+                  <!-- <p class="card-text">Full Area:</p>
+                  <h5 class="card-title">{{apartment.fullArea}}</h5>
+                  <hr class="rounded"> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>Click 'Edit Apartment' to edit Apartment: <b>{{apartment.id}}</b>
+        <br>
+          @if (!showMeEdit) {
+            <button (click)="editApartment(apartment)" (click)="toggleShowMeEdit()" type="button"
+            class="btn btn-primary">'Edit Apartment'</button>
+          }
+          @if (showMeEdit) {
+            <button (click)="toggleShowMeEdit()" type="button" class="btn btn-success">Cancel 'Edit'</button>
+          }
+          @if (showMeEdit) {
+            <app-edit-apartment
+              [apartment]="apartmentToEdit"
+              (apartmentUpdated)="updateOneApartment($event)"
+            ></app-edit-apartment>
+          }
+        </td>
+        <br>
+          <!-- <td *ngIf="oneApartment | async as apartment">TEST
+          <button (click)="editApartment(apartment)"
+            *ngIf="oneApartment | async as apartment"
+            (click)="toggleShowMeEdit()" type="button"
+          class="btn btn-primary"> {{ showMeEdit === false ? 'Edit Apartment' : 'Cancel' }}</button>
+        </td> -->
+        <!-- <td>{{ house.country }}</td>
+        <td>{{ house.postcode }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+}
+<!-- Inhabitants -->
+@if (inhabitantDTOsByApartmentId.length) {
+  <h1 class="modal-title fs-5">List of inhabitants!</h1>
+}
+@if (inhabitantDTOsByApartmentId.length) {
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th> <!--INDEX-->
+        <th scope="col" style="font-size: 9px;">Backend ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Personal Code</th>
+        <th scope="col">Date Of Birth<p style="font-size: 9px;">dd/mm/yyyy</p></th>
+        <th scope="col">Phone Nr</th>
+        <th scope="col">Email</th>
+        <!-- <th scope="col">Id Of Apartment</th> -->
+        <th scope="col">Is Owner</th>
+        <th scope="col">.</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (inhabitant of inhabitantDTOsByApartmentId; track inhabitant; let i = $index) {
+        <tr>
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ inhabitant.id}}</td>
+          <td>{{ inhabitant.name}}</td>
+          <td>{{ inhabitant.lastname }}</td>
+          <td>{{ inhabitant.personalCode }}</td>
+          <td>{{ inhabitant.dateOfBirth | date:'dd/MM/yyyy'}}</td>
+          <td>{{ inhabitant.phone }}</td>
+          <td>{{ inhabitant.email }}</td>
+          <!-- <td>{{ inhabitant.idOfApartment }}</td> -->
+          <td>{{ inhabitant.isOwner }}</td>
+          <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editInhabitant(inhabitant)">
+              Edit Inhabitant
+            </button>
+            <!-- Modal Window -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit page!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <app-edit-inhabitant [inhabitant]="inhabitantToEdit"
+                    (inhabitantUpdated)="updateOneInhabitant($event)"></app-edit-inhabitant>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close edit page</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

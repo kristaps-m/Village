@@ -3,9 +3,10 @@ import { HouseDTO, IHouseDTO } from 'src/app/models/HouseDTO';
 import { HouseDTOService } from 'src/app/services/house-dto.service';
 
 @Component({
-  selector: 'app-edit-house',
-  templateUrl: './edit-house.component.html',
-  styleUrls: ['./edit-house.component.css'],
+    selector: 'app-edit-house',
+    templateUrl: './edit-house.component.html',
+    styleUrls: ['./edit-house.component.css'],
+    standalone: false
 })
 export class EditHouseComponent {
   @Input() house?: IHouseDTO;
