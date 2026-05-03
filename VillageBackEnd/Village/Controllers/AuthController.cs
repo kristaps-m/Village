@@ -134,8 +134,10 @@ namespace Village.Controllers
                 };
             }
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                _configuration.GetSection("AppSettings:Token").Value));
+            var tokenKey = _configuration.GetSection("AppSettings:Token").Value 
+                ?? throw new InvalidOperationException("AppSettings:Token configuration is missing");
+
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(tokenKey));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 

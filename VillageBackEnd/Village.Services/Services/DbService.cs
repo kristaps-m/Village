@@ -38,7 +38,7 @@ namespace Village.Services.Services
             return _context.Set<T>().ToList();
         }
 
-        public T GetById<T>(int id) where T : Entity
+        public T? GetById<T>(int id) where T : Entity
         {
             return _context.Set<T>().SingleOrDefault(e => e.Id == id);
         }

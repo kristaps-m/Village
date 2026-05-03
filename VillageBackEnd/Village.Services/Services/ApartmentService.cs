@@ -47,7 +47,7 @@ namespace Village.Services.Services
             return NotFound();
         }
 
-        public Apartment UpdateApartment(Apartment apartment, int id )
+        public Apartment? UpdateApartment(Apartment apartment, int id )
         {
             var apartmentToUpdate = _context.Apartments.SingleOrDefault(a => a.Id == id);
             if ( apartmentToUpdate != null )

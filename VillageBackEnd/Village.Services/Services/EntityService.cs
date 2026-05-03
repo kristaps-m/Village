@@ -31,7 +31,7 @@ namespace Village.Services.Services
             return GetAll<T>();
         }
 
-        public T GetById(int id)
+        public T? GetById(int id)
         {
             return GetById<T>(id);
         }
